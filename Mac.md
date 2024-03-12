@@ -12,3 +12,9 @@
 ![asar.png](images/asar.png)
 
 把你下载好的`app.asar`文件拖进来替换掉，懂？
+
+然后打开终端，输入如下命令修复损坏提示
+```bash
+sudo xattr -rd com.apple.quarantine /Applications/StarUML.app
+```
+输入你的密码即可
