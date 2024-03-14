@@ -59,6 +59,14 @@
 > 3. 如果你的机器上有Python，那么你可以自己跑一遍脚本，或者自己改
 > 4. 按道理来说，汉化是通用的，除非StarUML不用Electron了，但是也够你大学生毕业或者社畜工作摸鱼用了
 
+## Mac最完美使用方法
+请确保你的Mac拥有最佳的运行环境，[运行脚本的基本条件](#运行脚本的基本条件)
+```bash
+cd StarUML-Translate
+sudo python3 main.py
+# 选择对应的操作即可，全程无需干预全自动
+```
+
 ## 不想折腾无脑使用
 - [Windows](Windows.md)
 - [Mac](Mac.md)

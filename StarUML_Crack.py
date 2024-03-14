@@ -79,9 +79,13 @@ def winStarUML():
     print("1. 运行StarUML，选择菜单栏的Help - Enter License Key")
     print("2. 弹出窗口后，直接点击OK即可")
 
-if system == "Darwin":
-    macStarUML()
-elif system == "Windows":
-    winStarUML()
-else:
-    print("当前操作系统不支持")
+def main():
+    if system == "Darwin":
+        macStarUML()
+    elif system == "Windows":
+        winStarUML()
+    else:
+        print("当前操作系统不支持")
+
+if __name__ == "__main__":
+    main()
