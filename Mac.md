@@ -5,11 +5,11 @@
 
 右键，找到 `显示包内容`
 
-![showpackage.png](images/showpackage.png)
+![showpackage.png](./images/showpackage.png)
 
 打开 `Contents/Resources`，往下滑，找到`app.asar`文件
 
-![asar.png](images/asar.png)
+![asar.png](./images/asar.png)
 
 把你下载好的`app.asar`文件拖进来替换掉，懂？
 
