@@ -3780,6 +3780,80 @@
           "en": ">Do not specify<",
           "cn": ">不指定<"
         }
+      ],
+      "tag-editor-dialog": [
+        {
+          "en": "Tag Editor",
+          "cn": "标签编辑器"
+        },
+        {
+          "en": ">Add",
+          "cn": ">添加"
+        },
+        {
+          "en": ">Delete",
+          "cn": ">删除"
+        },
+        {
+          "en": ">Edit",
+          "cn": ">编辑"
+        }
+      ],
+      "tag-value-editor-dialog": [
+        {
+          "en": "data-title=\"Tag\"",
+          "cn": "data-title=\"标签\""
+        },
+        {
+          "en": ">Name:<",
+          "cn": ">名称:<"
+        },
+        {
+          "en": ">Kind:<",
+          "cn": ">类型:<"
+        },
+        {
+          "en": ">string<",
+          "cn": ">字符串<"
+        },
+        {
+          "en": ">reference<",
+          "cn": ">引用<"
+        },
+        {
+          "en": ">boolean<",
+          "cn": ">布尔<"
+        },
+        {
+          "en": ">number<",
+          "cn": ">数值<"
+        },
+        {
+          "en": ">enum<",
+          "cn": ">枚举<"
+        },
+        {
+          "en": ">Value:<",
+          "cn": ">值:<"
+        },
+        {
+          "en": ">Hidden<",
+          "cn": ">隐藏<"
+        }
+      ],
+      "enter-license-dialog": [
+        {
+          "en": ">License Key<",
+          "cn": ">许可证密钥<"
+        },
+        {
+          "en": "data-title=\"Enter License Key\"",
+          "cn": "data-title=\"输入许可证密钥\""
+        },
+        {
+          "en": ">Buy Now<",
+          "cn": ">购买<"
+        }
       ]
     }
   ],
@@ -5077,6 +5151,24 @@
         {
           "en": "Select an element to be represented as Frame",
           "cn": "选择要用框架表示的元素"
+        }
+      ],
+      "enter-license-dialog": [
+        {
+          "en": "Congratulation! Your license key has successfully registered.",
+          "cn": "恭喜!您的许可证密钥已成功注册。"
+        },
+        {
+          "en": "Invalid license key",
+          "cn": "无效的许可证密钥"
+        },
+        {
+          "en": "License is for old version (Upgrade required).",
+          "cn": "许可证为旧版本(需要升级)"
+        },
+        {
+          "en": "License server is temporally not available. Please try again later.",
+          "cn": "许可证服务器暂时不可用。请稍后再试。"
         }
       ]
     }

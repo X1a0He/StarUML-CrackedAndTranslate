@@ -120,7 +120,7 @@ def macStarUML():
         file.write(new_js_content)
 
     # 修复已损坏提示
-    print("需要修复app，稍后请输入电脑密码")
+    print("可能需要修复app，稍后请输入电脑密码")
     bash_pack = """
     cd /Applications/StarUML.app/Contents/Resources &&
     asar pack app app.asar &&
@@ -136,13 +136,15 @@ def winStarUML():
     if os.system("where asar >nul 2>nul") != 0:
         print("未检测到asar，请先安装asar")
         exit(1)
-    username = input("请输入StarUML关于页面要显示的用户名: ")
-    if not username: username = "X1a0He"
+    username = input("请输入StarUML关于页面要显示的用户名(回车即默认): ")
+    if not username: username = "Cracked by X1a0He"
     root_dir = input("请找到StarUML的根目录主程序并填入此处: ")
+
     # 如果root_dir有引号，则把引号去掉，否则直接下一步
     if root_dir.startswith('"') and root_dir.endswith('"'):
         root_dir = root_dir[1:-1]
     directory = root_dir.rsplit("\\", 1)[0]
+
     # 查找根目录下是否存在resource文件夹
     if not os.path.exists(directory + "\\resources"):
         print("未找到resource文件夹")
@@ -150,12 +152,13 @@ def winStarUML():
     print("正在解包...")
     bash_extract = "cd {} && asar extract app.asar app".format(directory + "\\resources")
     os.system(bash_extract)
+
     # 复制license-manager.js文件到目标位置
     destination_path = directory + "\\resources\\app\\src\\engine\\"
     print("正在替换文件...")
     shutil.copyfile("license-manager.js", os.path.join(destination_path, "license-manager.js"))
 
-    # 将字符串中的"X1a0He"替换为用户输入的文本
+    # 将字符串中的"Cracked by X1a0He"替换为用户输入的文本
     with open(destination_path + "license-manager.js", 'r') as file:
         js_content = file.read()
     new_js_content = js_content.replace('Cracked by X1a0He', username)
@@ -273,7 +276,6 @@ def main():
         print("/_/\\_\\_|\\__,_|\\___/|_| |_|\\___|")
         print("StarUML一键破解汉化脚本")
         user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原语言\n-1 -> 退出运行\n请输入您的选择: \n"))
-
         if user_choice == -1:
             exit(1)
 
@@ -282,11 +284,6 @@ def main():
             print("正在备份app.asar")
             os.system(
                 "cp -f /Applications/StarUML.app/Contents/Resources/app.asar /Applications/StarUML.app/Contents/Resources/app_backup.asar")
-
-        if user_choice == 3:
-            print("由于我不知道还原会不会有问题，虽然代码里面是支持的，但是我还是不建议")
-            print("那既然你都跑代码了，如果你要还原，你自己注释这里")
-            exit(1)
 
         if user_choice == 0:
             if system == "Darwin":
@@ -297,8 +294,17 @@ def main():
                 print("当前操作系统不支持")
             exit(1)
 
+        if user_choice == 1:
+            translate(user_choice)
+            exit(1)
+
         if user_choice == 2:
             crackAndTrans(user_choice)
+            exit(1)
+
+        if user_choice == 3:
+            print("由于我不知道还原会不会有问题，虽然代码里面是支持的，但是我还是不建议")
+            print("那既然你都跑代码了，如果你要还原，你自己注释这里")
             exit(1)
 
     except KeyboardInterrupt:
