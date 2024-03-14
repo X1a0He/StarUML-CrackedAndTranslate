@@ -3403,6 +3403,10 @@
     {
       "about-dialog": [
         {
+          "en": "data-title=\"About\"",
+          "cn": "data-title=\"关于\""
+        },
+        {
           "en": ">Licensed to<",
           "cn": ">授权给<"
         },
@@ -3541,28 +3545,28 @@
           "cn": "类型显示"
         },
         {
-          "en": "None",
-          "cn": "无"
+          "en": ">None<",
+          "cn": ">无<"
         },
         {
-          "en": "Label",
-          "cn": "标签"
+          "en": ">Label<",
+          "cn": ">标签<"
         },
         {
-          "en": "Decoration",
-          "cn": "装饰"
+          "en": ">Decoration<",
+          "cn": ">装饰<"
         },
         {
-          "en": "Decoration with Label",
-          "cn": "带标签的装饰"
+          "en": ">Decoration with Label<",
+          "cn": ">带标签的装饰<"
         },
         {
-          "en": "Icon",
-          "cn": "图标"
+          "en": ">Icon<",
+          "cn": ">图标<"
         },
         {
-          "en": "Icon with Label",
-          "cn": "带标签的图标"
+          "en": ">Icon with Label<",
+          "cn": ">带标签的图标<"
         },
         {
           "en": "Show Visibility",
@@ -3746,6 +3750,36 @@
           "en": "data-title=\"Preferences\"",
           "cn": "data-title=\"偏好设置\""
         }
+      ],
+      "unregistered-dialog":[
+        {
+          "en": "data-title=\"Unregistered Version\"",
+          "cn": "data-title=\"未注册版本\""
+        },
+        {
+          "en": "Thank you for evaluating StarUML. This is unregistered evaluation version. Although no time limit for evaluation, a license should be purchased for continued use. If you want to purchase a license, please click \"Buy Now\" button.",
+          "cn": "感谢您对StarUML的评估使用。此为未注册版本。无时间限制，购买后继续使用。如果您想购买许可，请单击\"购买\"按钮。"
+        },
+        {
+          "en": ">Buy Now<",
+          "cn": ">购买<"
+        },
+        {
+          "en": ">Evaluate<",
+          "cn": ">继续评估<"
+        }
+      ],
+      "element-list-picker-dialog": [
+        {
+          "en": ">Do not specify<",
+          "cn": ">不指定<"
+        }
+      ],
+      "element-picker-dialog": [
+        {
+          "en": ">Do not specify<",
+          "cn": ">不指定<"
+        }
       ]
     }
   ],
@@ -3776,7 +3810,7 @@
     },
     {
       "en": "isLeaf",
-      "cn": "是否为叶子节点"
+      "cn": "是否为叶节点"
     },
     {
       "en": "behaviors",
@@ -4961,6 +4995,90 @@
     {
       "en": "position",
       "cn": "位置"
+    }
+  ],
+  "js": [
+    {
+      "window": [
+        {
+          "en": "Do you want to save the changes?",
+          "cn": "是否保存更改?"
+        },
+        {
+          "en": "\"Save\"",
+          "cn": "\"保存\""
+        },
+        {
+          "en": "\"Don't Save\"",
+          "cn": "\"不保存\""
+        },
+        {
+          "en": "\"Cancel\"",
+          "cn": "\"取消\""
+        }
+      ],
+      "dialog-manager": [
+        {
+          "en": "Do you want to save the changes?",
+          "cn": "是否保存更改?"
+        }
+      ],
+      "default-commands": [
+        {
+          "en": "You already have a valid license.",
+          "cn": "您已经有一个有效的许可证。"
+        },
+        {
+          "en": "You don't have a valid license to delete.",
+          "cn": "您没有有效的许可证来删除。"
+        },
+        {
+          "en": "Do you want to delete current license key?",
+          "cn": "是否删除当前许可证密钥?"
+        }
+      ],
+      "check-updates-dialog": [
+        {
+          "en": "Error during update.",
+          "cn": "更新时出错。"
+        },
+        {
+          "en": "Already up to date.",
+          "cn": "已经是最新版本。"
+        },
+        {
+          "en": "Download complete. Now ready to install.",
+          "cn": "下载完成。现在准备安装。"
+        },
+        {
+          "en": "Downloading...",
+          "cn": "正在下载..."
+        }
+      ],
+      "about-dialog": [
+        {
+          "en": "Standard Edition",
+          "cn": "标准版"
+        },
+        {
+          "en": "Professional Edition",
+          "cn": "专业版"
+        },
+        {
+          "en": " User(s)",
+          "cn": " 用户"
+        },
+        {
+          "en": "UNREGISTERED",
+          "cn": "未注册"
+        }
+      ],
+      "uml-commands": [
+        {
+          "en": "Select an element to be represented as Frame",
+          "cn": "选择要用框架表示的元素"
+        }
+      ]
     }
   ]
 }

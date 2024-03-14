@@ -108,8 +108,11 @@ class LicenseManager extends EventEmitter {
         } else {
           var data = fs.readFileSync(file, "utf8");
           licenseInfo = JSON.parse(data);
-          if(licenseInfo.crackedAuthor && licenseInfo.crackedAuthor==="X1a0He") {
+          if(licenseInfo.crackedAuthor && licenseInfo.crackedAuthor === "X1a0He" && !licenseInfo.opened) {
             app.dialogs.showInfoDialog("StarUML 由 X1a0He 破解汉化且免费开源仅供学习参考\nhttps://github.com/X1a0He/StarUML-Translate")
+            licenseInfo.opened = true
+            var file = path.join(app.getUserPath(), "/license.key");
+            fs.writeFileSync(file, JSON.stringify(licenseInfo, 2));
           }
           resolve(licenseInfo);
         }

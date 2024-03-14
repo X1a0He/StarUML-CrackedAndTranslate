@@ -18,7 +18,7 @@ def load_replacements(file_path, direction):
     keys = ('strings', 'label', 'text', 'description')
     for key in keys:
         if key in data:
-            if direction == 1:  # 汉化
+            if direction == 1 or direction == 2:  # 汉化
                 replacements.update({ item['en']: item['cn'] for item in data[key] })
             else:  # 还原
                 replacements.update({ item['cn']: item['en'] for item in data[key] })
@@ -53,42 +53,47 @@ def update_files(files_path, replacements):
                                         json.dump(data, file, indent=4, ensure_ascii=False)
                                 elif file_path.endswith('.js'):
                                     print(f"正在替换文件: {file_path} 的 {key_to_replace} 字段")
-                                    data = file.read()
-                                    data = data.replace(r"\u2026", "...")
-                                    data = data.replace(r"\"dev\"", "dev")
-                                    matches = re.findall(r': \"(.*?)\"', data)
-                                    for match in matches:
-                                        if match in replacements:
-                                            data = data.replace(f": \"{match}\"", f": \"{replacements[match]}\"")
-                                            # print(f"替换 {match} -> {replacements[match]}")
+                                    if file_path.endswith('strings.js'):
+                                        data = file.read()
+                                        data = data.replace(r"\u2026", "...")
+                                        data = data.replace(r"\"dev\"", "dev")
+                                        matches = re.findall(r': \"(.*?)\"', data)
+                                        for match in matches:
+                                            if match in replacements:
+                                                data = data.replace(f": \"{match}\"", f": \"{replacements[match]}\"")
+                                                # print(f"替换 {match} -> {replacements[match]}")
+                                    elif file_path.endswith('dialog-manager.js'):
+
+                                        pass
                                     with open(file_path, 'w', encoding='utf-8') as file:
                                         file.write(data)
 
-def update_html_files(json_path, html_dirs):
+# 主要用于更新js和html类的文件
+def update_files_(json_path, dirs):
     with open(json_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    for html_dir in html_dirs:
-        for html_file, replacements in data['html'][0].items():
-            html_file_path = os.path.join(html_dir, f"{html_file}.html")
+    for directory in dirs:
+        for file_type, file_sections in data.items():
+            for file_name, sections in file_sections[0].items():
+                file_path = os.path.join(directory, f"{file_name}.{file_type}")
 
-            print(f"正在替换文件: {html_file_path}")
-            if os.path.isfile(html_file_path):
-                with open(html_file_path, 'r', encoding='utf-8') as file:
-                    html_content = file.read()
+                if os.path.isfile(file_path):
+                    print(f"正在替换文件: {file_path}")
+                    with open(file_path, 'r', encoding='utf-8') as file:
+                        content = file.read()
 
-                for item in replacements:
-                    en_text = item['en']
-                    cn_text = item['cn']
-                    if en_text in html_content:
-                        html_content = html_content.replace(en_text, cn_text)
-                        # print(f"{html_file}.html: 修改 {en_text} -> {cn_text}")
+                    for item in sections:
+                        en_text = item['en']
+                        cn_text = item['cn']
+                        if en_text in content:
+                            content = content.replace(en_text, cn_text)
 
-                with open(html_file_path, 'w', encoding='utf-8') as file:
-                    file.write(html_content)
-            else:
-                pass
-                # print(f"文件 {html_file_path} 不存在。")
+                    with open(file_path, 'w', encoding='utf-8') as file:
+                        file.write(content)
+                else:
+                    pass
+                    # print(f"文件 {file_path} 不存在。"
 
 def macStarUML():
     print("当前操作系统为 macOS")
@@ -165,6 +170,99 @@ def winStarUML():
     print("\nWindows StarUML 处理完毕，请按照下列步骤进行操作")
     print("1. 运行StarUML，选择菜单栏的Help - Enter License Key")
     print("2. 弹出窗口后，直接点击OK即可")
+
+def crackAndTrans(user_choice):
+    # 执行破解流程
+    if system == "Darwin":
+        macStarUML()
+    elif system == "Windows":
+        winStarUML()
+
+    translate(user_choice)
+def translate(user_choice):
+    if not os.path.exists("cd /Applications/StarUML.app/Contents/Resources/app"):
+        print("正在解包app.asar")
+        decompressAsar()
+
+    # 加载汉化文件
+    replacements = load_replacements('StarUML_Language.json', user_choice)
+
+    files_path = [
+        {
+            'path': [
+                '/Applications/StarUML.app/Contents/Resources/app/resources/default/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/aws/menus',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/gcp/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/erd/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/wireframe/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/staruml-v1/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/html-export/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/sysml/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/alignment/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-layout/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/mindmap/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/flowchart/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/find/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-generator/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/minimap/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/debug/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/dfd/menus/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/toolbox/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/preferences/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/toolbox/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/common/toolbox',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/robustness/toolbox/'
+            ],
+            'file_pattern': '.json',
+            'key_to_replace': ['label']
+        },
+        {
+            'path': [
+                # 'app/resources/default/preferences/',
+                # 'app/extensions/essential/aws/preferences/',
+                # 'app/extensions/essential/bpmn/preferences/',
+                # 'app/extensions/essential/c4/preferences/',
+                # 'app/extensions/essential/dfd/preferences/',
+                # 'app/extensions/essential/erd/preferences/',
+                # 'app/extensions/essential/flowchart/preferences/',
+                # 'app/extensions/essential/gcp/preferences/',
+                # 'app/extensions/essential/mindmap/preferences/',
+                # 'app/extensions/essential/sysml/preferences/',
+                # 'app/extensions/essential/uml/preferences/',
+                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/',
+                '/Applications/StarUML.app/Contents/Resources/app/resources/default/',
+            ],
+            'file_pattern': '.json',
+            'key_to_replace': ['text', 'description', 'name']
+        },
+        {
+            'path': [
+                '/Applications/StarUML.app/Contents/Resources/app/src/'
+            ],
+            'file_pattern': 'strings.js',
+            'key_to_replace': ['strings']
+        },
+    ]
+    update_files(files_path, replacements)
+    update_files_('StarUML_Language.json', [
+        '/Applications/StarUML.app/Contents/Resources/app/src/static/html-contents/',
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/',
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/',
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/',
+        '/Applications/StarUML.app/Contents/Resources/app/src/main-process/',
+        '/Applications/StarUML.app/Contents/Resources/app/src/dialogs/',
+        '/Applications/StarUML.app/Contents/Resources/app/src/engine/',
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/'
+    ])
+    print("正在打包app.asar")
+    pack2asar()
+
 def main():
     try:
         # 用户选择
@@ -174,9 +272,18 @@ def main():
         print(" /\\/\\| | (_| | |_| |  _  | ___/")
         print("/_/\\_\\_|\\__,_|\\___/|_| |_|\\___|")
         print("StarUML一键破解汉化脚本")
-        user_choice = int(input("0 -> 破解\n1 -> 汉化\n2 -> 还原\n请输入您的选择: \n"))
+        user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原语言\n-1 -> 退出运行\n请输入您的选择: \n"))
 
-        if user_choice == 2:
+        if user_choice == -1:
+            exit(1)
+
+        # 如果app_backup.asar不存在，则复制一份app.asar为app_backup.asar
+        if not os.path.exists("/Applications/StarUML.app/Contents/Resources/app_backup.asar"):
+            print("正在备份app.asar")
+            os.system(
+                "cp -f /Applications/StarUML.app/Contents/Resources/app.asar /Applications/StarUML.app/Contents/Resources/app_backup.asar")
+
+        if user_choice == 3:
             print("由于我不知道还原会不会有问题，虽然代码里面是支持的，但是我还是不建议")
             print("那既然你都跑代码了，如果你要还原，你自己注释这里")
             exit(1)
@@ -190,90 +297,10 @@ def main():
                 print("当前操作系统不支持")
             exit(1)
 
-        # 如果app_backup.asar不存在，则复制一份app.asar为app_backup.asar
-        if not os.path.exists("/Applications/StarUML.app/Contents/Resources/app_backup.asar"):
-            print("正在备份app.asar")
-            os.system(
-                "cp -f /Applications/StarUML.app/Contents/Resources/app.asar /Applications/StarUML.app/Contents/Resources/app_backup.asar")
+        if user_choice == 2:
+            crackAndTrans(user_choice)
+            exit(1)
 
-        if not os.path.exists("cd /Applications/StarUML.app/Contents/Resources/app"):
-            print("正在解包app.asar")
-            decompressAsar()
-
-        # 加载汉化文件
-        replacements = load_replacements('StarUML_Language.json', user_choice)
-
-        files_path = [
-            {
-                'path': [
-                    '/Applications/StarUML.app/Contents/Resources/app/resources/default/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/aws/menus',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/gcp/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/erd/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/wireframe/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/staruml-v1/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/html-export/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/sysml/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/alignment/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-layout/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/mindmap/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/flowchart/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/find/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-generator/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/minimap/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/debug/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/dfd/menus/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/toolbox/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/preferences/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/toolbox/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/common/toolbox',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/default/robustness/toolbox/'
-                ],
-                'file_pattern': '.json',
-                'key_to_replace': ['label']
-            },
-            {
-                'path': [
-                    # 'app/resources/default/preferences/',
-                    # 'app/extensions/essential/aws/preferences/',
-                    # 'app/extensions/essential/bpmn/preferences/',
-                    # 'app/extensions/essential/c4/preferences/',
-                    # 'app/extensions/essential/dfd/preferences/',
-                    # 'app/extensions/essential/erd/preferences/',
-                    # 'app/extensions/essential/flowchart/preferences/',
-                    # 'app/extensions/essential/gcp/preferences/',
-                    # 'app/extensions/essential/mindmap/preferences/',
-                    # 'app/extensions/essential/sysml/preferences/',
-                    # 'app/extensions/essential/uml/preferences/',
-                    '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/',
-                    '/Applications/StarUML.app/Contents/Resources/app/resources/default/',
-                ],
-                'file_pattern': '.json',
-                'key_to_replace': ['text', 'description', 'name']
-            },
-            {
-                'path': [
-                    '/Applications/StarUML.app/Contents/Resources/app/src/'
-                ],
-                'file_pattern': 'strings.js',
-                'key_to_replace': ['strings']
-            }
-        ]
-        update_files(files_path, replacements)
-        update_html_files('StarUML_Language.json', [
-            '/Applications/StarUML.app/Contents/Resources/app/src/static/html-contents/',
-            '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/',
-            '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/',
-            '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/'
-        ])
-        print("正在打包app.asar")
-        pack2asar()
     except KeyboardInterrupt:
         print("\n用户中断了程序执行")
 
