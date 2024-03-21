@@ -3751,7 +3751,7 @@
           "cn": "data-title=\"偏好设置\""
         }
       ],
-      "unregistered-dialog":[
+      "unregistered-dialog": [
         {
           "en": "data-title=\"Unregistered Version\"",
           "cn": "data-title=\"未注册版本\""
@@ -5151,6 +5151,42 @@
         {
           "en": "Select an element to be represented as Frame",
           "cn": "选择要用框架表示的元素"
+        },
+        {
+          "en": "already exists",
+          "cn": "已经存在"
+        },
+        {
+          "en": "UMLStandardProfile is successfully applied. Look at under Project.",
+          "cn": "UML标准配置已成功应用。请在项目中查看。"
+        },
+        {
+          "en": "Select one to create as an entry Activity",
+          "cn": "选择一个作为入口活动创建"
+        },
+        {
+          "en": "Select one to create as an do Activity",
+          "cn": "选择一个作为do活动创建"
+        },
+        {
+          "en": "Select one to create as an exit Activity",
+          "cn": "选择一个作为退出活动创建"
+        },
+        {
+          "en": "Select one to create as an effect Behavior",
+          "cn": "选择一个作为效果行为创建"
+        },
+        {
+          "en": "Select kind of Constraint of Operation",
+          "cn": "选择操作约束的类型"
+        },
+        {
+          "en": "Select kind of Constraint of Behavior",
+          "cn": "选择行为约束的类型"
+        },
+        {
+          "en": "Select kind of Constraint of Action",
+          "cn": "选择动作约束的类型"
         }
       ],
       "enter-license-dialog": [
@@ -5169,6 +5205,20 @@
         {
           "en": "License server is temporally not available. Please try again later.",
           "cn": "许可证服务器暂时不可用。请稍后再试。"
+        }
+      ],
+      "robustness/main": [
+        {
+          "en": "Boundary requires UML Standard Profile. Do you want to apply?",
+          "cn": "边界需要UML标准配置。是否应用?"
+        },
+        {
+          "en": "Entity requires UML Standard Profile. Do you want to apply?",
+          "cn": "实体需要UML标准配置。是否应用?"
+        },
+        {
+          "en": "Control requires UML Standard Profile. Do you want to apply?",
+          "cn": "控件需要UML标准配置。是否应用?"
         }
       ]
     }

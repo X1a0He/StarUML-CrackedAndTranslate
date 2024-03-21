@@ -261,7 +261,8 @@ def translate(user_choice):
         '/Applications/StarUML.app/Contents/Resources/app/src/main-process/',
         '/Applications/StarUML.app/Contents/Resources/app/src/dialogs/',
         '/Applications/StarUML.app/Contents/Resources/app/src/engine/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/'
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/',
+        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/'
     ])
     print("正在打包app.asar")
     pack2asar()
