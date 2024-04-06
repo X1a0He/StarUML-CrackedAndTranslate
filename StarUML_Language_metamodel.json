@@ -1,0 +1,800 @@
+{
+  "extensions/essential/uml/metamodel.json": [
+    {
+      "name": [
+        {
+          "en": "stereotype",
+          "cn": "类型(stereotype)"
+        },
+        {
+          "en": "visibility",
+          "cn": "可见性"
+        },
+        {
+          "en": "templateParameters",
+          "cn": "模板参数"
+        },
+        {
+          "en": "parameterType",
+          "cn": "参数类型"
+        },
+        {
+          "en": "defaultValue",
+          "cn": "默认值"
+        },
+        {
+          "en": "formal",
+          "cn": "形式"
+        },
+        {
+          "en": "actual",
+          "cn": "实际"
+        },
+        {
+          "en": "isStatic",
+          "cn": "静态"
+        },
+        {
+          "en": "isLeaf",
+          "cn": "叶节点"
+        },
+        {
+          "en": "featureDirection",
+          "cn": "特性方向"
+        },
+        {
+          "en": "multiplicity",
+          "cn": "多态性"
+        },
+        {
+          "en": "isReadOnly",
+          "cn": "只读"
+        },
+        {
+          "en": "isOrdered",
+          "cn": "有序"
+        },
+        {
+          "en": "isUnique",
+          "cn": "唯一"
+        },
+        {
+          "en": "direction",
+          "cn": "方向"
+        },
+        {
+          "en": "parameters",
+          "cn": "参数(parameters)"
+        },
+        {
+          "en": "raisedExceptions",
+          "cn": "抛出异常"
+        },
+        {
+          "en": "concurrency",
+          "cn": "并发性"
+        },
+        {
+          "en": "isDerived",
+          "cn": "派生"
+        },
+        {
+          "en": "aggregation",
+          "cn": "聚合"
+        },
+        {
+          "en": "isID",
+          "cn": "ID"
+        },
+        {
+          "en": "isQuery",
+          "cn": "查询"
+        },
+        {
+          "en": "isAbstract",
+          "cn": "抽象"
+        },
+        {
+          "en": "specification",
+          "cn": "规范"
+        },
+        {
+          "en": "preconditions",
+          "cn": "前置条件"
+        },
+        {
+          "en": "bodyConditions",
+          "cn": "主体条件"
+        },
+        {
+          "en": "postconditions",
+          "cn": "后置条件"
+        },
+        {
+          "en": "signal",
+          "cn": "信号"
+        },
+        {
+          "en": "attributes",
+          "cn": "属性"
+        },
+        {
+          "en": "operations",
+          "cn": "操作"
+        },
+        {
+          "en": "receptions",
+          "cn": "接收"
+        },
+        {
+          "en": "behaviors",
+          "cn": "行为"
+        },
+        {
+          "en": "isFinalSpecialization",
+          "cn": "最终专业化"
+        },
+        {
+          "en": "navigable",
+          "cn": "可导航"
+        },
+        {
+          "en": "constrainedElements",
+          "cn": "约束元素"
+        },
+        {
+          "en": "min",
+          "cn": "最小值"
+        },
+        {
+          "en": "max",
+          "cn": "最大值"
+        },
+        {
+          "en": "isReentrant",
+          "cn": "可重入"
+        },
+        {
+          "en": "kind",
+          "cn": "类型"
+        },
+        {
+          "en": "value",
+          "cn": "值"
+        },
+        {
+          "en": "expression",
+          "cn": "表达式"
+        },
+        {
+          "en": "targetOperation",
+          "cn": "目标操作"
+        },
+        {
+          "en": "targetSignal",
+          "cn": "目标信号"
+        },
+        {
+          "en": "importedElements",
+          "cn": "导入元素"
+        },
+        {
+          "en": "viewpoint",
+          "cn": "观点"
+        },
+        {
+          "en": "isActive",
+          "cn": "活动"
+        },
+        {
+          "en": "mapping",
+          "cn": "映射"
+        },
+        {
+          "en": "discriminator",
+          "cn": "判别器"
+        },
+        {
+          "en": "qualifiers",
+          "cn": "限定符"
+        },
+        {
+          "en": "ownerAttribute",
+          "cn": "拥有者属性"
+        },
+        {
+          "en": "classSide",
+          "cn": "类侧"
+        },
+        {
+          "en": "associationSide",
+          "cn": "关联侧"
+        },
+        {
+          "en": "parameterSubstitutions",
+          "cn": "参数替换"
+        },
+        {
+          "en": "definingFeature",
+          "cn": "定义特性"
+        },
+        {
+          "en": "classifier",
+          "cn": "分类器"
+        },
+        {
+          "en": "slots",
+          "cn": "槽"
+        },
+        {
+          "en": "objectSide",
+          "cn": "对象侧"
+        },
+        {
+          "en": "linkSide",
+          "cn": "链接侧"
+        },
+        {
+          "en": "isBehavior",
+          "cn": "行为"
+        },
+        {
+          "en": "isService",
+          "cn": "服务"
+        },
+        {
+          "en": "isConjugated",
+          "cn": "混合"
+        },
+        {
+          "en": "roleName",
+          "cn": "角色名"
+        },
+        {
+          "en": "fileName",
+          "cn": "文件名"
+        },
+        {
+          "en": "isIndirectlyInstantiated",
+          "cn": "间接实例化"
+        },
+        {
+          "en": "location",
+          "cn": "位置"
+        },
+        {
+          "en": "extensionPoints",
+          "cn": "扩展点"
+        },
+        {
+          "en": "condition",
+          "cn": "条件"
+        },
+        {
+          "en": "extensionLocations",
+          "cn": "扩展位置"
+        },
+        {
+          "en": "represent",
+          "cn": "表示"
+        },
+        {
+          "en": "regions",
+          "cn": "区域"
+        },
+        {
+          "en": "vertices",
+          "cn": "顶点"
+        },
+        {
+          "en": "transitions",
+          "cn": "转换"
+        },
+        {
+          "en": "entry",
+          "cn": "入口"
+        },
+        {
+          "en": "exit",
+          "cn": "退出"
+        },
+        {
+          "en": "entryActivities",
+          "cn": "入口活动"
+        },
+        {
+          "en": "doActivities",
+          "cn": "执行活动"
+        },
+        {
+          "en": "exitActivities",
+          "cn": "退出活动"
+        },
+        {
+          "en": "submachine",
+          "cn": "子机"
+        },
+        {
+          "en": "connections",
+          "cn": "连接"
+        },
+        {
+          "en": "guard",
+          "cn": "守卫"
+        },
+        {
+          "en": "triggers",
+          "cn": "触发器"
+        },
+        {
+          "en": "effects",
+          "cn": "效果"
+        },
+        {
+          "en": "isSingleExecution",
+          "cn": "单次执行"
+        },
+        {
+          "en": "nodes",
+          "cn": "节点"
+        },
+        {
+          "en": "edges",
+          "cn": "边"
+        },
+        {
+          "en": "groups",
+          "cn": "组"
+        },
+        {
+          "en": "inputs",
+          "cn": "输入"
+        },
+        {
+          "en": "outputs",
+          "cn": "输出"
+        },
+        {
+          "en": "target",
+          "cn": "目标"
+        },
+        {
+          "en": "subactivity",
+          "cn": "子活动"
+        },
+        {
+          "en": "isLocallyReentrant",
+          "cn": "局部可重入"
+        },
+        {
+          "en": "isSynchronous",
+          "cn": "同步"
+        },
+        {
+          "en": "language",
+          "cn": "语言"
+        },
+        {
+          "en": "body",
+          "cn": "主体(body)"
+        },
+        {
+          "en": "localPreconditions",
+          "cn": "本地前置条件"
+        },
+        {
+          "en": "localPostconditions",
+          "cn": "本地后置条件"
+        },
+        {
+          "en": "literals",
+          "cn": "字面量"
+        },
+        {
+          "en": "association",
+          "cn": "关联"
+        },
+        {
+          "en": "mustIsolate",
+          "cn": "必须隔离"
+        },
+        {
+          "en": "mode",
+          "cn": "模式"
+        },
+        {
+          "en": "isControlType",
+          "cn": "控制类型"
+        },
+        {
+          "en": "ordering",
+          "cn": "顺序"
+        },
+        {
+          "en": "inStates",
+          "cn": "在状态"
+        },
+        {
+          "en": "parameter",
+          "cn": "参数(parameter)"
+        },
+        {
+          "en": "subgroups",
+          "cn": "子组"
+        },
+        {
+          "en": "exceptionTypes",
+          "cn": "异常类型"
+        },
+        {
+          "en": "handlerBody",
+          "cn": "处理主体"
+        },
+        {
+          "en": "weight",
+          "cn": "权重"
+        },
+        {
+          "en": "messages",
+          "cn": "消息"
+        },
+        {
+          "en": "participants",
+          "cn": "参与者"
+        },
+        {
+          "en": "fragments",
+          "cn": "片段"
+        },
+        {
+          "en": "covered",
+          "cn": "被覆盖"
+        },
+        {
+          "en": "invariant",
+          "cn": "不变性"
+        },
+        {
+          "en": "setting",
+          "cn": "设置"
+        },
+        {
+          "en": "interactionOperator",
+          "cn": "互动操作符"
+        },
+        {
+          "en": "operands",
+          "cn": "操作数"
+        },
+        {
+          "en": "refersTo",
+          "cn": "引用"
+        },
+        {
+          "en": "arguments",
+          "cn": "参数"
+        },
+        {
+          "en": "returnValue",
+          "cn": "返回值"
+        },
+        {
+          "en": "returnValueRecipient",
+          "cn": "返回值接收者"
+        },
+        {
+          "en": "selector",
+          "cn": "选择器"
+        },
+        {
+          "en": "isMultiInstance",
+          "cn": "多重实例"
+        },
+        {
+          "en": "messageSort",
+          "cn": "消息排序"
+        },
+        {
+          "en": "signature",
+          "cn": "签名"
+        },
+        {
+          "en": "connector",
+          "cn": "连接器"
+        },
+        {
+          "en": "sequenceNumber",
+          "cn": "序号"
+        },
+        {
+          "en": "arguments",
+          "cn": "参数"
+        },
+        {
+          "en": "assignmentTarget",
+          "cn": "赋值目标"
+        },
+        {
+          "en": "iteration",
+          "cn": "迭代"
+        },
+        {
+          "en": "isConcurrentIteration",
+          "cn": "并发迭代"
+        },
+        {
+          "en": "represented",
+          "cn": "表示"
+        },
+        {
+          "en": "conveyed",
+          "cn": "传播"
+        },
+        {
+          "en": "realizingConnectors",
+          "cn": "实现连接器"
+        },
+        {
+          "en": "realizingActivityEdges",
+          "cn": "实现活动边"
+        },
+        {
+          "en": "realizingMessages",
+          "cn": "实现消息"
+        },
+        {
+          "en": "width",
+          "cn": "宽度"
+        },
+        {
+          "en": "height",
+          "cn": "高度"
+        },
+        {
+          "en": "image",
+          "cn": "图像"
+        },
+        {
+          "en": "content",
+          "cn": "内容"
+        },
+        {
+          "en": "smallIcon",
+          "cn": "小图标"
+        },
+        {
+          "en": "icon",
+          "cn": "图标"
+        },
+        {
+          "en": "stereotypeLabel",
+          "cn": "类型标签"
+        },
+        {
+          "en": "nameLabel",
+          "cn": "名称标签"
+        },
+        {
+          "en": "namespaceLabel",
+          "cn": "命名空间标签"
+        },
+        {
+          "en": "propertyLabel",
+          "cn": "属性标签"
+        },
+        {
+          "en": "wordWrap",
+          "cn": "自动换行"
+        },
+        {
+          "en": "stereotypeDisplay",
+          "cn": "类型显示"
+        },
+        {
+          "en": "showVisibility",
+          "cn": "显示可见性"
+        },
+        {
+          "en": "showNamespace",
+          "cn": "显示命名空间"
+        },
+        {
+          "en": "showProperty",
+          "cn": "显示属性"
+        },
+        {
+          "en": "showType",
+          "cn": "显示类型"
+        },
+        {
+          "en": "nameCompartment",
+          "cn": "名称间隔"
+        },
+        {
+          "en": "suppressAttributes",
+          "cn": "隐藏属性(suppressAttributes)"
+        },
+        {
+          "en": "suppressOperations",
+          "cn": "隐藏操作(suppressOperations)"
+        },
+        {
+          "en": "suppressReceptions",
+          "cn": "隐藏接收(Receptions)"
+        },
+        {
+          "en": "showMultiplicity",
+          "cn": "显示多重度"
+        },
+        {
+          "en": "showOperationSignature",
+          "cn": "显示操作签名"
+        },
+        {
+          "en": "attributeCompartment",
+          "cn": "属性间隔"
+        },
+        {
+          "en": "operationCompartment",
+          "cn": "操作间隔"
+        },
+        {
+          "en": "receptionCompartment",
+          "cn": "接收间隔"
+        },
+        {
+          "en": "templateParameterCompartment",
+          "cn": "模板参数间隔"
+        },
+        {
+          "en": "showMultiplicity",
+          "cn": "显示多重度"
+        },
+        {
+          "en": "showEndOrder",
+          "cn": "显示结束顺序"
+        },
+        {
+          "en": "tailRoleNameLabel",
+          "cn": "尾部角色名称标签"
+        },
+        {
+          "en": "tailPropertyLabel",
+          "cn": "尾部属性标签"
+        },
+        {
+          "en": "tailMultiplicityLabel",
+          "cn": "尾部多重度标签"
+        },
+        {
+          "en": "headRoleNameLabel",
+          "cn": "头部角色名称标签"
+        },
+        {
+          "en": "headPropertyLabel",
+          "cn": "头部属性标签"
+        },
+        {
+          "en": "headMultiplicityLabel",
+          "cn": "头部多重度标签"
+        },
+        {
+          "en": "suppressLiterals",
+          "cn": "隐藏文字(suppressLiterals)"
+        },
+        {
+          "en": "enumerationLiteralCompartment",
+          "cn": "枚举文字间隔"
+        },
+        {
+          "en": "tailQualifiersCompartment",
+          "cn": "尾部限定符间隔"
+        },
+        {
+          "en": "headQualifiersCompartment",
+          "cn": "头部限定符组织"
+        },
+        {
+          "en": "roleNameLabel",
+          "cn": "角色名称标签"
+        },
+        {
+          "en": "slotCompartment",
+          "cn": "插槽间隔"
+        },
+        {
+          "en": "extensionPointCompartment",
+          "cn": "扩展点间隔"
+        },
+        {
+          "en": "internalActivityCompartment",
+          "cn": "内部活动间隔"
+        },
+        {
+          "en": "internalTransitionCompartment",
+          "cn": "内部转换间隔"
+        },
+        {
+          "en": "decompositionCompartment",
+          "cn": "分解间隔"
+        },
+        {
+          "en": "adornment",
+          "cn": "修饰(adornment)"
+        },
+        {
+          "en": "isVertical",
+          "cn": "垂直"
+        },
+        {
+          "en": "showSequenceNumber",
+          "cn": "显示顺序号"
+        },
+        {
+          "en": "sequenceNumbering",
+          "cn": "顺序号"
+        },
+        {
+          "en": "showSignature",
+          "cn": "显示签名"
+        },
+        {
+          "en": "showActivation",
+          "cn": "显示"
+        },
+        {
+          "en": "linePart",
+          "cn": "线条部分"
+        },
+        {
+          "en": "activation",
+          "cn": "激活"
+        },
+        {
+          "en": "invariantLabel",
+          "cn": "不变性标签"
+        },
+        {
+          "en": "frameTypeLabel",
+          "cn": "框架类型标签"
+        },
+        {
+          "en": "guardLabel",
+          "cn": "守卫标签"
+        },
+        {
+          "en": "operandCompartment",
+          "cn": "操作间隔"
+        },
+        {
+          "en": "text",
+          "cn": "文本"
+        },
+        {
+          "en": "typeLabel",
+          "cn": "类型标签"
+        },
+        {
+          "en": "horzAlign",
+          "cn": "水平对齐"
+        },
+        {
+          "en": "vertAlign",
+          "cn": "垂直对齐"
+        },
+        {
+          "en": "imageWidth",
+          "cn": "图像宽度"
+        },
+        {
+          "en": "imageHeight",
+          "cn": "图像高度"
+        },
+        {
+          "en": "imageData",
+          "cn": "图像数据"
+        }
+      ]
+    }
+  ]
+}

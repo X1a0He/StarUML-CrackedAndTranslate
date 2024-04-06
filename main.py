@@ -1,271 +1,183 @@
-import json
-import os
-import re
-import platform
-import shutil
-system = platform.system()
+import json, os, re, glob
 
-def decompressAsar():
-    os.system("cd /Applications/StarUML.app/Contents/Resources && asar extract app.asar app")
+def decompressAsar(base):
+    os.system(f"cd {base} && asar extract app.asar app")
 
-def pack2asar():
-    os.system("cd /Applications/StarUML.app/Contents/Resources && asar pack app app.asar")
+def pack2asar(base):
+    os.system(f"cd {base} && asar pack app app.asar")
 
-def load_replacements(file_path, direction):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    replacements = { }
-    keys = ('strings', 'label', 'text', 'description')
-    for key in keys:
-        if key in data:
-            if direction == 1 or direction == 2:  # 汉化
-                replacements.update({ item['en']: item['cn'] for item in data[key] })
-            else:  # 还原
-                replacements.update({ item['cn']: item['en'] for item in data[key] })
-    return replacements
+def handle_crack_asar(base, username, user_choice):
+    # 先对app.asar进行备份，备份文件名为app_backup.asar
+    if not os.path.exists(f"{base}/app_backup.asar"):
+        print("备份 app.asar -> app_backup.asar")
+        os.system(f"cp -f {base}/app.asar {base}/app_backup.asar")
 
-def replace_keys(obj, replacements, key_to_replace):
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if key == key_to_replace and value in replacements:
-                obj[key] = replacements[value]
-                # print(f"替换 {obj[key]} -> {replacements[value]}")
-            elif isinstance(value, (dict, list)):
-                replace_keys(value, replacements, key_to_replace)
-    elif isinstance(obj, list):
-        for item in obj:
-            replace_keys(item, replacements, key_to_replace)
+    # 备份完就对app.asar进行解包操作，这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
+    print("解包 app.asar")
+    decompressAsar(base)
+    handle_crack_app(base, username)
+    # 如果用户选择破解并汉化的话，就不需要重新打包了，做完再打包
+    if user_choice != 2:
+        # 再次对app.asar进行打包操作
+        print("打包 app.asar")
+        pack2asar(base)
+        print("删除 app 文件夹")
+        os.system(f"rm -rf {base}/app")
 
-def update_files(files_path, replacements):
-    for file_info in files_path:
-        for directory in file_info['path']:
-            for key_to_replace in file_info['key_to_replace']:
-                for root, dirs, files in os.walk(directory):
-                    for file_name in files:
-                        if file_name.endswith(file_info['file_pattern']):
-                            file_path = os.path.join(root, file_name)
-                            with open(file_path, 'r', encoding='utf-8') as file:
-                                if file_path.endswith('.json'):
-                                    print(f"正在替换文件: {file_path} 的 {key_to_replace} 字段")
-                                    data = json.load(file)
-                                    replace_keys(data, replacements, key_to_replace)
-                                    with open(file_path, 'w', encoding='utf-8') as file:
-                                        json.dump(data, file, indent=4, ensure_ascii=False)
-                                elif file_path.endswith('.js'):
-                                    print(f"正在替换文件: {file_path} 的 {key_to_replace} 字段")
-                                    if file_path.endswith('strings.js'):
-                                        data = file.read()
-                                        data = data.replace(r"\u2026", "...")
-                                        data = data.replace(r"\"dev\"", "dev")
-                                        matches = re.findall(r': \"(.*?)\"', data)
-                                        for match in matches:
-                                            if match in replacements:
-                                                data = data.replace(f": \"{match}\"", f": \"{replacements[match]}\"")
-                                                # print(f"替换 {match} -> {replacements[match]}")
-                                    elif file_path.endswith('dialog-manager.js'):
+    # 修复已损坏
+    print("正在修复已损坏")
+    os.system("sudo xattr -r -d com.apple.quarantine /Applications/StarUML.app")
+    print("修复完毕")
+    print("StarUML 破解操作完成")
 
-                                        pass
-                                    with open(file_path, 'w', encoding='utf-8') as file:
-                                        file.write(data)
-
-# 主要用于更新js和html类的文件
-def update_files_(json_path, dirs):
-    with open(json_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-
-    for directory in dirs:
-        for file_type, file_sections in data.items():
-            for file_name, sections in file_sections[0].items():
-                file_path = os.path.join(directory, f"{file_name}.{file_type}")
-
-                if os.path.isfile(file_path):
-                    print(f"正在替换文件: {file_path}")
-                    with open(file_path, 'r', encoding='utf-8') as file:
-                        content = file.read()
-
-                    for item in sections:
-                        en_text = item['en']
-                        cn_text = item['cn']
-                        if en_text in content:
-                            content = content.replace(en_text, cn_text)
-
-                    with open(file_path, 'w', encoding='utf-8') as file:
-                        file.write(content)
-                else:
-                    pass
-                    # print(f"文件 {file_path} 不存在。"
-
-def macStarUML():
-    print("当前操作系统为 macOS")
-    if os.system("command -v asar > /dev/null 2>&1") == 1:
-        print("未检测到asar，请先安装asar")
-        exit(1)
-    username = input("请输入StarUML关于页面要显示的用户名: ")
-    if not username: username = "X1a0He"
-    bash_extract = """
-    cd /Applications/StarUML.app/Contents/Resources && asar extract app.asar app
-    """
-    os.system(bash_extract)
-    # 复制license-manager.js文件到目标位置
-    destination_path = "/Applications/StarUML.app/Contents/Resources/app/src/engine/"
-    os.system("cp -f license-manager.js {}".format(destination_path))
-
-    # 将字符串中的"X1a0He"替换为用户输入的文本
-    with open(destination_path + "license-manager.js", 'r') as file:
+def handle_crack_app(base, username):
+    # 写入破解hook文件，复制hook.js到 app/src/ 目录下
+    destination_path = f"{base}/app/src/"
+    os.system(f"cp -f hook.js {destination_path}")
+    # 将破解文件中的字符串进行替换处理
+    with open(f"{destination_path}hook.js", "r") as file:
         js_content = file.read()
-    new_js_content = js_content.replace('Cracked by X1a0He', username)
+    new_js_content = js_content.replace("Cracked by X1a0He", username)
 
     # 将替换后的内容写回到js文件
-    with open(destination_path + "license-manager.js", 'w') as file:
+    with open(f"{destination_path}hook.js", "w") as file:
         file.write(new_js_content)
+    # 对同目录下的app-context.js进行改写处理
+    # 读入app-context.js文件
+    with open(f"{destination_path}app-context.js", "r") as file:
+        js_content = file.read()
+        # 查找字符串require("./hook");
+        if js_content.find('require("./hook");') != -1:
+            # 存在字符串require("./hook"); 则证明已被修改过
+            print("文本已被修改过，无需再次修改")
+        else:
+            # 不存在字符串require("./hook"); 则进行修改
+            new_js_content = js_content.replace('const _ = require("lodash");', 'require("./hook");\nconst _ = require("lodash");')
+            # 将替换后的内容写回到js文件
+            with open(f"{destination_path}app-context.js", "w") as file2:
+                file2.write(new_js_content)
+                print("hook写入完毕")
 
-    # 修复已损坏提示
-    print("可能需要修复app，稍后请输入电脑密码")
-    bash_pack = """
-    cd /Applications/StarUML.app/Contents/Resources &&
-    asar pack app app.asar &&
-    rm -rf app && sudo xattr -r -d com.apple.quarantine /Applications/StarUML.app
-    """
-    os.system(bash_pack)
+def handle_crack_mac_staruml(user_choice):
+    print("正在进行 macOS StarUML 破解操作...")
+
+    # 先把从阿猫阿狗那里获取到的license.key文件删掉，防止影响我
+    os.system("rm -rf ~/Library/Application\ Support/StarUML/license.key")
+
+    if os.system("command -v asar > /dev/null 2>&1") == 1:
+        print("未检测到asar，请先安装asar")
+        exit(0)
+    username = input("请输入StarUML关于页面要显示的用户名: ")
+    if not username: username = "Cracked by X1a0He"
+    base = "/Applications/StarUML.app/Contents/Resources"
+
+    # 1. 仅存在app.asar，只处理app.asar
+    if os.path.exists(f"{base}/app.asar") and not os.path.exists(f"{base}/app"):
+        handle_crack_asar(base, username, user_choice)
+    # 2. app.asar和app文件夹共存，优先处理app.asar
+    elif os.path.exists(f"{base}/app.asar") and os.path.exists(f"{base}/app"):
+        print("检测到 app.asar 和 app 文件夹共存，优先处理 app.asar")
+        handle_crack_asar(base, username, user_choice)
+    # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
+    elif not os.path.exists(f"{base}/app.asar") and os.path.exists(f"{base}/app"):
+        print("检测到只存在 app 文件夹，本次操作仅对 app 文件夹进行处理")
+        handle_crack_app(base, username)
+
     print("Mac StarUML 处理完毕，请按照下列步骤进行操作")
     print("1. 运行StarUML，选择菜单栏的Help - Enter License Key")
     print("2. 弹出窗口后，直接点击OK即可")
 
-def winStarUML():
-    print("当前操作系统为 Windows")
-    if os.system("where asar >nul 2>nul") != 0:
-        print("未检测到asar，请先安装asar")
-        exit(1)
-    username = input("请输入StarUML关于页面要显示的用户名(回车即默认): ")
-    if not username: username = "Cracked by X1a0He"
-    root_dir = input("请找到StarUML的根目录主程序并填入此处: ")
+def read_json(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return json.load(file)
 
-    # 如果root_dir有引号，则把引号去掉，否则直接下一步
-    if root_dir.startswith('"') and root_dir.endswith('"'):
-        root_dir = root_dir[1:-1]
-    directory = root_dir.rsplit("\\", 1)[0]
+def get_file_list(base, path_pattern):
+    base_path = f"{base}/app/"
+    if '*' in path_pattern:
+        full_path = os.path.join(base_path, path_pattern)
+        return glob.glob(full_path)
+    else:
+        return [os.path.join(base_path, path_pattern)]
 
-    # 查找根目录下是否存在resource文件夹
-    if not os.path.exists(directory + "\\resources"):
-        print("未找到resource文件夹")
-        exit(1)
-    print("正在解包...")
-    bash_extract = "cd {} && asar extract app.asar app".format(directory + "\\resources")
-    os.system(bash_extract)
+def replace_in_file(file_path, replacements, option):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        content = file.read()
+    # print(f"正在替换文件: {file_path}")
+    content = content.replace(r"\u2026", "...").replace(r"\"dev\"", "dev")
+    for replacement in replacements:
+        for key, value in replacement.items():
+            if isinstance(value, list):  # 处理嵌套列表
+                for item in value:
+                    en_text = item['en']
+                    cn_text = item['cn']
+                    # print(f"正在替换 {en_text} -> {cn_text}")
+                    if option == 1 or option == 2:  # 汉化
+                        content = re.sub(f'"{key}": "{re.escape(en_text)}"', f'"{key}": "{re.escape(cn_text)}"'.replace('\\', ''), content)
+                    elif option == 3:  # 还原
+                        content = re.sub(f'"{key}": "{re.escape(cn_text)}"'.replace('\\', ''), f'"{key}": "{re.escape(en_text)}"', content)
+            else:
+                en_text = replacement['en']
+                cn_text = replacement['cn']
+                # print(f"正在替换 {en_text} -> {cn_text}")
+                if option == 1 or option == 2:  # 汉化
+                    content = content.replace(en_text, cn_text)
+                elif option == 3:  # 还原
+                    content = content.replace(cn_text, en_text)
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(content)
 
-    # 复制license-manager.js文件到目标位置
-    destination_path = directory + "\\resources\\app\\src\\engine\\"
-    print("正在替换文件...")
-    shutil.copyfile("license-manager.js", os.path.join(destination_path, "license-manager.js"))
+def handle_translate_asar(language_file, base, user_choice):
+    # 先对app.asar进行备份，备份文件名为app_backup.asar
+    if not os.path.exists(f"{base}/app_backup.asar"):
+        print("备份 app.asar -> app_backup.asar")
+        os.system(f"cp -f {base}/app.asar {base}/app_backup.asar")
 
-    # 将字符串中的"Cracked by X1a0He"替换为用户输入的文本
-    with open(destination_path + "license-manager.js", 'r') as file:
-        js_content = file.read()
-    new_js_content = js_content.replace('Cracked by X1a0He', username)
+    os.system(f"cp -f {base}/app.asar {base}/app_backup.asar")
+    # 备份完就对app.asar进行解包操作，这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
+    print("解包 app.asar")
+    decompressAsar(base)
+    # 解包完就开始对文件进行汉化操作
+    handle_translate_app(language_file, base, user_choice)
+    # 汉化操作完成后，对app.asar进行打包操作，并删除app文件夹
+    print("打包 app.asar")
+    pack2asar(base)
+    print("删除 app 文件夹")
+    os.system(f"rm -rf {base}/app")
 
-    # 将替换后的内容写回到js文件
-    with open(destination_path + "license-manager.js", 'w') as file:
-        file.write(new_js_content)
+def handle_translate_app(language_file, base, user_choice):
+    print("正在汉化文件...")
+    data = read_json(language_file)
+    for path, replacements in data.items():
+        files = get_file_list(base, path)
+        for file_path in files:
+            replace_in_file(file_path, replacements, user_choice)
+    print("文件汉化完成")
 
-    print("正在重新打包...")
-    bash_pack = "cd {} && asar pack app app.asar && rd /s /q app".format(directory + "\\resources")
-    os.system(bash_pack)
-    print("\nWindows StarUML 处理完毕，请按照下列步骤进行操作")
-    print("1. 运行StarUML，选择菜单栏的Help - Enter License Key")
-    print("2. 弹出窗口后，直接点击OK即可")
-
-def crackAndTrans(user_choice):
-    # 执行破解流程
-    if system == "Darwin":
-        macStarUML()
-    elif system == "Windows":
-        winStarUML()
-
-    translate(user_choice)
 def translate(user_choice):
-    if not os.path.exists("cd /Applications/StarUML.app/Contents/Resources/app"):
-        print("正在解包app.asar")
-        decompressAsar()
+    print("正在进行 macOS StarUML 汉化操作...")
+    base = "/Applications/StarUML.app/Contents/Resources"
+    language_file = "StarUML_Language.json"
+    # 1. 仅存在app.asar，只处理app.asar
+    if os.path.exists(f"{base}/app.asar") and not os.path.exists(f"{base}/app"):
+        handle_translate_asar(language_file, base, user_choice)
+    # 2. app.asar和app文件夹共存，优先处理app.asar
+    elif os.path.exists(f"{base}/app.asar") and os.path.exists(f"{base}/app"):
+        # 如果用户选择破解并汉化，就不需要解包了
+        if user_choice != 2:
+            print("检测到 app.asar 和 app 文件夹共存，优先处理 app.asar")
+            handle_translate_asar(language_file, base, user_choice)
+        elif user_choice == 2:
+            handle_translate_app(language_file, base, user_choice)
+            print("打包 app.asar")
+            pack2asar(base)
+            print("删除 app 文件夹")
+            os.system(f"rm -rf {base}/app")
+    # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
+    elif not os.path.exists(f"{base}/app.asar") and os.path.exists(f"{base}/app"):
+        print("检测到只存在 app 文件夹，本次操作仅对 app 文件夹进行处理")
+        handle_translate_app(language_file, base, user_choice)
 
-    # 加载汉化文件
-    replacements = load_replacements('StarUML_Language.json', user_choice)
-
-    files_path = [
-        {
-            'path': [
-                '/Applications/StarUML.app/Contents/Resources/app/resources/default/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/aws/menus',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/gcp/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/erd/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/wireframe/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/staruml-v1/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/html-export/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/sysml/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/alignment/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-layout/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/mindmap/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/flowchart/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/find/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-generator/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/minimap/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/debug/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/dfd/menus/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/c4/toolbox/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/bpmn/preferences/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/toolbox/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/common/toolbox',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/default/robustness/toolbox/'
-            ],
-            'file_pattern': '.json',
-            'key_to_replace': ['label']
-        },
-        {
-            'path': [
-                # 'app/resources/default/preferences/',
-                # 'app/extensions/essential/aws/preferences/',
-                # 'app/extensions/essential/bpmn/preferences/',
-                # 'app/extensions/essential/c4/preferences/',
-                # 'app/extensions/essential/dfd/preferences/',
-                # 'app/extensions/essential/erd/preferences/',
-                # 'app/extensions/essential/flowchart/preferences/',
-                # 'app/extensions/essential/gcp/preferences/',
-                # 'app/extensions/essential/mindmap/preferences/',
-                # 'app/extensions/essential/sysml/preferences/',
-                # 'app/extensions/essential/uml/preferences/',
-                '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/',
-                '/Applications/StarUML.app/Contents/Resources/app/resources/default/',
-            ],
-            'file_pattern': '.json',
-            'key_to_replace': ['text', 'description', 'name']
-        },
-        {
-            'path': [
-                '/Applications/StarUML.app/Contents/Resources/app/src/'
-            ],
-            'file_pattern': 'strings.js',
-            'key_to_replace': ['strings']
-        },
-    ]
-    update_files(files_path, replacements)
-    update_files_('StarUML_Language.json', [
-        '/Applications/StarUML.app/Contents/Resources/app/src/static/html-contents/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/markdown/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/diagram-thumbnails/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/relationship-view/',
-        '/Applications/StarUML.app/Contents/Resources/app/src/main-process/',
-        '/Applications/StarUML.app/Contents/Resources/app/src/dialogs/',
-        '/Applications/StarUML.app/Contents/Resources/app/src/engine/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/essential/uml/',
-        '/Applications/StarUML.app/Contents/Resources/app/extensions/default/'
-    ])
-    print("正在打包app.asar")
-    pack2asar()
+    print("StarUML 汉化操作完成")
 
 def main():
     try:
@@ -275,38 +187,38 @@ def main():
         print(" \\  /| |/ _` | | | | |_| |/ _ \\")
         print(" /\\/\\| | (_| | |_| |  _  | ___/")
         print("/_/\\_\\_|\\__,_|\\___/|_| |_|\\___|")
-        print("StarUML一键破解汉化脚本")
+        print("Mac StarUML一键破解汉化脚本")
+        if os.system("pgrep -x StarUML > /dev/null 2>&1") == 0:
+            print("检测到 StarUML 进程正在运行，请先关闭 StarUML 进程")
+            # 这里本来要kill掉的，一想到肯定有傻逼会有未保存的图表，kill掉就丢失了，所以仁慈一下
+            # os.system("killall -9 StarUML")
+            exit(0)
+
         user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原语言\n-1 -> 退出运行\n请输入您的选择: \n"))
         if user_choice == -1:
-            exit(1)
-
-        # 如果app_backup.asar不存在，则复制一份app.asar为app_backup.asar
-        if not os.path.exists("/Applications/StarUML.app/Contents/Resources/app_backup.asar"):
-            print("正在备份app.asar")
-            os.system(
-                "cp -f /Applications/StarUML.app/Contents/Resources/app.asar /Applications/StarUML.app/Contents/Resources/app_backup.asar")
+            exit(0)
 
         if user_choice == 0:
-            if system == "Darwin":
-                macStarUML()
-            elif system == "Windows":
-                winStarUML()
-            else:
-                print("当前操作系统不支持")
-            exit(1)
+            handle_crack_mac_staruml(user_choice)
+            # 运行StarUML
+            os.system("open -a StarUML")
+            exit(0)
 
         if user_choice == 1:
             translate(user_choice)
-            exit(1)
+            os.system("open -a StarUML")
+            exit(0)
 
         if user_choice == 2:
-            crackAndTrans(user_choice)
-            exit(1)
+            handle_crack_mac_staruml(user_choice)
+            translate(user_choice)
+            os.system("open -a StarUML")
+            exit(0)
 
         if user_choice == 3:
             print("由于我不知道还原会不会有问题，虽然代码里面是支持的，但是我还是不建议")
             print("那既然你都跑代码了，如果你要还原，你自己注释这里")
-            exit(1)
+            exit(0)
 
     except KeyboardInterrupt:
         print("\n用户中断了程序执行")
