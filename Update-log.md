@@ -1,5 +1,14 @@
 # Change Log
 
+- 2024-04-10 20:10 Update
+
+```md
+1. 重写 main.py 再次适配了 Windows 用户，别nm叫了
+2. 移除冗余文件，合并 Windows 和 Mac 用户的操作逻辑
+3. 无论如何，Mac都是优先更新支持的
+4. 无论 Windows 还是 Mac，破解方式均采用优雅的hook拦截，不再使用强侵入式
+```
+
 - 2024-04-04 23:00 Update
 
 ```md

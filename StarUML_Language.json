@@ -1097,6 +1097,30 @@
     {
       "en": "Enter diagram name",
       "cn": "输入图表名称"
+    },
+    {
+      "en": "Delete Views Only",
+      "cn": "仅删除视图"
+    },
+    {
+      "en": "Do you want to delete views only?",
+      "cn": "是否仅删除视图?"
+    },
+    {
+      "en": "Delete from Model",
+      "cn": "从模型中删除"
+    },
+    {
+      "en": "Select Diagram to show",
+      "cn": "选择要显示的图表"
+    },
+    {
+      "en": "No diagrams to show",
+      "cn": "没有可以显示的图表"
+    },
+    {
+      "en": "No sub-diagram in the selected element",
+      "cn": "没有选择的元素的子图表"
     }
   ],
   "extensions/default/robustness/main.js": [
@@ -1172,6 +1196,10 @@
     }
   ],
   "extensions/essential/sysml/sysml-factory.js": [
+    {
+      "en": "Invalid connection",
+      "cn": "无效的连接"
+    },
     {
       "en": "Port should be dropped on it's parent Block",
       "cn": "端口应放在它的父块上"
@@ -1260,6 +1288,10 @@
     }
   ],
   "extensions/essential/uml/uml-factory.js": [
+    {
+      "en": "Invalid connection",
+      "cn": "无效的连接"
+    },
     {
       "en": "Port should be dropped on it's parent Classifier",
       "cn": "端口应放在它的父分类器上"
