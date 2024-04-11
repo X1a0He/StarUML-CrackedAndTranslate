@@ -1,5 +1,14 @@
 # Change Log
 
+- 2024-04-11 22:50 Last Update
+
+```md
+1. 重写 How to crack StarUML.md 教程
+2. 最后一次更新，以后无论如何都不会再更新这个库了
+
+再见！
+```
+
 - 2024-04-10 20:10 Update
 
 ```md

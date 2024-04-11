@@ -2,6 +2,10 @@
 
 ![display.png](images/display.png)
 
+# 停更
+
+用爱发电得不到回报，累了，停更了，GoodBye
+
 ## 懒人使用方法
 
 点击右边栏的 `Releases` 后，下载 `app.asar` 或者 下载 `app.asar.zip` 解压
@@ -12,13 +16,13 @@
 
 # 最新更新日志
 
-- 2024-04-10 20:10 Update
+- 2024-04-11 22:50 Last Update
 
 ```md
-1. 重写 main.py 再次适配了 Windows 用户，别nm叫了
-2. 移除冗余文件，合并 Windows 和 Mac 用户的操作逻辑
-3. 无论如何，Mac都是优先更新支持的
-4. 无论 Windows 还是 Mac，破解方式均采用优雅的hook拦截，不再使用强侵入式
+1. 重写 How to crack StarUML.md 教程
+2. 最后一次更新，以后无论如何都不会再更新这个库了
+
+再见！
 ```
 
 - [历史更新日志](Update-log.md)
