@@ -1013,6 +1013,12 @@
       "cn": "\"取消\""
     }
   ],
+  "src/views/titlebar-view.js": [
+    {
+      "en": "title += ' (UNREGISTERED)'\n    }",
+      "cn": "title += ' (未注册)'\n    } else { title += ' Cracked By X1a0He'}"
+    }
+  ],
   "src/engine/default-commands.js": [
     {
       "en": "You already have a valid license.",
@@ -1121,6 +1127,12 @@
     {
       "en": "No sub-diagram in the selected element",
       "cn": "没有选择的元素的子图表"
+    }
+  ],
+  "extensions/default/find/main.js": [
+    {
+      "en": "'Find Results \"' + returnValue.keyword + '\" — ' + found.length + ' elements.'",
+      "cn": "'查找结果 \"' + returnValue.keyword + '\" — ' + found.length + ' 个元素。'"
     }
   ],
   "extensions/default/robustness/main.js": [
@@ -5615,6 +5627,28 @@
     {
       "en": ">Relationships<",
       "cn": ">关系<"
+    }
+  ],
+  "extensions/default/find/find-dialog.html": [
+    {
+      "en": "Case sensitive",
+      "cn": "区分大小写"
+    },
+    {
+      "en": "Find in documentation",
+      "cn": "在文档中查找"
+    },
+    {
+      "en": "data-button-id=\"ok\">OK<",
+      "cn": "data-button-id=\"ok\">确定<"
+    },
+    {
+      "en": "Cancel",
+      "cn": "取消"
+    },
+    {
+      "en": "data-title=\"Find\"",
+      "cn": "data-title=\"查找\""
     }
   ],
   "extensions/default/relationship-view/main.js": [

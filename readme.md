@@ -2,9 +2,15 @@
 
 ![display.png](images/display.png)
 
-# 停更
+# StarUML源代码仓库
 
-用爱发电得不到回报，累了，停更了，GoodBye
+[StarUML-SourceCode](https://github.com/X1a0He/StarUML-SourceCode)
+
+# 佛系更新
+
+学校把这门课的期末设置为了大作业，不考试了嘿嘿嘿嘿嘿
+
+以后佛系更新
 
 ## 懒人使用方法
 
@@ -16,13 +22,12 @@
 
 # 最新更新日志
 
-- 2024-04-11 22:50 Last Update
+- 2024-06-26 09:27 Update
 
 ```md
-1. 重写 How to crack StarUML.md 教程
-2. 最后一次更新，以后无论如何都不会再更新这个库了
-
-再见！
+1. 老子又回来了
+2. 新增搜索页面的汉化
+3. 注册后，大标题添加"Cracked By X1a0He字样"
 ```
 
 - [历史更新日志](Update-log.md)

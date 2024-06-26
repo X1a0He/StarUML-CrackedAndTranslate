@@ -84,7 +84,7 @@ def handler(base, user_choice):
         translate(base, user_choice, language_file)
 
 def translate(base, user_choice, language_file):
-    log("\n正在进行 StarUML 汉化操作...")
+    log("正在进行 StarUML 汉化操作...")
     # 1. 仅存在app.asar，只处理app.asar
     if os.path.exists(convert_path(f"{base}/app.asar")) and not os.path.exists(convert_path(f"{base}/app")):
         translate_asar(language_file, base, user_choice)
@@ -134,7 +134,7 @@ def translate_app(language_file, base, user_choice):
     log("文件汉化完成")
 
 def crack(base, user_choice):
-    log("\n正在进行 StarUML 破解操作...")
+    log("正在进行 StarUML 破解操作...")
     # 先把原来的license.key文件删掉
     home_dir = os.path.expanduser("~")
     try:
@@ -193,7 +193,7 @@ def crack_asar(base, username, user_choice):
 
     if system == 'Darwin':
         log("正在修复已损坏")
-        os.system("sudo xattr -r -d com.apple.quarantine /Applications/StarUML.app")
+        os.system("sudo xattr -cr /Applications/StarUML.app")
         log("修复完毕")
 
 def crack_app(base, username):

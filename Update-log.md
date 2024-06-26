@@ -1,6 +1,14 @@
 # Change Log
 
-- 2024-04-11 22:50 Last Update
+- 2024-06-26 09:27 Update
+
+```md
+1. 老子又回来了
+2. 新增搜索页面的汉化
+3. 注册后，大标题添加"Cracked By X1a0He字样"
+```
+
+- 2024-04-11 22:50 Update
 
 ```md
 1. 重写 How to crack StarUML.md 教程
