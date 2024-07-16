@@ -891,6 +891,10 @@
     {
       "en": "UNREGISTERED",
       "cn": "未注册"
+    },
+    {
+      "en": "Evaluation mode",
+      "cn": "评估模式"
     }
   ],
   "src/dialogs/check-updates-dialog.js": [
@@ -967,6 +971,16 @@
       "cn": "删除此标签?"
     }
   ],
+  "src/dialogs/unregistered-dialog.js": [
+    {
+      "en": "Please restart the app to apply the license.",
+      "cn": "请重启应用以应用许可证。"
+    },
+    {
+      "en": "$exitBtn.html(\"Restart\");",
+      "cn": "$exitBtn.html(\"重启\");"
+    }
+  ],
   "src/views/property-editor-view.js": [
     {
       "en": "Do you want to delete this image?",
@@ -1017,6 +1031,10 @@
     {
       "en": "title += ' (UNREGISTERED)'\n    }",
       "cn": "title += ' (未注册)'\n    } else { title += ' Cracked By X1a0He'}"
+    },
+    {
+      "en": "title += \"(EVALUATION MODE)\"",
+      "cn": "title += \"(评估模式)\""
     }
   ],
   "src/engine/default-commands.js": [
@@ -6117,6 +6135,26 @@
     {
       "en": "Thank you for evaluating StarUML. This is unregistered evaluation version. Although no time limit for evaluation, a license should be purchased for continued use. If you want to purchase a license, please click \"Buy Now\" button.",
       "cn": "感谢您对StarUML的评估使用。此为未注册版本。无时间限制，购买后继续使用。如果您想购买许可，请单击\"购买\"按钮。"
+    },
+    {
+      "en": "Thank you for evaluating StarUML. To continue using it after the evaluation\n            period, you must purchase a\n            license. ",
+      "cn": "感谢您对StarUML的评估使用。购买后继续使用。"
+    },
+    {
+      "en": "days left for\n            evaluation",
+      "cn": "天评估时长剩余"
+    },
+    {
+      "en": "Evaluation mode",
+      "cn": "评估模式"
+    },
+    {
+      "en": "EVALUATION PERIOD EXPIRED",
+      "cn": "评估时长已过期"
+    },
+    {
+      "en": "Your evaluation period has ended. For continued use, you must purchase a license.",
+      "cn": "您的评估时长已结束。购买后继续使用。"
     },
     {
       "en": ">Buy Now<",
