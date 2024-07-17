@@ -140,21 +140,33 @@ def crack(base, user_choice):
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+            # 该文件夹不存在，则表示首次安装
+            if not os.path.exists(rf"{user_path}"):
+                log("检测到为首次安装StarUML，正在创建用户目录...")
+                # 创建文件夹
+                os.makedirs(rf"{user_path}")
+                # chmod 777
+                os.chmod(rf"{user_path}", 0o777)
+                log("用户目录创建完毕")
+
             if os.path.exists(rf"{user_path}/license.key"):
+                log("移除已存在的 license.key 文件")
                 os.remove(rf"{user_path}/license.key")
 
             # StarUML 6.2.0 新增的评估lib.so处理
             # 移除掉已经存在的lib.so
             if os.path.exists(rf"{user_path}/lib.so"):
-                # log("删除已存在的 lib.so 文件")
+                log("移除已存在的 lib.so 文件")
                 os.remove(rf"{user_path}/lib.so")
+            else:
+                log("评估天数修改失败 lib.so 文件不存在，请先打开一次StarUML后再运行破解")
 
-            # 写入到user_path下的lib.so，文件内容为64个9
+            # 写入到user_path下的lib.so，文件内容为309个9
             with open(rf"{user_path}/lib.so", "w") as f:
-                # log("正在修改评估天数...")
+                log("正在修改评估天数...")
                 # 经过测试，写入309个9后，读取完计算后为Infinity天的评估市场剩余
                 f.write('9' * 309)
-                # log("评估天数修改完毕")
+                log("评估天数修改完毕")
 
             if os.system("command -v asar > /dev/null 2>&1") == 1:
                 log("未检测到asar，请先安装asar")
@@ -258,6 +270,12 @@ def main():
         elif system == 'Windows':
             if ctypes.windll.shell32.IsUserAnAdmin():
                 log("请以「管理员」身份运行此脚本")
+                exit(0)
+
+        # macOS下检测是否安装了starUML，Windows下目录不确定，所以没写，拉倒吧
+        if system == 'Darwin':
+            if not os.path.exists("/Applications/StarUML.app"):
+                log("未检测到 StarUML.app，结束执行")
                 exit(0)
 
         user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原语言\n-1 -> 退出运行\n请输入您的选择: \n"))
