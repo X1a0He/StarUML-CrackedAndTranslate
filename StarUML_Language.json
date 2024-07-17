@@ -6149,6 +6149,14 @@
       "cn": "评估模式"
     },
     {
+      "en": "Enter License\n            Key",
+      "cn": "输入许可密钥"
+    },
+    {
+      "en": "Exit",
+      "cn": "退出"
+    },
+    {
       "en": "EVALUATION PERIOD EXPIRED",
       "cn": "评估时长已过期"
     },

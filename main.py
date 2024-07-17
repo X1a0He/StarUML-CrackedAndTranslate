@@ -140,7 +140,22 @@ def crack(base, user_choice):
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
-            os.remove(rf"{user_path}/license.key")
+            if os.path.exists(rf"{user_path}/license.key"):
+                os.remove(rf"{user_path}/license.key")
+
+            # StarUML 6.2.0 新增的评估lib.so处理
+            # 移除掉已经存在的lib.so
+            if os.path.exists(rf"{user_path}/lib.so"):
+                # log("删除已存在的 lib.so 文件")
+                os.remove(rf"{user_path}/lib.so")
+
+            # 写入到user_path下的lib.so，文件内容为64个9
+            with open(rf"{user_path}/lib.so", "w") as f:
+                # log("正在修改评估天数...")
+                # 经过测试，写入309个9后，读取完计算后为Infinity天的评估市场剩余
+                f.write('9' * 309)
+                # log("评估天数修改完毕")
+
             if os.system("command -v asar > /dev/null 2>&1") == 1:
                 log("未检测到asar，请先安装asar")
                 exit(0)
@@ -212,7 +227,7 @@ def crack_app(base, username):
 
     with open(app_context_file_path, "r", encoding="utf-8") as file:
         js_content = file.read()
-        if 'require("./hook);' not in js_content:
+        if 'require("./hook");' not in js_content:
             log("hook写入中...")
             new_js_content = js_content.replace('const _ = require("lodash");', 'require("./hook");\nconst _ = require("lodash");')
 
