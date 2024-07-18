@@ -6,19 +6,25 @@
 
 [StarUML-SourceCode](https://github.com/X1a0He/StarUML-SourceCode)
 
+## 懒人使用方法
+
+1. 点击右边栏的 `Releases` 后，下载 `app.asar` 或者 下载 `app.asar.zip` 解压
+
+2. 然后按照 `Releases` 页面的指引，将 `app.asar` 放在指定目录下
+
+3. 打开后，选择 `帮助` - `输入许可证密钥`，随便输入或者直接点击OK即可
+
+![enter-license.png](images/enter-license.png)
+
+![license-ok.png](images/license-ok.png)
+
+**⚠️⚠️⚠️如果你有 Python 环境，想一键运行或者自己折腾，请往下看！！！**
+
 # 佛系更新
 
 去你妈的傻逼UML老师，给老子打88分，你是傻逼吧
 
 以后佛系更新
-
-## 懒人使用方法
-
-点击右边栏的 `Releases` 后，下载 `app.asar` 或者 下载 `app.asar.zip` 解压
-
-然后按照 `Releases` 页面的指引，将 `app.asar` 放在指定目录下
-
-如果你有 Python 环境，想一键运行，往下看！！！
 
 # 最新更新日志
 
