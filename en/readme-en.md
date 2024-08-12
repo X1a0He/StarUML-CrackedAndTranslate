@@ -21,6 +21,44 @@ crack. In addition, the content of this document is translated by Google, so the
 
 **⚠️⚠️⚠️ If you have a Python environment and want to run it with one click or study it yourself, please read on!!!**
 
+----
+
+# Surge script activation
+
+> Note that this method is not within the scope of script processing. Please add it yourself if you have hands-on
+> skills.\
+> This activation has no Chinese translation and is only convenient for activation\
+> The advantages and disadvantages of this method are as follows
+>
+> **Advantages**
+> - Non-intrusive, no modification to the original app
+> - Supports updating directly from the official website without reactivation
+>
+> **Disadvantages**
+> - You must use apps that support scripting, such as Surge, Stash, etc.
+> - When opening StarUML, you must enable the script, otherwise activation may fail or be restored.
+
+## Notes
+
+You need to turn on HTTPS decryption and add the MitM hostname: `staruml.io`
+
+**Write your own configuration**
+
+```config
+[Script]
+StarUML = type=http-request,pattern=^https://staruml.io/api/license/validate,requires-body=1,max-size=0,debug=1,script-path=staruml.js
+```
+
+**Manually add scripts**
+
+Put `staruml.js` in the `/Users/$HOME/Library/Application Support/Surge/Profiles`
+
+Script name: Custom by yourself \
+Script Type: HTTP Request \
+URL: `^https://staruml.io/api/license/validate`
+
+----
+
 # Latest Changelog
 
 - [Historical Changelog](Update-log-en.md)

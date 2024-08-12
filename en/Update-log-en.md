@@ -1,5 +1,11 @@
 # Change Log
 
+- 2024-08-12 22:35 Update
+
+```md
+1. Added support for Surge or script-based apps using scripts for non-invasive activation
+```
+
 - 2024-07-21 21:36 Update
 
 ```md

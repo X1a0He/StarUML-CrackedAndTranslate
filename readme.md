@@ -26,15 +26,47 @@
 
 - [历史更新日志](Update-log.md)
 
-- 2024-07-21 21:36 更新日志
+- 2024-08-12 22:35 更新日志
 
 ```md
-1. 新增支持6.2.2
-2. 新增中英双语文档支持
-3. 新增英语仅破解脚本【直接运行main.py后输入0可达到同样效果】
-4. 新增英语更新日志
-5. 优化readme.md
+1. 新增支持 Surge 或支持脚本类App使用 脚本 无侵入式激活
 ```
+
+----
+
+# Surge 脚本激活
+
+> 注意，此方法不在脚本处理范围内，请有动手能力的朋友自行动手添加\
+> 该方法无汉化功能，仅方便激活\
+> 该方法优缺点如下
+>
+> **优点**
+> - 无侵入式，不修改原app
+> - 支持直接从官网进行更新，无需再次激活
+>
+> **缺点**
+> - 必须才用支持脚本运行的App，如: Surge, Stash 等
+> - 打开StarUML的同时，必须开启脚本，否则可能会出现激活失败或被还原的情况
+
+## 添加方式
+
+需要打开HTTPS解密，并且添加MitM主机名: `staruml.io`
+
+**自己写配置**
+
+```config
+[Script]
+StarUML = type=http-request,pattern=^https://staruml.io/api/license/validate,requires-body=1,max-size=0,debug=1,script-path=staruml.js
+```
+
+**手动添加脚本**
+把 `staruml.js` 放在 `/Users/$HOME/Library/Application Support/Surge/Profiles` 目录下
+
+脚本名: 自定义 \
+脚本类型: HTTP Request \
+URL正则表达式: `^https://staruml.io/api/license/validate`
+
+----
 
 # 支持状态
 
