@@ -25,6 +25,8 @@ crack. In addition, the content of this document is translated by Google, so the
 
 # Surge script activation
 
+![script activation.png](../images/script activation.png)
+
 > Note that this method is not within the scope of script processing. Please add it yourself if you have hands-on
 > skills.\
 > This activation has no Chinese translation and is only convenient for activation\
@@ -93,6 +95,8 @@ URL: `^https://staruml.io/api/license/validate`
 * [By X1a0He](#by-x1a0he)
 * [StarUML SourceCode](#staruml-sourcecode)
     * [Usage Instructions](#usage-instructions)
+* [Surge script activation](#surge-script-activation)
+    * [Notes](#notes)
 * [Latest Changelog](#latest-changelog)
 * [Support status](#support-status)
 * [Read before use](#read-before-use)
