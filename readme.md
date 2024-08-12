@@ -36,7 +36,7 @@
 
 # Surge 脚本激活
 
-![script activation.png](images/script activation.png)
+![script-activation.png](images/script-activation.png)
 
 > 注意，此方法不在脚本处理范围内，请有动手能力的朋友自行动手添加\
 > 该方法无汉化功能，仅方便激活\

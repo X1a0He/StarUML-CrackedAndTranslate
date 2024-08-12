@@ -25,7 +25,7 @@ crack. In addition, the content of this document is translated by Google, so the
 
 # Surge script activation
 
-![script activation.png](../images/script activation.png)
+![script-activation.png](../images/script-activation.png)
 
 > Note that this method is not within the scope of script processing. Please add it yourself if you have hands-on
 > skills.\
