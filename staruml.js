@@ -117,7 +117,7 @@ const generateLicenseInfo = () => {
         product: "STARUML.V6",
         licenseType: "PRO",
         quantity: "Unlimited",
-        timestamp: `253402271999000`,
+        timestamp: `8640000000000000`,
         crackedAuthor: "X1a0He",
     };
     licenseInfo.licenseKey = sha1(`${SK}${licenseInfo.name}${SK}${licenseInfo.product}-${licenseInfo.licenseType}${SK}${licenseInfo.quantity}${SK}${licenseInfo.timestamp}${SK}`);

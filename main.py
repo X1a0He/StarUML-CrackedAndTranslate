@@ -7,6 +7,34 @@ def extract(base):
 def pack(base):
     os.system(f"cd {base} && asar pack app app.asar")
 
+def backup(base):
+    if not os.path.exists(convert_path(f"{base}/app.asar.original")):
+        log("备份 app.asar -> app.asar.original")
+        shutil.copyfile(convert_path(f"{base}/app.asar"), convert_path(f"{base}/app.asar.original"))
+    else:
+        log("备份文件已存在，无需再次备份")
+
+def rollback(base):
+    if os.path.exists(convert_path(f"{base}/app.asar.original")):
+        log("还原 app.asar.original -> app.asar")
+        shutil.copyfile(convert_path(f"{base}/app.asar.original"), convert_path(f"{base}/app.asar"))
+    else:
+        log("还原文件不存在，无法还原")
+
+def isFirstInstall():
+    home_dir = os.path.expanduser("~")
+    user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    # 该文件夹不存在，则表示首次安装
+    if not os.path.exists(rf"{user_path}"):
+        log("请先打开一次 StarUML 再执行脚本")
+        exit(0)
+        # log("检测到为首次安装StarUML，正在创建用户目录...")
+        # # 创建文件夹
+        # os.makedirs(rf"{user_path}")
+        # # chmod 777
+        # os.chmod(rf"{user_path}", 0o777)
+        # log("用户目录创建完毕")
+
 def log(msg):
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"「{now}」 {msg}")
@@ -53,8 +81,8 @@ def replace_in_file(file_path, replacements, option):
                 # log(f"正在替换 {en_text} -> {cn_text}")
                 if option == 1 or option == 2:  # 汉化
                     content = content.replace(en_text, cn_text)
-                elif option == 3:  # 还原
-                    content = content.replace(cn_text, en_text)
+                # elif option == 3:  # 还原
+                #     content = content.replace(cn_text, en_text)
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
 
@@ -73,15 +101,22 @@ def is_staruml_running():
 
 def handler(base, user_choice):
     language_file = "StarUML_Language.json"
+    if user_choice in (0, 1, 2):
+        backup(base)
+
     if user_choice == 0:
         crack(base, user_choice)
 
-    if user_choice == 1 or user_choice == 3:
+    if user_choice == 1:
         translate(base, user_choice, language_file)
 
     if user_choice == 2:
         crack(base, user_choice)
         translate(base, user_choice, language_file)
+
+    # 还原所有操作 2024.11.04 增加
+    if user_choice == 3:
+        rollback(base)
 
 def translate(base, user_choice, language_file):
     log("正在进行 StarUML 汉化操作...")
@@ -109,12 +144,7 @@ def translate(base, user_choice, language_file):
     log("StarUML 汉化操作完成")
 
 def translate_asar(language_file, base, user_choice):
-    # 先对app.asar进行备份，备份文件名为app_backup.asar
-    if not os.path.exists(convert_path(rf"{base}/app_backup.asar")):
-        log("备份 app.asar -> app_backup.asar")
-        shutil.copyfile(convert_path(rf"{base}/app.asar"), convert_path(rf"{base}/app_backup.asar"))
-
-    # 备份完就对app.asar进行解包操作，这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
+    # 这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
     log("解包 app.asar")
     extract(base)
     translate_app(language_file, base, user_choice)
@@ -141,33 +171,32 @@ def crack(base, user_choice):
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
             # 该文件夹不存在，则表示首次安装
-            if not os.path.exists(rf"{user_path}"):
-                log("检测到为首次安装StarUML，正在创建用户目录...")
-                # 创建文件夹
-                os.makedirs(rf"{user_path}")
-                # chmod 777
-                os.chmod(rf"{user_path}", 0o777)
-                log("用户目录创建完毕")
-
+            # if not os.path.exists(rf"{user_path}"):
+            #     log("检测到为首次安装StarUML，正在创建用户目录...")
+            #     # 创建文件夹
+            #     os.makedirs(rf"{user_path}")
+            #     # chmod 777
+            #     os.chmod(rf"{user_path}", 0o777)
+            #     log("用户目录创建完毕")
             if os.path.exists(rf"{user_path}/license.key"):
                 log("移除已存在的 license.key 文件")
                 os.remove(rf"{user_path}/license.key")
 
-            # StarUML 6.2.0 新增的评估lib.so处理
-            # 移除掉已经存在的lib.so
-            if os.path.exists(rf"{user_path}/lib.so"):
-                log("移除已存在的 lib.so 文件")
-                os.remove(rf"{user_path}/lib.so")
-            else:
-                log("评估天数修改失败 lib.so 文件不存在，请先打开一次StarUML后再运行破解")
-
-            # 写入到user_path下的lib.so，文件内容为309个9
-            with open(rf"{user_path}/lib.so", "w") as f:
-                log("正在修改评估天数...")
-                # 经过测试，写入309个9后，读取完计算后为Infinity天的评估市场剩余
-                f.write('9' * 309)
-                log("评估天数修改完毕")
-
+            # 2024.11.04 已采用 hook.js 进行 lib.so 写入
+            # # StarUML 6.2.0 新增的评估lib.so处理
+            # # 移除掉已经存在的lib.so
+            # if os.path.exists(rf"{user_path}/lib.so"):
+            #     log("移除已存在的 lib.so 文件")
+            #     os.remove(rf"{user_path}/lib.so")
+            # else:
+            #     log("评估天数修改失败 lib.so 文件不存在，请先打开一次StarUML后再运行破解")
+            #
+            # # 写入到user_path下的lib.so，文件内容为309个9
+            # with open(rf"{user_path}/lib.so", "w") as f:
+            #     log("正在修改评估天数...")
+            #     # 经过测试，写入309个9后，读取完计算后为Infinity天的评估市场剩余
+            #     f.write('9' * 309)
+            #     log("评估天数修改完毕")
             if os.system("command -v asar > /dev/null 2>&1") == 1:
                 log("未检测到asar，请先安装asar")
                 exit(0)
@@ -184,15 +213,12 @@ def crack(base, user_choice):
         pass
     except KeyboardInterrupt:
         pass
-
-    username = input("请输入StarUML关于页面要显示的用户名: ")
-    if not username: username = "Cracked by X1a0He"
-
+    log("请输入StarUML关于页面要显示的用户名(回车即使用程序默认): ")
+    username = input()
+    if not username: username = "GitHub: X1a0He/StarUML-CrackedAndTranslate"
     # 1. 仅存在app.asar，只处理app.asar
-    if os.path.exists(convert_path(rf"{base}/app.asar")) and not os.path.exists(convert_path(rf"{base}/app")):
-        crack_asar(base, username, user_choice)
     # 2. app.asar和app文件夹共存，优先处理app.asar
-    elif os.path.exists(convert_path(rf"{base}/app.asar")) and os.path.exists(convert_path(rf"{base}/app")):
+    if os.path.exists(convert_path(rf"{base}/app.asar")) or os.path.exists(convert_path(rf"{base}/app")):
         crack_asar(base, username, user_choice)
     # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
     elif not os.path.exists(convert_path(rf"{base}/app.asar")) and os.path.exists(convert_path(rf"{base}/app")):
@@ -203,25 +229,15 @@ def crack(base, user_choice):
     log("2. 弹出窗口后，直接点击OK即可")
 
 def crack_asar(base, username, user_choice):
-    if not os.path.exists(convert_path(f"{base}/app_backup.asar")):
-        log("备份 app.asar -> app_backup.asar")
-        shutil.copyfile(convert_path(f"{base}/app.asar"), convert_path(f"{base}/app_backup.asar"))
-
     log("解包 app.asar")
     extract(base)
     crack_app(base, username)
-
     # 如果用户选择破解并汉化的话，就不需要重新打包了，做完再打包
     if user_choice != 2:
         log("打包 app.asar")
         pack(base)
         log("删除 app 文件夹")
         shutil.rmtree(convert_path(f"{base}/app"))
-
-    if system == 'Darwin':
-        log("正在修复已损坏")
-        os.system("sudo xattr -cr /Applications/StarUML.app")
-        log("修复完毕")
 
 def crack_app(base, username):
     destination_path = convert_path(f"{base}/app/src/")
@@ -232,7 +248,7 @@ def crack_app(base, username):
 
     with open(hook_file_path, "r", encoding="utf-8") as file:
         js_content = file.read()
-    new_js_content = js_content.replace("Cracked by X1a0He", username)
+    new_js_content = js_content.replace("GitHub: X1a0He/StarUML-CrackedAndTranslate", username)
 
     with open(hook_file_path, "w", encoding="utf-8") as file:
         file.write(new_js_content)
@@ -251,15 +267,22 @@ def crack_app(base, username):
 
 def main():
     try:
-        # 用户选择
-        print("__  ___        ___  _   _        ____  _             _   _ __  __ _")
-        print("\\ \\/ / | __ _ / _ \\| | | | ___  / ___|| |_ __ _ _ __| | | |  \\/  | |")
-        print(" \\  /| |/ _` | | | | |_| |/ _ \\ \\___ \\| __/ _` | '__| | | | |\\/| | |")
-        print(" /  \\| | (_| | |_| |  _  |  __/  ___) | || (_| | |  | |_| | |  | | |___")
-        print("/_/\\_\\_|\\__,_|\\___/|_| |_|\\___| |____/ \\__\\__,_|_|   \\___/|_|  |_|_____|")
+        print(" -----------------------------------------------")
+        print("|                                               |")
+        print("| ██╗  ██╗ ██╗ █████╗  ██████╗ ██╗  ██╗███████╗ |")
+        print("| ╚██╗██╔╝███║██╔══██╗██╔═████╗██║  ██║██╔════╝ |")
+        print("|  ╚███╔╝ ╚██║███████║██║██╔██║███████║█████╗   |")
+        print("|  ██╔██╗  ██║██╔══██║████╔╝██║██╔══██║██╔══╝   |")
+        print("| ██╔╝ ██╗ ██║██║  ██║╚██████╔╝██║  ██║███████╗ |")
+        print("| ╚═╝  ╚═╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ |")
+        print("|                StarUML Cracker                |")
+        print(" -----------------------------------------------")
         print("StarUML「Mac & Win」一键破解汉化脚本")
-        print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate\n")
+        print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
+        print()
 
+        isFirstInstall()
+        
         is_staruml_running()
 
         # 你他妈的，要修改文件都是要权限的，不用 sudo 或者 管理员 身份，你修改nm呢？
@@ -278,16 +301,19 @@ def main():
                 log("未检测到 StarUML.app，结束执行")
                 exit(0)
 
-        user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原语言\n-1 -> 退出运行\n请输入您的选择: \n"))
+        user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原所有\n-1 -> 退出运行\n请输入您的选择: \n"))
         if user_choice == -1:
             exit(0)
 
-        # 还原功能我测试过了，但是不保证有什么问题，既然你要汉化，那你还原干什么呢？找骂？
+        # 还原功能已在 2024.11.04 改为还原为官方原包
         if user_choice in (0, 1, 2, 3):
             if system == 'Darwin':
                 base = "/Applications/StarUML.app/Contents/Resources"
                 handler(base, user_choice)
-                os.system("open -a StarUML")
+                log("如遇到打开 StarUML 提示已损坏，请手动在终端执行如下命令后，在 Application 右键打开 StarUML")
+                log("sudo xattr -cr /Applications/StarUML.app")
+                log("macOS 15 的用户如果一直遇到提示已损坏，建议先打开一遍 StarUML 后再运行")
+                # os.system("open -a StarUML")
             elif system == 'Windows':
                 base = r"C:\Program Files\StarUML\resources"
                 handler(base, user_choice)

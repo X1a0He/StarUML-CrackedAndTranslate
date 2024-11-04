@@ -7,6 +7,20 @@ def extract(base):
 def pack(base):
     os.system(f"cd {base} && asar pack app app.asar")
 
+def backup(base):
+    if not os.path.exists(convert_path(f"{base}/app.asar.original")):
+        log("backup app.asar -> app.asar.original")
+        shutil.copyfile(convert_path(f"{base}/app.asar"), convert_path(f"{base}/app.asar.original"))
+    else:
+        log("The backup file already exists, no need to back it up again")
+
+def isFirstInstall():
+    home_dir = os.path.expanduser("~")
+    user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    if not os.path.exists(rf"{user_path}"):
+        log("Please open StarUML first and then execute the script")
+        exit(0)
+
 def log(msg):
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"「{now}」 {msg}")
@@ -32,20 +46,20 @@ def convert_path(path):
         return path.replace('/', '\\')
 
 def is_staruml_running():
-    # 这里本来要kill掉的，一想到肯定有傻逼会有未保存的图表，kill掉就丢失了，所以仁慈一下
     if system == 'Darwin':
         if os.system("pgrep -x StarUML > /dev/null 2>&1") == 0:
-            log("检测到 StarUML 进程正在运行，请先关闭 StarUML 进程")
+            log("It is detected that the StarUML process is running, please close the StarUML process first")
             # os.system("killall -9 StarUML") # macOS
             exit(0)
     elif system == 'Windows':
         if 'StarUML.exe' in subprocess.run(['tasklist', '/FI', 'IMAGENAME eq StarUML.exe'], capture_output=True, text=True).stdout:
-            log("检测到 StarUML 进程正在运行，请先关闭 StarUML 进程")
+            log("It is detected that the StarUML process is running, please close the StarUML process first")
             # os.system("taskkill /f /t /im StarUML.exe") # Windows
             exit(0)
 
 def handler(base, user_choice):
     if user_choice == 0:
+        backup(base)
         crack(base, user_choice)
 
 def crack(base, user_choice):
@@ -54,24 +68,23 @@ def crack(base, user_choice):
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
-            if not os.path.exists(rf"{user_path}"):
-                log("Detected that this is the first time to install StarUML, creating user directory...")
-                os.makedirs(rf"{user_path}")
-                # chmod 777
-                os.chmod(rf"{user_path}", 0o777)
-                log("User directory created.")
-
+            # if not os.path.exists(rf"{user_path}"):
+            #     log("Detected that this is the first time to install StarUML, creating user directory...")
+            #     os.makedirs(rf"{user_path}")
+            #     # chmod 777
+            #     os.chmod(rf"{user_path}", 0o777)
+            #     log("User directory created.")
             if os.path.exists(rf"{user_path}/license.key"):
                 log("Remove the existing license.key file")
                 os.remove(rf"{user_path}/license.key")
 
-            # StarUML 6.2.0
-            if os.path.exists(rf"{user_path}/lib.so"):
-                log("Remove the existing lib.so file")
-                os.remove(rf"{user_path}/lib.so")
-            else:
-                log("Failed to modify the evaluation days. The lib.so file does not exist. Please open StarUML once before running the crack.")
-
+            # 2024.11.04 hook.js has been used to write lib.so
+            # StarUML 6.2.0 adds evaluation lib.so processing
+            # if os.path.exists(rf"{user_path}/lib.so"):
+            #     log("Remove the existing lib.so file")
+            #     os.remove(rf"{user_path}/lib.so")
+            # else:
+            #     log("Failed to modify the evaluation days. The lib.so file does not exist. Please open StarUML once before running the crack.")
             with open(rf"{user_path}/lib.so", "w") as f:
                 log("Modifying evaluation days...")
                 f.write('9' * 309)
@@ -97,10 +110,8 @@ def crack(base, user_choice):
     if not username: username = "Cracked by X1a0He"
 
     # 1. Only app.asar exists, only app.asar is processed
-    if os.path.exists(convert_path(rf"{base}/app.asar")) and not os.path.exists(convert_path(rf"{base}/app")):
-        crack_asar(base, username, user_choice)
     # 2. app.asar and app folder coexist, app.asar is processed first
-    elif os.path.exists(convert_path(rf"{base}/app.asar")) and os.path.exists(convert_path(rf"{base}/app")):
+    if os.path.exists(convert_path(rf"{base}/app.asar")) or os.path.exists(convert_path(rf"{base}/app")):
         crack_asar(base, username, user_choice)
     # 3. If app.asar does not exist and only the app folder exists, only the app folder will be processed.
     elif not os.path.exists(convert_path(rf"{base}/app.asar")) and os.path.exists(convert_path(rf"{base}/app")):
@@ -111,10 +122,6 @@ def crack(base, user_choice):
     log("2. When the window pops up, just click OK")
 
 def crack_asar(base, username, user_choice):
-    if not os.path.exists(convert_path(f"{base}/app_backup.asar")):
-        log("backup app.asar -> app_backup.asar")
-        shutil.copyfile(convert_path(f"{base}/app.asar"), convert_path(f"{base}/app_backup.asar"))
-
     log("extract app.asar")
     extract(base)
     crack_app(base, username)
@@ -158,14 +165,22 @@ def crack_app(base, username):
 
 def main():
     try:
-        print("__  ___        ___  _   _        ____  _             _   _ __  __ _")
-        print("\\ \\/ / | __ _ / _ \\| | | | ___  / ___|| |_ __ _ _ __| | | |  \\/  | |")
-        print(" \\  /| |/ _` | | | | |_| |/ _ \\ \\___ \\| __/ _` | '__| | | | |\\/| | |")
-        print(" /  \\| | (_| | |_| |  _  |  __/  ___) | || (_| | |  | |_| | |  | | |___")
-        print("/_/\\_\\_|\\__,_|\\___/|_| |_|\\___| |____/ \\__\\__,_|_|   \\___/|_|  |_|_____|")
+        print(" -----------------------------------------------")
+        print("|                                               |")
+        print("| ██╗  ██╗ ██╗ █████╗  ██████╗ ██╗  ██╗███████╗ |")
+        print("| ╚██╗██╔╝███║██╔══██╗██╔═████╗██║  ██║██╔════╝ |")
+        print("|  ╚███╔╝ ╚██║███████║██║██╔██║███████║█████╗   |")
+        print("|  ██╔██╗  ██║██╔══██║████╔╝██║██╔══██║██╔══╝   |")
+        print("| ██╔╝ ██╗ ██║██║  ██║╚██████╔╝██║  ██║███████╗ |")
+        print("| ╚═╝  ╚═╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ |")
+        print("|                StarUML Cracker                |")
+        print(" -----------------------------------------------")
         print("StarUML「Mac & Win」Crack script")
-        print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate\n")
+        print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
+        print()
 
+        isFirstInstall()
+        
         is_staruml_running()
 
         if system == 'Darwin':
@@ -191,7 +206,10 @@ def main():
             if system == 'Darwin':
                 base = "/Applications/StarUML.app/Contents/Resources"
                 handler(base, user_choice)
-                os.system("open -a StarUML")
+                log("If you encounter a message that StarUML is damaged when you open it, please manually execute the following command in the terminal, right-click Application to open StarUML")
+                log("sudo xattr -cr /Applications/StarUML.app")
+                log("If macOS 15 users keep getting the damaged message , it is recommended to open StarUML first and then run this script again.")
+                # os.system("open -a StarUML")
             elif system == 'Windows':
                 base = r"C:\Program Files\StarUML\resources"
                 handler(base, user_choice)

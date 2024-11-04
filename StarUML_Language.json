@@ -5813,6 +5813,10 @@
   ],
   "src/static/html-contents/style-editor-view.html": [
     {
+      "en": "<div>Inherit</div>",
+      "cn": "<div>继承</div>"
+    },
+    {
       "en": ">Styles<",
       "cn": ">样式<"
     },
