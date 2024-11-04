@@ -92,6 +92,10 @@ URL正则表达式: `^https://staruml.io/api/license/validate`
     - [x] 破解
     - [x] 汉化
     - [x] 一键脚本支持
+- [x] Linux
+    - [x] 破解
+    - [x] 汉化
+    - [x] 一键脚本支持
 
 # 联系方式
 
@@ -118,9 +122,9 @@ URL正则表达式: `^https://staruml.io/api/license/validate`
 
 # 支持状态
 
-|   App   |       版本       | 汉化程度 | Cracked | Mac | Windows |                    下载地址                    |
-|:-------:|:--------------:|:----:|:-------:|:---:|:-------:|:------------------------------------------:|
-| StarUML | 6.0.1 - Latest | 99%  |    ✅    |  ✅  |    ✅    | [https://staruml.io/](https://staruml.io/) |
+|   App   |      版本      | 汉化程度 | Cracked | Mac  | Windows | Linux |                  下载地址                  |
+| :-----: | :------------: | :------: | :-----: | :--: | :-----: | :---: | :----------------------------------------: |
+| StarUML | 6.0.1 - Latest |   99%    |    ✅    |  ✅   |    ✅    |   ✅   | [https://staruml.io/](https://staruml.io/) |
 
 # 本项目优点
 

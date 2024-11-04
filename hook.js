@@ -1,5 +1,7 @@
 const http = require("http"), url = require("url"), crypto = require("crypto"), originalPost = $.post;
 const fs = require("fs"), path = require("path");
+const os = require("os");
+const system = os.platform();
 
 function generateSo() {
     /*
@@ -7,13 +9,24 @@ function generateSo() {
     * Windows: process.env.USERPROFILE
     * */
     const USER_HOME = process.env.HOME || process.env.USERPROFILE
-    let soPath = path.join(USER_HOME, "Library", "Application Support", "StarUML", "lib.so");
+    let soPath;
+    if (system === "linux") {
+        soPath = path.join(USER_HOME, ".config", "StarUML", "lib.so");
+    } else if (system === "darwin") {
+        soPath = path.join(USER_HOME, "Library", "Application Support", "StarUML", "lib.so");
+    } else if (system === "win32") {
+        soPath = path.join(USER_HOME, "AppData", "Roaming", "StarUML");
+    } else {
+        // ???
+        console.log(`[X1a0He StarUML Cracker] Unsupported system, skip deleting lib.so`)
+        return;
+    }
     if (fs.existsSync(soPath)) {
         fs.unlinkSync(soPath);
         console.log(`[X1a0He StarUML Cracker] lib.so has been deleted`)
     }
     fs.writeFileSync(soPath, '9'.repeat(309), 'utf8');
-    console.log(`[X1a0He StarUML Cracker] lib.so has been generated to ${USER_HOME}/Library/Application Support/StarUML/lib.so`)
+    console.log(`[X1a0He StarUML Cracker] lib.so has been generated to ${soPath}`)
 }
 
 const SK = "DF9B72CC966FBE3A46F99858C5AEE", hostname = "127.0.0.1", port = 3220;
