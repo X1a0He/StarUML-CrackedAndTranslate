@@ -1,5 +1,17 @@
 # Change Log
 
+- 2024-11-04 21:00 Update Log
+
+```markdown
+1. Fixed the problem that the program could not be started due to the failure to generate lib.so after opening StarUML
+   on non-macOS
+2. Fixed the problem that the script would always prompt "Please run this script as an "Administrator"" when executing
+   the script on Windows
+3. Fixed the problem that Windows still cannot be used after pr
+4. Optimized the path splicing problem on all systems and no longer use the convert_path function
+5. Optimized script execution logic and sequence
+```
+
 - 2024-11-04 10:30 Update
 
 ```markdown

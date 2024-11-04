@@ -1,6 +1,39 @@
 import platform, os, shutil, subprocess, json, re, glob, datetime, ctypes
 system = platform.system()
 
+def is_admin():
+    if system == 'Darwin' or system == 'Linux':
+        if not os.geteuid() == 0:
+            log("Please run this script with 「sudo」")
+            exit(0)
+    elif system == 'Windows':
+        if not ctypes.windll.shell32.IsUserAnAdmin():
+            log("Please run this script with 「Administrator」")
+            exit(0)
+
+def is_installed():
+    if system == 'Darwin':
+        print(os.path.join("Applications", "StarUML.app"))
+        if not os.path.exists(os.path.join("/Applications", "StarUML.app")):
+            log("StarUML.app is not detected, please download and install it from the official website first")
+            exit(0)
+    elif system == 'Windows':
+        if not os.path.exists(os.path.join("C:\\", "Program Files", "StarUML", "StarUML.exe")):
+            log("StarUML.exe is not detected or the installation is not from the official website. Please download and install from the official website first.")
+            exit(0)
+
+def detect_asar():
+    if system == "Darwin":
+        if os.system("command -v asar > /dev/null 2>&1") == 1:
+            log("asar not detected, please install asar first")
+            exit(0)
+    elif system == "Windows":
+        if os.system("where asar >nul 2>nul") != 0:
+            log("asar not detected, please install asar first")
+            exit(0)
+    elif system == "Linux":
+        pass
+
 def extract(base):
     os.system(f"cd {base} && asar extract app.asar app")
 
@@ -8,19 +41,34 @@ def pack(base):
     os.system(f"cd {base} && asar pack app app.asar")
 
 def backup(base):
-    if not os.path.exists(convert_path(f"{base}/app.asar.original")):
+    if not os.path.exists(os.path.join(base, "app.asar.original")):
         log("backup app.asar -> app.asar.original")
-        shutil.copyfile(convert_path(f"{base}/app.asar"), convert_path(f"{base}/app.asar.original"))
+        shutil.copyfile(os.path.join(base, "app.asar"), os.path.join(base, "app.asar.original"))
     else:
         log("The backup file already exists, no need to back it up again")
 
-def isFirstInstall():
-    if system == "Linux":
+def rollback(base):
+    if os.path.exists(os.path.join(base, "app.asar.original")):
+        log("restored app.asar.original -> app.asar")
+        shutil.copyfile(os.path.join(base, "app.asar.original"), os.path.join(base, "app.asar"))
+    else:
+        log("The original file does not exist and cannot be restored.")
+
+def is_first_install():
+    if system == "Darwin":
+        home_dir = os.path.expanduser("~")
+        user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    elif system == "Windows":
+        home_dir = os.path.expanduser("~")
+        user_path = os.path.join(home_dir, "AppData", "Roaming", "StarUML")
+    elif system == "Linux":
         home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
         user_path = os.path.join(home_dir, ".config", "StarUML")
     else:
-        home_dir = os.path.expanduser("~")
-        user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+        log("Unsupported system")
+        exit(0)
+
+    # 该文件夹不存在，则表示首次安装
     if not os.path.exists(rf"{user_path}"):
         log("Please open StarUML first and then execute the script")
         exit(0)
@@ -28,26 +76,6 @@ def isFirstInstall():
 def log(msg):
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"「{now}」 {msg}")
-
-def read_json(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return json.load(file)
-
-def get_file_list(base, path_pattern):
-    base_path = convert_path(f"{base}/app/")
-
-    if '*' in convert_path(path_pattern):
-        full_path = os.path.join(base_path, convert_path(path_pattern))
-        return glob.glob(full_path)
-    else:
-        return [os.path.join(base_path, convert_path(path_pattern))]
-
-# Convert the slashes in the path under Windows，Fuck u Windows!
-def convert_path(path):
-    if system == "Darwin" or system == "Linux":
-        return path
-    elif system == 'Windows':
-        return path.replace('/', '\\')
 
 def is_staruml_running():
     if system == 'Darwin':
@@ -75,59 +103,35 @@ def crack(base, user_choice):
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
-            # if not os.path.exists(rf"{user_path}"):
-            #     log("Detected that this is the first time to install StarUML, creating user directory...")
-            #     os.makedirs(rf"{user_path}")
-            #     # chmod 777
-            #     os.chmod(rf"{user_path}", 0o777)
-            #     log("User directory created.")
-            if os.path.exists(rf"{user_path}/license.key"):
+            if os.path.exists(os.path.join(user_path, "license.key")):
                 log("Remove the existing license.key file")
-                os.remove(rf"{user_path}/license.key")
-
-            # 2024.11.04 hook.js has been used to write lib.so
-            # StarUML 6.2.0 adds evaluation lib.so processing
-            # if os.path.exists(rf"{user_path}/lib.so"):
-            #     log("Remove the existing lib.so file")
-            #     os.remove(rf"{user_path}/lib.so")
-            # else:
-            #     log("Failed to modify the evaluation days. The lib.so file does not exist. Please open StarUML once before running the crack.")
-            with open(rf"{user_path}/lib.so", "w") as f:
-                log("Modifying evaluation days...")
-                f.write('9' * 309)
-                log("Evaluation days modified")
-
-            if os.system("command -v asar > /dev/null 2>&1") == 1:
-                log("asar not detected, please install asar first")
-                exit(0)
-
+                os.remove(os.path.join(user_path, "license.key"))
         elif system == 'Windows':
             user_path = os.path.join(home_dir, "AppData", "Roaming", "StarUML")
-            os.remove(rf"{user_path}\license.key")
-            os.remove(rf"{base}\app\license.key")
-            if os.system("where asar >nul 2>nul") != 0:
-                log("asar not detected, please install asar first")
-                exit(0)
-
+            if os.path.exists(os.path.join(user_path, "license.key")):
+                log("Remove the existing license.key file")
+                os.remove(os.path.join(user_path, "license.key"))
+                os.remove(os.path.join(base, "app", "license.key"))
         elif system == 'Linux':
             user_path = os.path.join(home_dir, ".config", "StarUML")
-            os.remove(rf"{user_path}\license.key")
-            os.remove(rf"{base}\app\license.key")
-
+            if os.path.exists(os.path.join(user_path, "license.key")):
+                log("Remove the existing license.key file")
+                os.remove(os.path.join(user_path, "license.key"))
+                os.remove(os.path.join(user_path, "app", "license.key"))
     except FileNotFoundError:
         pass
     except KeyboardInterrupt:
         pass
 
     username = input("Please enter the username to be displayed on the StarUML about dialog:")
-    if not username: username = "Cracked by X1a0He"
+    if not username: username = "GitHub: X1a0He/StarUML-CrackedAndTranslate"
 
     # 1. Only app.asar exists, only app.asar is processed
     # 2. app.asar and app folder coexist, app.asar is processed first
-    if os.path.exists(convert_path(rf"{base}/app.asar")) or os.path.exists(convert_path(rf"{base}/app")):
+    if os.path.exists(os.path.join(base, "app.asar")) or os.path.exists(os.path.join(base, "app")):
         crack_asar(base, username, user_choice)
     # 3. If app.asar does not exist and only the app folder exists, only the app folder will be processed.
-    elif not os.path.exists(convert_path(rf"{base}/app.asar")) and os.path.exists(convert_path(rf"{base}/app")):
+    elif not os.path.exists(os.path.join(base, "app.asar")) and os.path.exists(os.path.join(base, "app")):
         crack_app(base, username)
 
     log("StarUML cracking is complete, please follow the steps below")
@@ -139,19 +143,8 @@ def crack_asar(base, username, user_choice):
     extract(base)
     crack_app(base, username)
 
-    if user_choice != 2:
-        log("pack app.asar")
-        pack(base)
-        log("delete app folder")
-        shutil.rmtree(convert_path(f"{base}/app"))
-
-    if system == 'Darwin':
-        log("Repairing damaged")
-        os.system("sudo xattr -cr /Applications/StarUML.app")
-        log("Repair completed")
-
 def crack_app(base, username):
-    destination_path = convert_path(f"{base}/app/src/")
+    destination_path = os.path.join(base, "app", "src")
     shutil.copy("hook.js", destination_path)
 
     hook_file_path = os.path.join(destination_path, "hook.js")
@@ -159,7 +152,7 @@ def crack_app(base, username):
 
     with open(hook_file_path, "r", encoding="utf-8") as file:
         js_content = file.read()
-    new_js_content = js_content.replace("Cracked by X1a0He", username)
+    new_js_content = js_content.replace("GitHub: X1a0He/StarUML-CrackedAndTranslate", username)
 
     with open(hook_file_path, "w", encoding="utf-8") as file:
         file.write(new_js_content)
@@ -192,24 +185,11 @@ def main():
         print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
         print()
 
-        if system == 'Darwin':
-            if not os.geteuid() == 0:
-                log("Please run this script with 「sudo」")
-                exit(0)
-        elif system == 'Windows':
-            if ctypes.windll.shell32.IsUserAnAdmin():
-                log("Please run this script with 「Administrator」")
-                exit(0)
-
-        isFirstInstall()
-        
+        is_admin()
+        detect_asar()
+        is_installed()
+        is_first_install()
         is_staruml_running()
-
-        # Check whether starUML is installed under macOS
-        if system == 'Darwin':
-            if not os.path.exists("/Applications/StarUML.app"):
-                log("StarUML.app not detected, ending execution")
-                exit(0)
 
         user_choice = int(input("0 -> Crack the StarUML\n-1 -> Exit\nPlease enter your selection: \n"))
         if user_choice == -1:
@@ -217,17 +197,18 @@ def main():
 
         if user_choice == 0:
             if system == 'Darwin':
-                base = "/Applications/StarUML.app/Contents/Resources"
+                base = os.path.join("/Applications", "StarUML.app", "Contents", "Resources")
                 handler(base, user_choice)
                 log("If you encounter a message that StarUML is damaged when you open it, please manually execute the following command in the terminal, right-click Application to open StarUML")
                 log("sudo xattr -cr /Applications/StarUML.app")
                 log("If macOS 15 users keep getting the damaged message , it is recommended to open StarUML first and then run this script again.")
                 # os.system("open -a StarUML")
             elif system == 'Windows':
-                base = r"C:\Program Files\StarUML\resources"
+                base = os.path.join("C:\\", "Program Files", "StarUML", "resources")
                 handler(base, user_choice)
                 # I don't know what command to use to start StarUML
             elif system == 'Linux':
+                # Linux system is unverified, please run with caution
                 base = "/opt/StarUML/resources"
                 handler(base, user_choice)
     except KeyboardInterrupt:

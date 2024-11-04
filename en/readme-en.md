@@ -75,6 +75,10 @@ URL: `^https://staruml.io/api/license/validate`
     - [x] Cracked
     - [x] Chinese localization
     - [x] Fully automatic script support
+- [x] Linux \(Maybe\)
+    - [x] Cracked
+    - [x] Chinese localization
+    - [x] Fully automatic script support
 
 ----
 
