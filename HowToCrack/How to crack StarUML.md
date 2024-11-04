@@ -28,7 +28,8 @@
 
 `asar`包位于如下位置\
 Mac: /Applications/StarUML.app/Contents/Resources/app.asar \
-Win: C:\Program Files\StarUML\resources\app.asar
+Win: C:\Program Files\StarUML\resources\app.asar \
+Linux: /opt/StarUML/resources/app.asar
 
 ## 解包操作
 
