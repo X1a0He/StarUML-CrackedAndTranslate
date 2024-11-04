@@ -22,8 +22,12 @@ def rollback(base):
         log("还原文件不存在，无法还原")
 
 def isFirstInstall():
-    home_dir = os.path.expanduser("~")
-    user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    if system == "Linux":
+        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
+        user_path = os.path.join(home_dir, ".config", "StarUML")
+    else:
+        home_dir = os.path.expanduser("~")
+        user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
     # 该文件夹不存在，则表示首次安装
     if not os.path.exists(rf"{user_path}"):
         log("请先打开一次 StarUML 再执行脚本")
@@ -54,7 +58,7 @@ def get_file_list(base, path_pattern):
 
 # 为了nm的Windows，还要写一个方法来将路径的斜杠转换一下，Fuck u Windows!
 def convert_path(path):
-    if system == "Darwin":
+    if system == "Darwin" or system == "Linux":
         return path
     elif system == 'Windows':
         return path.replace('/', '\\')
@@ -166,7 +170,10 @@ def translate_app(language_file, base, user_choice):
 def crack(base, user_choice):
     log("正在进行 StarUML 破解操作...")
     # 先把原来的license.key文件删掉
-    home_dir = os.path.expanduser("~")
+    if system == "Linux":
+        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
+    else:
+        home_dir = os.path.expanduser("~")
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
@@ -209,6 +216,12 @@ def crack(base, user_choice):
             if os.system("where asar >nul 2>nul") != 0:
                 log("未检测到asar，请先安装asar")
                 exit(0)
+
+        elif system == 'Linux':
+            user_path = os.path.join(home_dir, ".config", "StarUML")
+            os.remove(rf"{user_path}\license.key")
+            os.remove(rf"{base}\app\license.key")
+
     except FileNotFoundError:
         pass
     except KeyboardInterrupt:
@@ -281,12 +294,8 @@ def main():
         print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
         print()
 
-        isFirstInstall()
-        
-        is_staruml_running()
-
         # 你他妈的，要修改文件都是要权限的，不用 sudo 或者 管理员 身份，你修改nm呢？
-        if system == 'Darwin':
+        if system == 'Darwin' or system == 'Linux':
             if not os.geteuid() == 0:
                 log("请以「sudo」运行此脚本")
                 exit(0)
@@ -294,6 +303,10 @@ def main():
             if ctypes.windll.shell32.IsUserAnAdmin():
                 log("请以「管理员」身份运行此脚本")
                 exit(0)
+
+        isFirstInstall()
+        
+        is_staruml_running()
 
         # macOS下检测是否安装了starUML，Windows下目录不确定，所以没写，拉倒吧
         if system == 'Darwin':
@@ -318,6 +331,9 @@ def main():
                 base = r"C:\Program Files\StarUML\resources"
                 handler(base, user_choice)
                 # Windows的启动功不知道什么命令，拉倒吧
+            elif system == 'Linux':
+                base = "/opt/StarUML/resources"
+                handler(base, user_choice)
     except KeyboardInterrupt:
         print("\n用户中断了程序执行")
 

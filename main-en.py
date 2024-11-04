@@ -15,8 +15,12 @@ def backup(base):
         log("The backup file already exists, no need to back it up again")
 
 def isFirstInstall():
-    home_dir = os.path.expanduser("~")
-    user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    if system == "Linux":
+        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
+        user_path = os.path.join(home_dir, ".config", "StarUML")
+    else:
+        home_dir = os.path.expanduser("~")
+        user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
     if not os.path.exists(rf"{user_path}"):
         log("Please open StarUML first and then execute the script")
         exit(0)
@@ -40,7 +44,7 @@ def get_file_list(base, path_pattern):
 
 # Convert the slashes in the path under Windows，Fuck u Windows!
 def convert_path(path):
-    if system == "Darwin":
+    if system == "Darwin" or system == "Linux":
         return path
     elif system == 'Windows':
         return path.replace('/', '\\')
@@ -64,7 +68,10 @@ def handler(base, user_choice):
 
 def crack(base, user_choice):
     log("StarUML cracking operation in progress...")
-    home_dir = os.path.expanduser("~")
+    if system == "Linux":
+        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
+    else:
+        home_dir = os.path.expanduser("~")
     try:
         if system == 'Darwin':
             user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
@@ -101,6 +108,12 @@ def crack(base, user_choice):
             if os.system("where asar >nul 2>nul") != 0:
                 log("asar not detected, please install asar first")
                 exit(0)
+
+        elif system == 'Linux':
+            user_path = os.path.join(home_dir, ".config", "StarUML")
+            os.remove(rf"{user_path}\license.key")
+            os.remove(rf"{base}\app\license.key")
+
     except FileNotFoundError:
         pass
     except KeyboardInterrupt:
@@ -179,10 +192,6 @@ def main():
         print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
         print()
 
-        isFirstInstall()
-        
-        is_staruml_running()
-
         if system == 'Darwin':
             if not os.geteuid() == 0:
                 log("Please run this script with 「sudo」")
@@ -191,6 +200,10 @@ def main():
             if ctypes.windll.shell32.IsUserAnAdmin():
                 log("Please run this script with 「Administrator」")
                 exit(0)
+
+        isFirstInstall()
+        
+        is_staruml_running()
 
         # Check whether starUML is installed under macOS
         if system == 'Darwin':
@@ -214,6 +227,9 @@ def main():
                 base = r"C:\Program Files\StarUML\resources"
                 handler(base, user_choice)
                 # I don't know what command to use to start StarUML
+            elif system == 'Linux':
+                base = "/opt/StarUML/resources"
+                handler(base, user_choice)
     except KeyboardInterrupt:
         print("\nThe user interrupted the program execution")
 
