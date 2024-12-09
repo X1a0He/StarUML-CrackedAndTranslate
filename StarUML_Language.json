@@ -875,6 +875,16 @@
       "cn": "此图表中已经存在关系视图。"
     }
   ],
+  "src/engine/command-manager.js": [
+    {
+      "en": "Attempting to register an already-registered command: ",
+      "cn": "尝试注册一个已注册的命令: "
+    },
+    {
+      "en": "Attempting to register a command with a missing id, or command function.",
+      "cn": "尝试注册一个缺少 id 或命令函数的命令。"
+    }
+  ],
   "src/dialogs/about-dialog.js": [
     {
       "en": "Standard Edition",
@@ -1025,6 +1035,12 @@
     {
       "en": "\"Cancel\"",
       "cn": "\"取消\""
+    }
+  ],
+  "src/main-process/cli.js": [
+    {
+      "en": "[Error] File not found: ",
+      "cn": "[错误]找不到文件:"
     }
   ],
   "src/views/titlebar-view.js": [

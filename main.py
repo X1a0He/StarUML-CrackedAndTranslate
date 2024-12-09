@@ -15,7 +15,6 @@ def is_admin():
 def is_installed():
     # macOS下检测是否安装了starUML，Windows下目录不确定，所以没写，拉倒吧
     if system == 'Darwin':
-        print(os.path.join("Applications", "StarUML.app"))
         if not os.path.exists(os.path.join("/Applications", "StarUML.app")):
             log("未检测到 StarUML.app，请先到官网下载安装")
             exit(0)
@@ -294,6 +293,7 @@ def main():
         is_first_install()
         is_staruml_running()
 
+        log("macOS 15用户请确保在更新完 StarUML 后手动打开一次 StarUML 再执行脚本")
         user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原所有\n-1 -> 退出运行\n请输入您的选择: \n"))
         if user_choice == -1:
             exit(0)

@@ -1,5 +1,12 @@
 # Change Log
 
+- 2024-12-09 19:30 更新日志
+
+```markdown
+1. 修复了在 StarUML 6.3.1 中校验拦截偶尔失效的问题
+2. 增加了部分 StarUML 内部 console 的汉化
+```
+
 - 2024-11-04 20:00 更新日志
 
 ```markdown

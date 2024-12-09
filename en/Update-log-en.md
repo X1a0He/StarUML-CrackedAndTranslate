@@ -1,5 +1,12 @@
 # Change Log
 
+- 2024-12-09 19:30 Update Log
+
+```markdown
+1. Fixed the problem of occasional failure of validation interception in StarUML 6.3.1
+2. Added Chinese localization of some StarUML internal console
+```
+
 - 2024-11-04 21:00 Update Log
 
 ```markdown

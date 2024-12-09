@@ -1,4 +1,4 @@
-import platform, os, shutil, subprocess, json, re, glob, datetime, ctypes
+import platform, os, shutil, subprocess, datetime, ctypes
 system = platform.system()
 
 def is_admin():
@@ -13,7 +13,6 @@ def is_admin():
 
 def is_installed():
     if system == 'Darwin':
-        print(os.path.join("Applications", "StarUML.app"))
         if not os.path.exists(os.path.join("/Applications", "StarUML.app")):
             log("StarUML.app is not detected, please download and install it from the official website first")
             exit(0)
@@ -191,6 +190,7 @@ def main():
         is_first_install()
         is_staruml_running()
 
+        log("macOS 15 users, please make sure to manually open StarUML once after updating StarUML and then execute the script")
         user_choice = int(input("0 -> Crack the StarUML\n-1 -> Exit\nPlease enter your selection: \n"))
         if user_choice == -1:
             exit(0)

@@ -1,4 +1,4 @@
-const http = require("http"), url = require("url"), crypto = require("crypto"), originalPost = $.post;
+const http = require("http"), url = require("url"), crypto = require("crypto"), originalAjax = $.ajax;
 const fs = require("fs"), path = require("path");
 
 function generateSo() {
@@ -33,7 +33,12 @@ function generateSo() {
 }
 
 const SK = "DF9B72CC966FBE3A46F99858C5AEE", hostname = "127.0.0.1", port = 3220;
-$.post = (url, data, callback, dataType) => originalPost(url === "https://staruml.io/api/license/validate" ? "http://127.0.0.1:3220/api/license/validate" : url, data, callback, dataType);
+
+$.ajax = options => {
+    options.url = options.url === "https://staruml.io/api/license/validate" ? "http://127.0.0.1:3220/api/license/validate" : options.url;
+    return originalAjax.call($, options)
+}
+
 const generateLicenseInfo = () => {
     const licenseInfo = {
         name: "GitHub: X1a0He/StarUML-CrackedAndTranslate",
