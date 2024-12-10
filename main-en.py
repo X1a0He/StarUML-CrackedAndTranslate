@@ -1,4 +1,4 @@
-import platform, os, shutil, subprocess, datetime, ctypes
+import platform, os, shutil, subprocess, json, datetime, ctypes
 system = platform.system()
 
 def is_admin():
@@ -76,6 +76,14 @@ def log(msg):
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"「{now}」 {msg}")
 
+def read_json(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return json.load(file)
+
+def write_json(file_path, data):
+    with open(file_path, 'w', encoding='utf-8') as file:
+        json.dump(data, file, ensure_ascii=False, indent=2)
+
 def is_staruml_running():
     if system == 'Darwin':
         if os.system("pgrep -x StarUML > /dev/null 2>&1") == 0:
@@ -142,6 +150,83 @@ def crack_asar(base, username, user_choice):
     extract(base)
     crack_app(base, username)
 
+def add_member_after_label(obj, target_label, new_member):
+    if isinstance(obj, list):
+        for index, item in enumerate(obj):
+            if isinstance(item, dict) and item.get("label") == target_label:
+                obj.insert(index + 1, new_member)
+                return True
+            result = add_member_after_label(item, target_label, new_member)
+            if result:
+                return result
+    elif isinstance(obj, dict):
+        for key in obj:
+            if isinstance(obj[key], (dict, list)):
+                result = add_member_after_label(obj[key], target_label, new_member)
+                if result:
+                    return result
+    return None
+
+def write_author_info(base):
+    app_folder = os.path.join(base, "app")
+    src_folder = os.path.join(app_folder, "src")
+    # 修改关于弹窗部分
+    static_folder = os.path.join(src_folder, "static")
+    html_contents_folder = os.path.join(static_folder, "html-contents")
+    about_dialog = os.path.join(html_contents_folder, "about-dialog.html")
+    with open(about_dialog, "r", encoding="utf-8") as file:
+        html_content = file.read()
+    new_html_content = html_content.replace("<span class=\"license\" style=\"font-weight: 600;\"></span>",
+                                            "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
+    with open(about_dialog, "w", encoding="utf-8") as file:
+        file.write(new_html_content)
+    # 修改标题部分
+    titlebar_view = os.path.join(src_folder, "views", "titlebar-view.js")
+    with open(titlebar_view, "r", encoding="utf-8") as file:
+        js_content = file.read()
+    new_js_content = js_content.replace("""title += "(EVALUATION MODE)";
+    }""",
+                                        """title += "(EVALUATION MODE)";
+    } else { title += '【By GitHub: X1a0He/StarUML-CrackedAndTranslate】'}""")
+    with open(titlebar_view, "w", encoding="utf-8") as file:
+        file.write(new_js_content)
+    # 修改菜单栏部分
+    resources_folder = os.path.join(app_folder, "resources")
+    darwin_json = os.path.join(resources_folder, "default", "menus", "darwin.json")
+    win32_json = os.path.join(resources_folder, "default", "menus", "win32.json")
+    linux_json = os.path.join(resources_folder, "default", "menus", "linux.json")
+    darwin_data = read_json(darwin_json)
+    win32_data = read_json(win32_json)
+    linux_data = read_json(linux_json)
+    add_member_after_label(darwin_data, "About StarUML", {
+        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
+        "id": "",
+        "command": "help:cracked"
+    })
+    add_member_after_label(win32_data, "About StarUML", {
+        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
+        "id": "",
+        "command": "help:cracked"
+    })
+    add_member_after_label(linux_data, "About StarUML", {
+        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
+        "id": "",
+        "command": "help:cracked"
+    })
+    write_json(darwin_json, darwin_data)
+    write_json(win32_json, win32_data)
+    write_json(linux_json, linux_data)
+    engine_folder = os.path.join(src_folder, "engine")
+    default_commands = os.path.join(engine_folder, "default-commands.js")
+    with open(default_commands, "r", encoding="utf-8") as file:
+        js_content = file.read()
+
+    if 'app.commands.register("help:cracked", () => shell.openExternal("https://github.com/X1a0He/StarUML-CrackedAndTranslate"), "Help: Cracked");' not in js_content:
+        js_content += "\n" + 'app.commands.register("help:cracked", () => shell.openExternal("https://github.com/X1a0He/StarUML-CrackedAndTranslate"), "Help: Cracked");'
+
+    with open(default_commands, "w", encoding="utf-8") as file:
+        file.write(js_content)
+
 def crack_app(base, username):
     destination_path = os.path.join(base, "app", "src")
     shutil.copy("hook.js", destination_path)
@@ -160,13 +245,14 @@ def crack_app(base, username):
         js_content = file.read()
         if 'require("./hook");' not in js_content:
             log("Hook writing...")
-            new_js_content = js_content.replace('const _ = require("lodash");', 'require("./hook");\nconst _ = require("lodash");')
+            new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nthis.appReady();')
 
             with open(app_context_file_path, "w", encoding="utf-8") as file2:
                 file2.write(new_js_content)
                 log("Hook written")
         else:
             log("The hook has been written and does not need to be modified again")
+    write_author_info(base)
 
 def main():
     try:

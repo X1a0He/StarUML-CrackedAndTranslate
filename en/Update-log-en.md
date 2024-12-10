@@ -1,5 +1,13 @@
 # Change Log
 
+- 2024-12-10 16:40 Update Log
+
+```markdown
+1. Removed the previous interception request hook and adopted a new method of interception, which can be used without
+   entering any license
+2. Optimized the logic of the hook
+```
+
 - 2024-12-09 19:30 Update Log
 
 ```markdown

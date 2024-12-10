@@ -13,11 +13,7 @@ crack. In addition, the content of this document is translated by Google, so the
 
 * Click `Releases` on the right column, download `app.asar` or download `app.asar.zip` and unzip it
 * Then follow the instructions on the `Releases` page and place `app.asar` in the specified directory
-* After opening, select `Help` - `Enter License Key`, enter anything you want or just click OK
-
-![enter-license.png](../images/enter-license-en.png)
-
-![license-ok.png](../images/license-ok-en.png)
+* It can be used immediately after opening, without entering any license
 
 **⚠️⚠️⚠️ If you have a Python environment and want to run it with one click or study it yourself, please read on!!!**
 
