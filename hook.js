@@ -6,7 +6,7 @@
  * 删改作者弹窗的出门被车撞死，所有诅咒立即生效
  * 改出处又删作者又卖钱的，祝你全家倒霉到宇宙毁灭，穷到宇宙毁灭，所有诅咒立即生效
  */
-app.dialogs.showInfoDialog("StarUML 由 X1a0He 破解汉化且免费开源仅供学习参考\n\nhttps://github.com/X1a0He/StarUML-CrackedAndTranslate\n\n付费购买到的请举报你的卖家")
+// app.dialogs.showInfoDialog("StarUML 由 X1a0He 破解汉化且免费开源仅供学习参考\n\nhttps://github.com/X1a0He/StarUML-CrackedAndTranslate\n\n付费购买到的请举报你的卖家")
 const crypto = require("crypto"), originalAjax = $.ajax;
 const fs = require("fs"), path = require("path");
 
