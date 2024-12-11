@@ -37,10 +37,14 @@ def detect_asar():
         pass
 
 def extract(base):
-    os.system(f"cd {base} && asar extract app.asar app")
+    asar_file = os.path.join(base, "app.asar")
+    asar_folder = os.path.join(base, "app")
+    os.system(f"asar extract \"{asar_file}\" \"{asar_folder}\"")
 
 def pack(base):
-    os.system(f"cd {base} && asar pack app app.asar")
+    asar_file = os.path.join(base, "app.asar")
+    asar_folder = os.path.join(base, "app")
+    os.system(f"asar pack \"{asar_folder}\" \"{asar_file}\"")
 
 def backup(base):
     if not os.path.exists(os.path.join(base, "app.asar.original")):

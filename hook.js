@@ -52,9 +52,9 @@ const generateLicenseInfo = () => {
         name: "GitHub: X1a0He/StarUML-CrackedAndTranslate",
         product: "STARUML.V6",
         licenseType: "PRO",
-        quantity: "Unlimited",
+        quantity: "GitHub: X1a0He/StarUML-CrackedAndTranslate",
         timestamp: `8640000000000000`,
-        crackedAuthor: "X1a0He",
+        crackedAuthor: "GitHub: X1a0He/StarUML-CrackedAndTranslate",
         licenseKey: ""
     };
     licenseInfo.licenseKey = crypto.createHash("sha1").update(`${SK}${licenseInfo.name}${SK}${licenseInfo.product}-${licenseInfo.licenseType}${SK}${licenseInfo.quantity}${SK}${licenseInfo.timestamp}${SK}`).digest("hex").toUpperCase();

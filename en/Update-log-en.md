@@ -1,5 +1,12 @@
 # Change Log
 
+- 2024-12-10 16:15 Update Log
+
+```markdown
+1. Fixed the issue of script execution failure in non-C drive under Windows
+2. Added some untranslated words
+```
+
 - 2024-12-10 16:40 Update Log
 
 ```markdown

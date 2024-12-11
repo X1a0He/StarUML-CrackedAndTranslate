@@ -1687,6 +1687,14 @@
           "cn": "进入全屏"
         },
         {
+          "en": "Full Screen",
+          "cn": "全屏"
+        },
+        {
+          "en": "Inherit Style",
+          "cn": "继承样式"
+        },
+        {
           "en": "Bring All to Front",
           "cn": "置顶"
         },
