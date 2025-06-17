@@ -605,6 +605,10 @@
       "cn": "\"显示操作签名\","
     },
     {
+      "en": "\"Show Diagram Name\",",
+      "cn": "\"显示图表名称\","
+    },
+    {
       "en": "\"Suppress Attributes\",",
       "cn": "\"隐藏属性\","
     },
@@ -1863,6 +1867,10 @@
           "cn": "背景颜色"
         },
         {
+          "en": "Grid Color",
+          "cn": "网格颜色"
+        },
+        {
           "en": "Validation",
           "cn": "验证"
         },
@@ -1939,6 +1947,10 @@
         {
           "en": "Background color of diagram editor.",
           "cn": "图表编辑器的背景颜色"
+        },
+        {
+          "en": "Grid color of diagram editor.",
+          "cn": "图表编辑器的网格颜色"
         },
         {
           "en": "Validate model asynchronously when opening or saving files.",
@@ -5537,6 +5549,18 @@
     {
       "en": "Select a folder where HTML docs to be exported",
       "cn": "选择要导出 HTML 文档的文件夹"
+    },
+    {
+      "en": "HTML docs exported successfully.",
+      "cn": "HTML 文档导出成功。"
+    },
+    {
+      "en": "Failed to export HTML docs:",
+      "cn": "无法导出 HTML 文档:"
+    },
+    {
+      "en": "Failed to export HTML docs.",
+      "cn": "无法导出 HTML 文档。"
     }
   ],
   "extensions/default/markdown/menus/*.json": [
