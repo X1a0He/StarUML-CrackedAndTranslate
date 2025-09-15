@@ -1,5 +1,6 @@
 import platform, os, shutil, subprocess, json, re, glob, datetime, ctypes
 system = platform.system()
+staruml_version = None
 
 def is_admin():
     # 你他妈的，要修改文件都是要权限的，不用 sudo 或者 管理员 身份，你修改nm呢？
@@ -37,9 +38,11 @@ def detect_asar():
         pass
 
 def extract(base):
+    global staruml_version
     asar_file = os.path.join(base, "app.asar")
     asar_folder = os.path.join(base, "app")
     os.system(f"asar extract \"{asar_file}\" \"{asar_folder}\"")
+    staruml_version = get_version_from_app_package(base)
 
 def pack(base):
     asar_file = os.path.join(base, "app.asar")
@@ -134,6 +137,22 @@ def is_staruml_running():
             # os.system("taskkill /f /t /im StarUML.exe") # Windows
             exit(0)
 
+def get_version_from_app_package(base):
+    pkg = os.path.join(base, "app", "package.json")
+    if os.path.exists(pkg):
+        with open(pkg, "r", encoding="utf-8") as file:
+            data = json.load(file)
+        version = str(data.get("version", "")).strip()
+        return version or None
+    return None
+
+def get_major_version(version_str):
+    match = re.match(r"(\d+)", version_str)
+    if match:
+        return int(match.group(1))
+    else:
+        raise ValueError("无效的版本格式")
+
 def handler(base, user_choice):
     language_file = "StarUML_Language.json"
     if user_choice in (0, 1, 2):
@@ -199,7 +218,7 @@ def translate_app(language_file, base, user_choice):
 
 def crack(base, user_choice):
     log("正在进行 StarUML 破解操作...")
-    # 先把原来的license.key文件删掉
+    # 先把原来的license.key和v7的activation.key文件删掉
     if system == "Linux":
         home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
     else:
@@ -210,18 +229,27 @@ def crack(base, user_choice):
             if os.path.exists(os.path.join(user_path, "license.key")):
                 log("移除已存在的 license.key 文件")
                 os.remove(os.path.join(user_path, "license.key"))
+                log("移除已存在的 activation.key 文件")
+                os.remove(os.path.join(user_path, "activation.key"))
+
         elif system == 'Windows':
             user_path = os.path.join(home_dir, "AppData", "Roaming", "StarUML")
             if os.path.exists(os.path.join(user_path, "license.key")):
                 log("移除已存在的 license.key 文件")
                 os.remove(os.path.join(user_path, "license.key"))
                 os.remove(os.path.join(base, "app", "license.key"))
+                log("移除已存在的 activation.key 文件")
+                os.remove(os.path.join(user_path, "activation.key"))
+
         elif system == 'Linux':
             user_path = os.path.join(home_dir, ".config", "StarUML")
             if os.path.exists(os.path.join(user_path, "license.key")):
                 log("移除已存在的 license.key 文件")
                 os.remove(os.path.join(user_path, "license.key"))
                 os.remove(os.path.join(user_path, "app", "license.key"))
+                log("移除已存在的 activation.key 文件")
+                os.remove(os.path.join(user_path, "activation.key"))
+
     except FileNotFoundError:
         pass
     except KeyboardInterrupt:
@@ -271,28 +299,41 @@ def add_member_after_label(obj, target_label, new_member):
     return None
 
 def write_author_info(base):
+    major_version = get_major_version(staruml_version)
     app_folder = os.path.join(base, "app")
     src_folder = os.path.join(app_folder, "src")
+
     # 修改关于弹窗部分
     static_folder = os.path.join(src_folder, "static")
     html_contents_folder = os.path.join(static_folder, "html-contents")
     about_dialog = os.path.join(html_contents_folder, "about-dialog.html")
-    with open(about_dialog, "r", encoding="utf-8") as file:
-        html_content = file.read()
-    new_html_content = html_content.replace("<span class=\"license\" style=\"font-weight: 600;\"></span>",
-                                            "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
-    with open(about_dialog, "w", encoding="utf-8") as file:
-        file.write(new_html_content)
-    # 修改标题部分
-    titlebar_view = os.path.join(src_folder, "views", "titlebar-view.js")
-    with open(titlebar_view, "r", encoding="utf-8") as file:
-        js_content = file.read()
-    new_js_content = js_content.replace("""title += "(EVALUATION MODE)";
-    }""",
-                                        """title += "(EVALUATION MODE)";
-    } else { title += '【By GitHub: X1a0He/StarUML-CrackedAndTranslate】'}""")
-    with open(titlebar_view, "w", encoding="utf-8") as file:
-        file.write(new_js_content)
+
+    if major_version == 6:
+        with open(about_dialog, "r", encoding="utf-8") as file:
+            html_content = file.read()
+        new_html_content = html_content.replace("<span class=\"license\" style=\"font-weight: 600;\"></span>",
+                                                "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
+        with open(about_dialog, "w", encoding="utf-8") as file:
+            file.write(new_html_content)
+        # 修改标题部分
+        titlebar_view = os.path.join(src_folder, "views", "titlebar-view.js")
+        with open(titlebar_view, "r", encoding="utf-8") as file:
+            js_content = file.read()
+        new_js_content = js_content.replace("""title += "(EVALUATION MODE)";
+        }""",
+                                            """title += "(EVALUATION MODE)";
+        } else { title += '【By GitHub: X1a0He/StarUML-CrackedAndTranslate】'}""")
+        with open(titlebar_view, "w", encoding="utf-8") as file:
+            file.write(new_js_content)
+
+    if major_version == 7:
+        with open(about_dialog, "r", encoding="utf-8") as file:
+            html_content = file.read()
+        new_html_content = html_content.replace("<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a></div>",
+                                                "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a><br/><br/><a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\">GitHub: X1a0He/StarUML-CrackedAndTranslate</a></div>")
+        with open(about_dialog, "w", encoding="utf-8") as file:
+            file.write(new_html_content)
+
     # 修改菜单栏部分
     resources_folder = os.path.join(app_folder, "resources")
     darwin_json = os.path.join(resources_folder, "default", "menus", "darwin.json")
@@ -333,10 +374,8 @@ def write_author_info(base):
 def crack_app(base, username):
     destination_path = os.path.join(base, "app", "src")
     shutil.copy("hook.js", destination_path)
-
+    major_version = get_major_version(staruml_version)
     hook_file_path = os.path.join(destination_path, "hook.js")
-    app_context_file_path = os.path.join(destination_path, "app-context.js")
-
     with open(hook_file_path, "r", encoding="utf-8") as file:
         js_content = file.read()
     new_js_content = js_content.replace("GitHub: X1a0He/StarUML-CrackedAndTranslate", username)
@@ -344,17 +383,36 @@ def crack_app(base, username):
     with open(hook_file_path, "w", encoding="utf-8") as file:
         file.write(new_js_content)
 
-    with open(app_context_file_path, "r", encoding="utf-8") as file:
-        js_content = file.read()
-        if 'require("./hook");' not in js_content:
-            log("hook写入中...")
-            new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nthis.appReady();')
+    if major_version == 6:
+        app_context_file_path = os.path.join(destination_path, "app-context.js")
 
-            with open(app_context_file_path, "w", encoding="utf-8") as file2:
-                file2.write(new_js_content)
-                log("hook写入完毕")
-        else:
-            log("文本已被修改过，无需再次修改")
+        with open(app_context_file_path, "r", encoding="utf-8") as file:
+            js_content = file.read()
+            if 'require("./hook");' not in js_content:
+                log("hook写入中...")
+                new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nthis.appReady();')
+
+                with open(app_context_file_path, "w", encoding="utf-8") as file2:
+                    file2.write(new_js_content)
+                    log("hook写入完毕")
+            else:
+                log("文本已被修改过，无需再次修改")
+
+    if major_version == 7:
+        main_process_file_path = os.path.join(destination_path, 'main-process', 'main.js')
+        with open(main_process_file_path, "r", encoding="utf-8") as file:
+            js_content = file.read()
+            if 'require("./hook");' not in js_content:
+                log("hook写入中...")
+                new_js_content = js_content.replace('global.application = new Application();',
+                                                    'global.application = new Application();\nrequire("../hook");')
+
+                with open(main_process_file_path, "w", encoding="utf-8") as file2:
+                    file2.write(new_js_content)
+                    log("hook写入完毕")
+            else:
+                log("文本已被修改过，无需再次修改")
+
     write_author_info(base)
 
 def main():
