@@ -409,14 +409,10 @@ def crack_app(base, username):
         with open(app_context_file_path, "r", encoding="utf-8") as file:
             js_content = file.read()
             if 'require("./dialog");' not in js_content:
-                log("hook写入中...")
                 new_js_content = js_content.replace('this.appReady();', 'require("./dialog");\nthis.appReady();')
 
                 with open(app_context_file_path, "w", encoding="utf-8") as file2:
                     file2.write(new_js_content)
-                    log("hook写入完毕")
-            else:
-                log("文本已被修改过，无需再次修改")
 
         with open(main_process_file_path, "r", encoding="utf-8") as file:
             js_content = file.read()
