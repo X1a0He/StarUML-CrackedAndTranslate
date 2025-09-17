@@ -60,6 +60,7 @@ def rollback(base):
     if os.path.exists(os.path.join(base, "app.asar.original")):
         log("还原 app.asar.original -> app.asar")
         shutil.copyfile(os.path.join(base, "app.asar.original"), os.path.join(base, "app.asar"))
+        os.remove(os.path.join(base, "app.asar.original"))
     else:
         log("还原文件不存在，无法还原")
 
@@ -158,22 +159,23 @@ def handler(base, user_choice):
     if user_choice in (0, 1, 2):
         extract(base)
         backup(base)
-    major_version = get_major_version(staruml_version)
-    if major_version == 6:
-        language_file = "StarUML_Language_v6.json"
+        major_version = get_major_version(staruml_version)
 
-    if major_version == 7:
-        language_file = "StarUML_Language_v7.json"
+        if major_version == 6:
+            language_file = "StarUML_Language_v6.json"
 
-    if user_choice == 0:
-        crack(base, user_choice)
+        if major_version == 7:
+            language_file = "StarUML_Language_v7.json"
 
-    if user_choice == 1:
-        translate(base, user_choice, language_file)
+        if user_choice == 0:
+            crack(base, user_choice)
 
-    if user_choice == 2:
-        crack(base, user_choice)
-        translate(base, user_choice, language_file)
+        if user_choice == 1:
+            translate(base, user_choice, language_file)
+
+        if user_choice == 2:
+            crack(base, user_choice)
+            translate(base, user_choice, language_file)
 
     # 还原所有操作 2024.11.04 增加
     if user_choice == 3:
