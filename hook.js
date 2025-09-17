@@ -169,7 +169,6 @@ async function main() {
         case "STARUML.V6":
             crypto = require('crypto');
             CrackV6();
-            app.dialogs.showInfoDialog("StarUML 由 X1a0He 破解汉化且免费开源仅供学习参考\n\nhttps://github.com/X1a0He/StarUML-CrackedAndTranslate\n\n付费购买到的请举报你的卖家")
             break;
         case "STARUML.V7":
             crypto = globalThis.crypto;

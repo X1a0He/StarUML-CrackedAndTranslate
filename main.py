@@ -154,9 +154,16 @@ def get_major_version(version_str):
         raise ValueError("无效的版本格式")
 
 def handler(base, user_choice):
-    language_file = "StarUML_Language.json"
+    language_file = None
     if user_choice in (0, 1, 2):
+        extract(base)
         backup(base)
+    major_version = get_major_version(staruml_version)
+    if major_version == 6:
+        language_file = "StarUML_Language_v6.json"
+
+    if major_version == 7:
+        language_file = "StarUML_Language_v7.json"
 
     if user_choice == 0:
         crack(base, user_choice)
@@ -199,7 +206,6 @@ def translate(base, user_choice, language_file):
 def translate_asar(language_file, base, user_choice):
     # 这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
     log("解包 app.asar")
-    extract(base)
     translate_app(language_file, base, user_choice)
     # 汉化完成后，对app.asar进行打包操作，并删除app文件夹
     log("打包 app.asar")
@@ -272,7 +278,6 @@ def crack(base, user_choice):
 
 def crack_asar(base, username, user_choice):
     log("解包 app.asar")
-    extract(base)
     crack_app(base, username)
     # 如果用户选择破解并汉化的话，就不需要重新打包了，做完再打包
     if user_choice != 2:
@@ -374,6 +379,7 @@ def write_author_info(base):
 def crack_app(base, username):
     destination_path = os.path.join(base, "app", "src")
     shutil.copy("hook.js", destination_path)
+    shutil.copy("dialog.js", destination_path)
     major_version = get_major_version(staruml_version)
     hook_file_path = os.path.join(destination_path, "hook.js")
     with open(hook_file_path, "r", encoding="utf-8") as file:
@@ -383,14 +389,14 @@ def crack_app(base, username):
     with open(hook_file_path, "w", encoding="utf-8") as file:
         file.write(new_js_content)
 
-    if major_version == 6:
-        app_context_file_path = os.path.join(destination_path, "app-context.js")
+    app_context_file_path = os.path.join(destination_path, "app-context.js")
 
+    if major_version == 6:
         with open(app_context_file_path, "r", encoding="utf-8") as file:
             js_content = file.read()
-            if 'require("./hook");' not in js_content:
+            if 'require("./hook");\nrequire("./dialog");' not in js_content:
                 log("hook写入中...")
-                new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nthis.appReady();')
+                new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nrequire("./dialog");\nthis.appReady();')
 
                 with open(app_context_file_path, "w", encoding="utf-8") as file2:
                     file2.write(new_js_content)
@@ -400,6 +406,18 @@ def crack_app(base, username):
 
     if major_version == 7:
         main_process_file_path = os.path.join(destination_path, 'main-process', 'main.js')
+        with open(app_context_file_path, "r", encoding="utf-8") as file:
+            js_content = file.read()
+            if 'require("./dialog");' not in js_content:
+                log("hook写入中...")
+                new_js_content = js_content.replace('this.appReady();', 'require("./dialog");\nthis.appReady();')
+
+                with open(app_context_file_path, "w", encoding="utf-8") as file2:
+                    file2.write(new_js_content)
+                    log("hook写入完毕")
+            else:
+                log("文本已被修改过，无需再次修改")
+
         with open(main_process_file_path, "r", encoding="utf-8") as file:
             js_content = file.read()
             if 'require("./hook");' not in js_content:
@@ -437,7 +455,7 @@ def main():
         is_first_install()
         is_staruml_running()
 
-        log("macOS 15用户请确保在更新完 StarUML 后手动打开一次 StarUML 再执行脚本")
+        log("macOS 15+ 用户请确保在更新完 StarUML 后手动打开一次 StarUML 再执行脚本")
         user_choice = int(input("0 -> 仅破解\n1 -> 仅汉化\n2 -> 破解并汉化\n3 -> 还原所有\n-1 -> 退出运行\n请输入您的选择: \n"))
         if user_choice == -1:
             exit(0)
@@ -448,7 +466,7 @@ def main():
                 handler(base, user_choice)
                 log("如遇到打开 StarUML 提示已损坏，请手动在终端执行如下命令后，在 Application 右键打开 StarUML")
                 log("sudo xattr -cr /Applications/StarUML.app")
-                log("macOS 15 的用户如果一直遇到提示已损坏，建议先打开一遍 StarUML 后再运行")
+                log("macOS 15+ 的用户如果一直遇到提示已损坏，建议先打开一遍 StarUML 后再运行")
                 # os.system("open -a StarUML")
             elif system == 'Windows':
                 base = os.path.join("C:\\", "Program Files", "StarUML", "resources")

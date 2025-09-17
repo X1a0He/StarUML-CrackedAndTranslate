@@ -1,8 +1,14 @@
+# 不要给我提Pr，本仓库不接受任何Pr
+
 # 免责声明
 
 **本仓库仅用于学习交流使用，请勿用于非法用途，造成一切后果与作者无关**
 
 **点开本仓库即默认一切后果自负**
+
+# 关于英文文档
+
+懒得更新英文文档了，英文脚本也懒得更新的，自己用 `main.py`，看不懂就去翻译
 
 # 致搬运者与无知的人
 
@@ -25,7 +31,7 @@
 
 [**中文文档**](cn/readme-cn.md) | [**Document for English**](en/readme-en.md)
 
-# 汉化效果
+# v7 汉化与破解效果
 
 ![display.png](images/display.png)
 
@@ -45,15 +51,15 @@
 
 - [历史更新日志](Update-log.md)
 
-- 2025-09-15 18:00 更新日志
+- 2025-09-17 08:35 更新日志
 
 ```markdown
-1. 全网首发支持 StarUML v7
+1. 支持 StarUML v7 完整汉化与破解
 ```
 
 ----
 
-# Surge 脚本激活
+# Surge 脚本激活(暂不支持 v7)
 
 ![script-activation.png](images/script-activation.png)
 

@@ -1,0 +1,6834 @@
+{
+  "src/strings.js": [
+    {
+      "en": "\"File\",",
+      "cn": "\"文件\","
+    },
+    {
+      "en": "\"New\",",
+      "cn": "\"新建\","
+    },
+    {
+      "en": "\"New From Template\",",
+      "cn": "\"从模板新建\","
+    },
+    {
+      "en": "\"Open...\",",
+      "cn": "\"打开...\","
+    },
+    {
+      "en": "\"Open Recent\",",
+      "cn": "\"打开最近项目\","
+    },
+    {
+      "en": "\"Save\",",
+      "cn": "\"保存\","
+    },
+    {
+      "en": "\"Save As...\",",
+      "cn": "\"另存为...\","
+    },
+    {
+      "en": "\"Import\",",
+      "cn": "\"导入\","
+    },
+    {
+      "en": "\"Fragment...\",",
+      "cn": "\"片段...\","
+    },
+    {
+      "en": "\"Export\",",
+      "cn": "\"导出\","
+    },
+    {
+      "en": "\"Close\",",
+      "cn": "\"关闭\","
+    },
+    {
+      "en": "\"Preferences...\",",
+      "cn": "\"偏好设置...\","
+    },
+    {
+      "en": "\"Print to PDF...\",",
+      "cn": "\"打印到PDF...\","
+    },
+    {
+      "en": "\"Quit\",",
+      "cn": "\"退出(Quit)\","
+    },
+    {
+      "en": "\"Exit\",",
+      "cn": "\"退出(Exit)\","
+    },
+    {
+      "en": "\"Edit\",",
+      "cn": "\"编辑\","
+    },
+    {
+      "en": "\"Undo\",",
+      "cn": "\"撤销\","
+    },
+    {
+      "en": "\"Redo\",",
+      "cn": "\"重做\","
+    },
+    {
+      "en": "\"Cut\",",
+      "cn": "\"剪切\","
+    },
+    {
+      "en": "\"Copy\",",
+      "cn": "\"复制\","
+    },
+    {
+      "en": "\"Paste\",",
+      "cn": "\"粘贴\","
+    },
+    {
+      "en": "\"Delete\",",
+      "cn": "\"删除\","
+    },
+    {
+      "en": "\"Delete from Model\",",
+      "cn": "\"从模型中删除\","
+    },
+    {
+      "en": "\"Move Up\",",
+      "cn": "\"上移\","
+    },
+    {
+      "en": "\"Move Down\",",
+      "cn": "\"下移\","
+    },
+    {
+      "en": "\"Select All\",",
+      "cn": "\"全选\","
+    },
+    {
+      "en": "\"Select In Explorer\",",
+      "cn": "\"在资源管理器中选择\","
+    },
+    {
+      "en": "\"Select In Diagram\",",
+      "cn": "\"在图表中选择\","
+    },
+    {
+      "en": "\"Format\",",
+      "cn": "\"格式\","
+    },
+    {
+      "en": "\"Font...\",",
+      "cn": "\"字体...\","
+    },
+    {
+      "en": "\"Fill Color...\",",
+      "cn": "\"填充颜色...\","
+    },
+    {
+      "en": "\"Line Color...\",",
+      "cn": "\"线条颜色...\","
+    },
+    {
+      "en": "\"Line Style\",",
+      "cn": "\"线条样式\","
+    },
+    {
+      "en": "\"Rectilinear\",",
+      "cn": "\"直线\","
+    },
+    {
+      "en": "\"Oblique\",",
+      "cn": "\"斜线\","
+    },
+    {
+      "en": "\"Rounded Rectilinear\",",
+      "cn": "\"圆角直线\","
+    },
+    {
+      "en": "\"Curve\",",
+      "cn": "\"曲线\","
+    },
+    {
+      "en": "\"Auto Resize\",",
+      "cn": "\"自动调整大小\","
+    },
+    {
+      "en": "\"Show Shadow\",",
+      "cn": "\"显示阴影\","
+    },
+    {
+      "en": "\"Model\",",
+      "cn": "\"模型\","
+    },
+    {
+      "en": "\"Tools\",",
+      "cn": "\"工具\","
+    },
+    {
+      "en": "\"Extension Manager...\",",
+      "cn": "\"扩展管理器...\","
+    },
+    {
+      "en": "\"View\",",
+      "cn": "\"视图\","
+    },
+    {
+      "en": "\"Close Diagram\",",
+      "cn": "\"关闭图表\","
+    },
+    {
+      "en": "\"Close Other Diagrams\",",
+      "cn": "\"关闭其他图表\","
+    },
+    {
+      "en": "\"Close All Diagrams\",",
+      "cn": "\"关闭所有图表\","
+    },
+    {
+      "en": "\"Next Diagram\",",
+      "cn": "\"下一个图表\","
+    },
+    {
+      "en": "\"Previous Diagram\",",
+      "cn": "\"上一个图表\","
+    },
+    {
+      "en": "\"Zoom In\",",
+      "cn": "\"放大\","
+    },
+    {
+      "en": "\"Zoom Out\",",
+      "cn": "\"缩小\","
+    },
+    {
+      "en": "\"Actual Size\",",
+      "cn": "\"实际大小\","
+    },
+    {
+      "en": "\"Fit To Window\",",
+      "cn": "\"适应窗口\","
+    },
+    {
+      "en": "\"Show Grid\",",
+      "cn": "\"显示网格\","
+    },
+    {
+      "en": "\"Show Sidebar\",",
+      "cn": "\"显示侧边栏\","
+    },
+    {
+      "en": "\"Hide Sidebar\",",
+      "cn": "\"隐藏侧边栏\","
+    },
+    {
+      "en": "\"Show Navigator\",",
+      "cn": "\"显示导航器\","
+    },
+    {
+      "en": "\"Hide Navigator\",",
+      "cn": "\"隐藏导航器\","
+    },
+    {
+      "en": "\"Show Toolbar\",",
+      "cn": "\"显示工具栏\","
+    },
+    {
+      "en": "\"Hide Toolbar\",",
+      "cn": "\"隐藏工具栏\","
+    },
+    {
+      "en": "\"Show Status Bar\",",
+      "cn": "\"显示状态栏\","
+    },
+    {
+      "en": "\"Hide Status Bar\",",
+      "cn": "\"隐藏状态栏\","
+    },
+    {
+      "en": "\"Show Toolbox\",",
+      "cn": "\"显示工具箱\","
+    },
+    {
+      "en": "\"Hide Toolbox\",",
+      "cn": "\"隐藏工具箱\","
+    },
+    {
+      "en": "\"Show Editors\",",
+      "cn": "\"显示编辑器\","
+    },
+    {
+      "en": "\"Hide Editors\",",
+      "cn": "\"隐藏编辑器\","
+    },
+    {
+      "en": "\"Help\",",
+      "cn": "\"帮助\","
+    },
+    {
+      "en": "\"About StarUML\",",
+      "cn": "\"关于StarUML\","
+    },
+    {
+      "en": "\"Check for Updates...\",",
+      "cn": "\"检查更新...\","
+    },
+    {
+      "en": "\"Enter License...\",",
+      "cn": "\"输入许可证...\","
+    },
+    {
+      "en": "\"Documentation\",",
+      "cn": "\"文档\","
+    },
+    {
+      "en": "\"Forum\",",
+      "cn": "\"论坛\","
+    },
+    {
+      "en": "\"Release Notes\",",
+      "cn": "\"更新说明\","
+    },
+    {
+      "en": "\"Request Feature\",",
+      "cn": "\"请求功能\","
+    },
+    {
+      "en": "\"UML Minimal\",",
+      "cn": "\"简单的UML\","
+    },
+    {
+      "en": "\"UML Conventional\",",
+      "cn": "\"传统的UML\","
+    },
+    {
+      "en": "\"4+1 View Model\",",
+      "cn": "\"4+1视图模型\","
+    },
+    {
+      "en": "\"Rational\",",
+      "cn": "\"Rational文件\","
+    },
+    {
+      "en": "\"Apply Profile\",",
+      "cn": "\"应用配置文件\","
+    },
+    {
+      "en": "\"UML Standard Profile (v2)\",",
+      "cn": "\"UML标准配置文件(v2)\","
+    },
+    {
+      "en": "\"Add\",",
+      "cn": "\"添加\","
+    },
+    {
+      "en": "\"Add Diagram\",",
+      "cn": "\"添加图表\","
+    },
+    {
+      "en": "\"Model\",",
+      "cn": "\"模型\","
+    },
+    {
+      "en": "\"Subsystem\",",
+      "cn": "\"子系统\","
+    },
+    {
+      "en": "\"Package\",",
+      "cn": "\"包\","
+    },
+    {
+      "en": "\"Profile\",",
+      "cn": "\"配置文件\","
+    },
+    {
+      "en": "\"Class\",",
+      "cn": "\"类\","
+    },
+    {
+      "en": "\"Interface\",",
+      "cn": "\"接口\","
+    },
+    {
+      "en": "\"Signal\",",
+      "cn": "\"信号\","
+    },
+    {
+      "en": "\"DataType\",",
+      "cn": "\"数据类型\","
+    },
+    {
+      "en": "\"PrimitiveType\",",
+      "cn": "\"原始类型\","
+    },
+    {
+      "en": "\"Enumeration\",",
+      "cn": "\"枚举\","
+    },
+    {
+      "en": "\"Artifact\",",
+      "cn": "\"物件\","
+    },
+    {
+      "en": "\"Component\",",
+      "cn": "\"组件\","
+    },
+    {
+      "en": "\"Node\",",
+      "cn": "\"节点\","
+    },
+    {
+      "en": "\"UseCase\",",
+      "cn": "\"用例\","
+    },
+    {
+      "en": "\"Actor\",",
+      "cn": "\"角色\","
+    },
+    {
+      "en": "\"Stereotype\",",
+      "cn": "\"类型\","
+    },
+    {
+      "en": "\"Object\",",
+      "cn": "\"对象\","
+    },
+    {
+      "en": "\"Artifact Instance\",",
+      "cn": "\"实例\","
+    },
+    {
+      "en": "\"Component Instance\",",
+      "cn": "\"组件实例\","
+    },
+    {
+      "en": "\"Node Instance\",",
+      "cn": "\"节点实例\","
+    },
+    {
+      "en": "\"Collaboration\",",
+      "cn": "\"协作\","
+    },
+    {
+      "en": "\"Interaction\",",
+      "cn": "\"交互\","
+    },
+    {
+      "en": "\"State Machine\",",
+      "cn": "\"状态机\","
+    },
+    {
+      "en": "\"Activity\",",
+      "cn": "\"活动\","
+    },
+    {
+      "en": "\"Opaque Behavior\",",
+      "cn": "\"不透明行为\","
+    },
+    {
+      "en": "\"Template Parameter\",",
+      "cn": "\"模板参数\","
+    },
+    {
+      "en": "\"Parameter\",",
+      "cn": "\"参数\","
+    },
+    {
+      "en": "\"Enumeration Literal\",",
+      "cn": "\"枚举常量\","
+    },
+    {
+      "en": "\"Attribute\",",
+      "cn": "\"属性\","
+    },
+    {
+      "en": "\"Port\",",
+      "cn": "\"端口\","
+    },
+    {
+      "en": "\"Operation\",",
+      "cn": "\"操作\","
+    },
+    {
+      "en": "\"Reception\",",
+      "cn": "\"接收(Reception)\","
+    },
+    {
+      "en": "\"Extension Point\",",
+      "cn": "\"扩展点\","
+    },
+    {
+      "en": "\"Slot\",",
+      "cn": "\"插槽\","
+    },
+    {
+      "en": "\"State\",",
+      "cn": "\"状态\","
+    },
+    {
+      "en": "\"Region\",",
+      "cn": "\"区域\","
+    },
+    {
+      "en": "\"Entry Activity\",",
+      "cn": "\"入口活动\","
+    },
+    {
+      "en": "\"Do Activity\",",
+      "cn": "\"执行活动\","
+    },
+    {
+      "en": "\"Exit Activity\",",
+      "cn": "\"退出活动\","
+    },
+    {
+      "en": "\"Trigger\",",
+      "cn": "\"触发器\","
+    },
+    {
+      "en": "\"Effect\",",
+      "cn": "\"效果\","
+    },
+    {
+      "en": "\"Action\",",
+      "cn": "\"动作\","
+    },
+    {
+      "en": "\"Constraint\",",
+      "cn": "\"约束\","
+    },
+    {
+      "en": "\"Tag\",",
+      "cn": "\"标签\","
+    },
+    {
+      "en": "\"Class Diagram\",",
+      "cn": "\"类图\","
+    },
+    {
+      "en": "\"Package Diagram\",",
+      "cn": "\"包图\","
+    },
+    {
+      "en": "\"Object Diagram\",",
+      "cn": "\"对象图\","
+    },
+    {
+      "en": "\"Composite Structure Diagram\",",
+      "cn": "\"组合结构图\","
+    },
+    {
+      "en": "\"Component Diagram\",",
+      "cn": "\"组件图\","
+    },
+    {
+      "en": "\"Deployment Diagram\",",
+      "cn": "\"部署图\","
+    },
+    {
+      "en": "\"Use Case Diagram\",",
+      "cn": "\"用例图\","
+    },
+    {
+      "en": "\"Sequence Diagram\",",
+      "cn": "\"顺序图/序列图\","
+    },
+    {
+      "en": "\"Communication Diagram\",",
+      "cn": "\"通信图\","
+    },
+    {
+      "en": "\"Statechart Diagram\",",
+      "cn": "\"状态图\","
+    },
+    {
+      "en": "\"Activity Diagram\",",
+      "cn": "\"活动图\","
+    },
+    {
+      "en": "\"Profile Diagram\",",
+      "cn": "\"配置图/外廓图\","
+    },
+    {
+      "en": "\"Stereotype Display\",",
+      "cn": "\"类型显示\","
+    },
+    {
+      "en": "\"None\",",
+      "cn": "\"无\","
+    },
+    {
+      "en": "\"Label\",",
+      "cn": "\"标签\","
+    },
+    {
+      "en": "\"Decoration\",",
+      "cn": "\"修饰\","
+    },
+    {
+      "en": "\"Decoration with Label\",",
+      "cn": "\"带标签的修饰\","
+    },
+    {
+      "en": "\"Icon\",",
+      "cn": "\"图标\","
+    },
+    {
+      "en": "\"Icon with Label\",",
+      "cn": "\"带标签的图标\","
+    },
+    {
+      "en": "\"Word Wrap\",",
+      "cn": "\"自动换行\","
+    },
+    {
+      "en": "\"Show Visibility\",",
+      "cn": "\"显示可见性\","
+    },
+    {
+      "en": "\"Show Namespace\",",
+      "cn": "\"显示命名空间\","
+    },
+    {
+      "en": "\"Show Property\",",
+      "cn": "\"显示属性\","
+    },
+    {
+      "en": "\"Show Type\",",
+      "cn": "\"显示类型\","
+    },
+    {
+      "en": "\"Show Multiplicity\",",
+      "cn": "\"显示多重度\","
+    },
+    {
+      "en": "\"Show Operation Signature\",",
+      "cn": "\"显示操作签名\","
+    },
+    {
+      "en": "\"Show Diagram Name\",",
+      "cn": "\"显示图表名称\","
+    },
+    {
+      "en": "\"Suppress Attributes\",",
+      "cn": "\"隐藏属性\","
+    },
+    {
+      "en": "\"Suppress Operations\",",
+      "cn": "\"隐藏操作\","
+    },
+    {
+      "en": "\"Suppress Receptions\",",
+      "cn": "\"隐藏接收\","
+    },
+    {
+      "en": "\"Suppress Literals\",",
+      "cn": "\"隐藏字面量\","
+    },
+    {
+      "en": "\"Couldn't remove extension {0} because it wasn't installed.\",",
+      "cn": "\"无法删除扩展 {0} 因为它没有安装。\","
+    },
+    {
+      "en": "\"The update isn't compatible with this version of StarUML.\",",
+      "cn": "\"更新不适用于此版本的 StarUML。\","
+    },
+    {
+      "en": "\"Extensions in the dev folder can't be updated automatically.\",",
+      "cn": "\"在 dev 文件夹中的扩展不能自动更新。\","
+    },
+    {
+      "en": "\"Install\",",
+      "cn": "\"安装\","
+    },
+    {
+      "en": "\"Update\",",
+      "cn": "\"更新\","
+    },
+    {
+      "en": "\"Remove\",",
+      "cn": "\"删除\","
+    },
+    {
+      "en": "\"Overwrite\",",
+      "cn": "\"覆盖\","
+    },
+    {
+      "en": "\"Reload\",",
+      "cn": "\"重新加载\","
+    },
+    {
+      "en": "\"Unable to access the extension registry. Please try again later.\",",
+      "cn": "\"无法访问扩展注册表。请稍后再试。\","
+    },
+    {
+      "en": "\"This extension requires a newer version of StarUML.\",",
+      "cn": "\"此扩展需要更高版本的 StarUML。\","
+    },
+    {
+      "en": "\"This extension currently only works with older versions of StarUML.\",",
+      "cn": "\"此扩展目前仅适用于旧版本的 StarUML。\","
+    },
+    {
+      "en": "\"Version {0} of this extension requires a newer version of StarUML. But you can install the earlier version {1}.\",",
+      "cn": "\"此扩展的版本 {0} 需要更高版本的 StarUML。但是你可以安装早期版本 {1}。\","
+    },
+    {
+      "en": "\"Version {0} of this extension only works with older versions of StarUML. But you can install the earlier version {1}.\",",
+      "cn": "\"此扩展的版本 {0} 只适用于旧版本的 StarUML。但是你可以安装早期版本 {1}。\","
+    },
+    {
+      "en": "\"No description\",",
+      "cn": "\"无描述\","
+    },
+    {
+      "en": "\"Issues\",",
+      "cn": "\"问题\","
+    },
+    {
+      "en": "\"More info...\",",
+      "cn": "\"更多信息...\","
+    },
+    {
+      "en": "\"Extension error\",",
+      "cn": "\"扩展错误\","
+    },
+    {
+      "en": "\"Keywords\",",
+      "cn": "\"关键字\","
+    },
+    {
+      "en": "\"Installed\",",
+      "cn": "\"已安装\","
+    },
+    {
+      "en": "\"This extension update has been downloaded and will be installed after StarUML reloads.\",",
+      "cn": "\"此扩展更新已下载并将在 StarUML 重新加载后安装。\","
+    },
+    {
+      "en": "\"Remove Extension\",",
+      "cn": "\"删除扩展\","
+    },
+    {
+      "en": "\"Unable to remove one or more extensions: {0}. StarUML will still reload.\",",
+      "cn": "\"无法删除扩展: {0}。StarUML 将仍然重新加载。\","
+    },
+    {
+      "en": "\"Update Extension\",",
+      "cn": "\"更新扩展\","
+    },
+    {
+      "en": "\"Unable to update one or more extensions: {0}. StarUML will still reload.\",",
+      "cn": "\"无法更新扩展: {0}。StarUML 将仍然重新加载。\","
+    },
+    {
+      "en": "\"Marked for removal\",",
+      "cn": "\"已标记为删除\","
+    },
+    {
+      "en": "\"Undo\",",
+      "cn": "\"撤销\","
+    },
+    {
+      "en": "\"Marked for update\",",
+      "cn": "\"已标记为更新\","
+    },
+    {
+      "en": "\"Change Extensions\",",
+      "cn": "\"更改扩展\","
+    },
+    {
+      "en": "\"To update or remove the marked extensions, StarUML will need to reload. You'll be prompted to save unsaved changes.\",",
+      "cn": "\"要更新或删除已标记的扩展，StarUML 需要重新加载。你会被提示保存未保存的更改。\","
+    },
+    {
+      "en": "\"Remove Extensions and Reload\",",
+      "cn": "\"删除扩展并重新加载\","
+    },
+    {
+      "en": "\"Change Extensions and Reload\",",
+      "cn": "\"更改扩展并重新加载\","
+    },
+    {
+      "en": "\"Update Extensions and Reload\",",
+      "cn": "\"更新扩展并重新加载\","
+    },
+    {
+      "en": "\"Processing extension changes...\",",
+      "cn": "\"正在处理扩展更改...\","
+    },
+    {
+      "en": "\"No extensions installed yet.<br>Click on the Registry tab above to get started.\",",
+      "cn": "\"尚未安装任何扩展。<br>在 扩展市场 标签上单击以开始。\","
+    },
+    {
+      "en": "\"No extensions match your search.\",",
+      "cn": "\"没有匹配您的搜索结果。\","
+    },
+    {
+      "en": "\"Be cautious when installing extensions from an unknown source.\",",
+      "cn": "\"安装来自未知来源的扩展时应谨慎。\","
+    },
+    {
+      "en": "\"Unknown internal error.\",",
+      "cn": "\"未知内部错误。\","
+    },
+    {
+      "en": "\"Install Extension\",",
+      "cn": "\"安装扩展\","
+    },
+    {
+      "en": "\"Update Extension\",",
+      "cn": "\"更新扩展\","
+    },
+    {
+      "en": "\"Installing extension from {0}...\",",
+      "cn": "\"正在从 {0} 安装扩展...\","
+    },
+    {
+      "en": "\"Installation successful!\",",
+      "cn": "\"安装成功!\","
+    },
+    {
+      "en": "\"Installation failed.\",",
+      "cn": "\"安装失败。\","
+    },
+    {
+      "en": "\"Installation canceled.\",",
+      "cn": "\"安装已取消。\","
+    },
+    {
+      "en": "\"Canceling...\",",
+      "cn": "\"正在取消...\","
+    },
+    {
+      "en": "\"Canceling the install is taking a long time. An internal error may have occurred.\",",
+      "cn": "\"取消安装可能需要很长时间。内部错误可能已发生。\","
+    },
+    {
+      "en": "\"Save Changes\",",
+      "cn": "\"保存更改\","
+    },
+    {
+      "en": "\"Do you want to save the changes you made?\",",
+      "cn": "\"是否要保存您所做的更改?\","
+    },
+    {
+      "en": "\"Select a model file...\",",
+      "cn": "\"选择模型文件...\","
+    },
+    {
+      "en": "\"Select a model fragment to import...\",",
+      "cn": "\"选择导入模型片段...\","
+    },
+    {
+      "en": "\"Select an element to export...\",",
+      "cn": "\"选择要导出的元素...\","
+    },
+    {
+      "en": "\"Export Model Fragment\",",
+      "cn": "\"导出模型片段\","
+    },
+    {
+      "en": "\"Cancel\",",
+      "cn": "\"取消\","
+    },
+    {
+      "en": "\"Save\",",
+      "cn": "\"保存\","
+    },
+    {
+      "en": "\"Don't Save\",",
+      "cn": "\"不保存\","
+    },
+    {
+      "en": "\"Close\",",
+      "cn": "\"关闭\","
+    },
+    {
+      "en": "\"Install and Restart\",",
+      "cn": "\"安装并重启\","
+    },
+    {
+      "en": "\"Sort By Added\",",
+      "cn": "\"按添加时间排序\","
+    },
+    {
+      "en": "\"Sort By Name\",",
+      "cn": "\"按名称排序\","
+    },
+    {
+      "en": "\"Show Stereotype Text\",",
+      "cn": "\"显示继承文本\","
+    },
+    {
+      "en": "\"Ctrl\",",
+      "cn": "\"Ctrl\","
+    },
+    {
+      "en": "\"Shift\",",
+      "cn": "\"Shift\","
+    },
+    {
+      "en": "\"Space\"",
+      "cn": "\"空格\""
+    }
+  ],
+  "src/dialogs/check-updates-dialog.js": [
+    {
+      "en": "'Updates Available'",
+      "cn": "'有更新可用'"
+    },
+    {
+      "en": "'Already up to date.'",
+      "cn": "'已经是最新版本。'"
+    },
+    {
+      "en": "'New release ' + data.info.version + ' (' + data.date + ') is available.'",
+      "cn": "'新版本 ' + data.info.version + ' (' + data.date + ') 可用。'"
+    },
+    {
+      "en": "'Downloading...'",
+      "cn": "'正在下载...'"
+    },
+    {
+      "en": "'Download complete. Now ready to install.'",
+      "cn": "'下载完成。现在准备安装。'"
+    },
+    {
+      "en": "'Downloading... (' + Math.floor(progress.percent) + '%)'",
+      "cn": "'正在下载... (' + Math.floor(progress.percent) + '%)'"
+    },
+    {
+      "en": "'Error during update.'",
+      "cn": "'更新时出错。'"
+    }
+  ],
+  "src/dialogs/dialog-manager.js": [
+    {
+      "en": "Do you want to save the changes?",
+      "cn": "是否保存更改?"
+    },
+    {
+      "en": "title: \"Information\",",
+      "cn": "title: \"信息\","
+    }
+  ],
+  "src/dialogs/element-list-editor-dialog.js": [
+    {
+      "en": "Select Element to Add",
+      "cn": "选择要添加的元素"
+    }
+  ],
+  "src/dialogs/element-picker-dialog.js": [
+    {
+      "en": "Selected element (",
+      "cn": "已选择的元素("
+    },
+    {
+      "en": ") is not an instance of ",
+      "cn": ")不是他的实例: "
+    }
+  ],
+  "src/dialogs/extension-manager-dialog.js": [
+    {
+      "en": "'Errors for '",
+      "cn": "'错误 '"
+    }
+  ],
+  "src/dialogs/icon-picker-dialog.js": [
+    {
+      "en": "Select Icon",
+      "cn": "选择图标"
+    }
+  ],
+  "src/dialogs/install-extension-dialog.js": [
+    {
+      "en": "Extension installation already pending",
+      "cn": "扩展安装已挂起"
+    }
+  ],
+  "src/dialogs/license-activation-dialog.js": [
+    {
+      "en": "\"Activated\"",
+      "cn": "\"已激活\""
+    },
+    {
+      "en": "\"Not Activated\"",
+      "cn": "\"未激活\""
+    },
+    {
+      "en": "\" (offline)\"",
+      "cn": "\" (离线)\""
+    },
+    {
+      "en": "Failed to activate license:",
+      "cn": "无法激活许可证:"
+    },
+    {
+      "en": "Failed to activate license.",
+      "cn": "无法激活许可证。"
+    },
+    {
+      "en": "Failed to deactivate license:",
+      "cn": "无法注销许可证:"
+    },
+    {
+      "en": "Failed to deactivate license.",
+      "cn": "无法注销许可证。"
+    },
+    {
+      "en": "Device ID copied to clipboard.",
+      "cn": "设备ID已复制到剪贴板。"
+    },
+    {
+      "en": "Failed to get Device ID.",
+      "cn": "无法获取设备ID。"
+    }
+  ],
+  "src/dialogs/tag-editor-dialog.js": [
+    {
+      "en": "Delete this tag?",
+      "cn": "确定删除该标签吗？"
+    }
+  ],
+  "src/dialogs/tag-value-editor-dialog.js": [
+    {
+      "en": "Select Element",
+      "cn": "选择元素"
+    }
+  ],
+  "src/engine/command-manager.js": [
+    {
+      "en": "Attempting to register an already-registered command: ",
+      "cn": "尝试注册一个已注册的命令: "
+    },
+    {
+      "en": "Attempting to register a command with a missing id, or command function.",
+      "cn": "尝试注册一个缺少 id 或命令函数的命令。"
+    }
+  ],
+  "src/engine/default-commands.js": [
+    {
+      "en": "File System Error (Error=",
+      "cn": "文件系统错误(错误="
+    },
+    {
+      "en": "Save Project As",
+      "cn": "另存为项目"
+    },
+    {
+      "en": "Failed to open ",
+      "cn": "无法打开 "
+    },
+    {
+      "en": "\"Fragment\"",
+      "cn": "\"片段\""
+    },
+    {
+      "en": "Export Diagram as PNG",
+      "cn": "导出图表为PNG"
+    },
+    {
+      "en": "Error while exporting diagram to PNG",
+      "cn": "导出图表为PNG时出错"
+    },
+    {
+      "en": "No diagram to export.",
+      "cn": "没有可以导出的图表。"
+    },
+    {
+      "en": "Export Diagram as JPEG",
+      "cn": "导出图表为JPEG"
+    },
+    {
+      "en": "Error while exporting diagram to JPEG",
+      "cn": "导出图表为JPEG时出错"
+    },
+    {
+      "en": "Export Diagram as SVG",
+      "cn": "导出图表为SVG"
+    },
+    {
+      "en": "Error while exporting diagram to SVG",
+      "cn": "导出图表为SVG时出错"
+    },
+    {
+      "en": "Select a folder where all diagrams to be exported as PNGs",
+      "cn": "选择要导出为PNG的图表所在文件夹"
+    },
+    {
+      "en": "Error while exporting all diagrams to PNGs",
+      "cn": "导出所有图表为PNG时出错"
+    },
+    {
+      "en": "Select a folder where all diagrams to be exported as JPEGs",
+      "cn": "选择要导出为JPEG的图表所在文件夹"
+    },
+    {
+      "en": "Error while exporting all diagrams to JPEGs",
+      "cn": "导出所有图表为JPEG时出错"
+    },
+    {
+      "en": "Select a folder where all diagrams to be exported as SVGs",
+      "cn": "选择要导出为SVG的图表所在文件夹"
+    },
+    {
+      "en": "Error while exporting all diagrams to SVGs",
+      "cn": "导出所有图表为SVG时出错"
+    },
+    {
+      "en": "Print to PDF",
+      "cn": "打印为PDF"
+    },
+    {
+      "en": "Failed to generate PDF. (Error=",
+      "cn": "无法生成PDF。（错误="
+    },
+    {
+      "en": "No current diagram.",
+      "cn": "没有当前图表。"
+    },
+    {
+      "en": "Copying view elements in Sequence or Communication Diagram is not supported.\n To copy the entire Sequence or Communication Diagram, copy 'Interaction' or 'Collaboration (or Classifier)' containing the Diagram in Explorer.",
+      "cn": "不支持复制序列图或通信图中的视图元素。\n要复制整个序列图或通信图，请在资源管理器中复制包含该图的“交互”或者“协作(或分类器)”"
+    },
+    {
+      "en": "No views to copy or some fo selected views cannot be copied.",
+      "cn": "没有可以复制的视图或者部分视图不能被复制。"
+    },
+    {
+      "en": "Views in clipboard cannot be pasted in this diagram.",
+      "cn": "剪贴板中的视图不能被粘贴到此图表。"
+    },
+    {
+      "en": "Enter diagram name",
+      "cn": "输入图表名称"
+    },
+    {
+      "en": "Delete Views Only",
+      "cn": "仅删除视图"
+    },
+    {
+      "en": "Do you want to delete views only?",
+      "cn": "是否仅删除视图?"
+    },
+    {
+      "en": "Delete from Model",
+      "cn": "从模型中删除"
+    },
+    {
+      "en": "Select Diagram to show",
+      "cn": "选择要显示的图表"
+    },
+    {
+      "en": "No diagrams to show",
+      "cn": "没有可以显示的图表"
+    },
+    {
+      "en": "No sub-diagram in the selected element",
+      "cn": "没有选择的元素的子图表"
+    },
+    {
+      "en": "Total ${elements.length} files were generated",
+      "cn": "总共生成了${elements.length}个文件"
+    },
+    {
+      "en": "Total ${diagrams.length} diagrams were exported",
+      "cn": "总共导出了${diagrams.length}个图表"
+    },
+    {
+      "en": "HTML docs were exported on ${output}/html-docs",
+      "cn": "HTML文档已导出到${output}/html-docs"
+    },
+    {
+      "en": "[Error]",
+      "cn": "[错误]"
+    },
+    {
+      "en": "PDF document was exported as ${output}",
+      "cn": "PDF文档已导出到${output}"
+    },
+    {
+      "en": "No command specified",
+      "cn": "没有指定命令"
+    },
+    {
+      "en": "Command not found: ${cmd}",
+      "cn": "命令未找到: ${cmd}"
+    },
+    {
+      "en": "Error while getting diagram image",
+      "cn": "获取图表图像时出错"
+    },
+    {
+      "en": "Diagram not found or invalid ID:",
+      "cn": "图表未找到或无效ID:"
+    }
+  ],
+  "src/engine/diagram-export.js": [
+    {
+      "en": "\"UNREGISTERED\"",
+      "cn": "\"未注册\""
+    },
+    {
+      "en": "\"PRO ONLY\"",
+      "cn": "\"仅专业版可用\""
+    }
+  ],
+  "src/engine/document-compatibility-resolver.js": [
+    {
+      "en": "Old document version detected. Migrating...",
+      "cn": "检测到旧文档版本。正在迁移..."
+    },
+    {
+      "en": "Project has been migrated to the latest document version",
+      "cn": "项目已迁移到最新文档版本"
+    }
+  ],
+  "src/engine/engine.js": [
+    {
+      "en": "Engine.addModel(): missing required parameters: parent, field, or model.",
+      "cn": "Engine.addModel(): 缺少必需参数: parent, field, 或 model。"
+    },
+    {
+      "en": "\"Engine.addModel(): \" + field + \" is not defined in parent parameter.\"",
+      "cn": "\"Engine.addModel(): \" + field + \" 未定义在 parent 参数中。\""
+    },
+    {
+      "en": "Engine.addViews(): missing required parameters: diagram or views",
+      "cn": "Engine.addViews(): 缺少必需参数: diagram 或 views"
+    },
+    {
+      "en": "Engine.addModelAndView(): missing required parameters: diagram, model, view or parent",
+      "cn": "Engine.addModelAndView(): 缺少必需参数: diagram, model, view 或 parent"
+    },
+    {
+      "en": " is not defined in parent parameter.",
+      "cn": "未定义在 parent 参数中。"
+    },
+    {
+      "en": "Engine.setProperty(): missing required parameters: elem or field",
+      "cn": "Engine.setProperty(): 缺少必需参数: elem 或 field"
+    },
+    {
+      "en": "\"Engine.setProperty(): \" + field + \" is not defined in elem parameter.\"",
+      "cn": "\"Engine.setProperty(): \" + field + \" 未定义在 elem 参数中。\""
+    },
+    {
+      "en": "Engine.setProperties(): missing required parameters: elem or fieldValueMap",
+      "cn": "Engine.setProperties(): 缺少必需参数: elem 或 fieldValueMap"
+    },
+    {
+      "en": "Engine.setElemsProperty(): missing required parameters: elems or field",
+      "cn": "Engine.setElemsProperty(): 缺少必需参数: elems 或 field"
+    },
+    {
+      "en": "Engine.deleteElements(): missing required parameters: models or views",
+      "cn": "Engine.deleteElements(): 缺少必需参数: models 或 views"
+    },
+    {
+      "en": "Engine.addItem(): missing required parameters: elem or field",
+      "cn": "Engine.addItem(): 缺少必需参数: elem 或 field"
+    },
+    {
+      "en": "Engine.removeItem(): missing required parameters: elem or field",
+      "cn": "Engine.removeItem(): 缺少必需参数: elem 或 field"
+    },
+    {
+      "en": "Engine.moveUp(): missing required parameters: parent or field",
+      "cn": "Engine.moveUp(): 缺少必需参数: parent 或 field"
+    },
+    {
+      "en": "Engine.moveDown(): missing required parameters: parent or field",
+      "cn": "Engine.moveDown(): 缺少必需参数: parent 或 field"
+    },
+    {
+      "en": "Engine.relocate(): missing required parameters: elem, newOwner or field",
+      "cn": "Engine.relocate(): 缺少必需参数: elem, newOwner 或 field"
+    },
+    {
+      "en": "Engine.moveView(): missing required parameters: editor or views",
+      "cn": "Engine.moveView(): 缺少必需参数: editor 或 views"
+    },
+    {
+      "en": "Engine.moveView(): dx and dy should be number type",
+      "cn": "Engine.moveView(): dx 和 dy 应为数字类型"
+    },
+    {
+      "en": "Engine.moveParasiticView(): missing required parameters: editor or view",
+      "cn": "Engine.moveParasiticView(): 缺少必需参数: editor 或 view"
+    },
+    {
+      "en": "Engine.moveParasiticView(): alpha and distance should be number type",
+      "cn": "Engine.moveParasiticView(): alpha 和 distance 应为数字类型"
+    },
+    {
+      "en": "Engine.resizeNode(): missing required parameters: editor or node",
+      "cn": "Engine.resizeNode(): 缺少必需参数: editor 或 node"
+    },
+    {
+      "en": "Engine.resizeNode(): left, top, right and bottom should be number type",
+      "cn": "Engine.resizeNode(): left, top, right 和 bottom 应为数字类型"
+    },
+    {
+      "en": "Engine.modifyEdge(): missing required parameters: editor, edge, or points",
+      "cn": "Engine.modifyEdge(): 缺少必需参数: editor, edge, 或 points"
+    },
+    {
+      "en": "Engine.reconnectEdge(): missing required parameters: editor, edge, points, or newParticipant",
+      "cn": "Engine.reconnectEdge(): 缺少必需参数: editor, edge, points, 或 newParticipant"
+    },
+    {
+      "en": "Engine.moveViewsChangingContainer(): missing required parameters: editor, views",
+      "cn": "Engine.moveViewsChangingContainer(): 缺少必需参数: editor, views"
+    },
+    {
+      "en": "Engine.moveViewsChangingContainer(): dx and dy should be number type",
+      "cn": "Engine.moveViewsChangingContainer(): dx 和 dy 应为数字类型"
+    },
+    {
+      "en": "Engine.setFillColor(): missing required parameters: editor, views, or color",
+      "cn": "Engine.setFillColor(): 缺少必需参数: editor, views, 或 color"
+    },
+    {
+      "en": "Engine.setLineColor(): missing required parameters: editor, views, or color",
+      "cn": "Engine.setLineColor(): 缺少必需参数: editor, views, 或 color"
+    },
+    {
+      "en": "Engine.setFont(): missing required parameters: editor, views, face, or color",
+      "cn": "Engine.setFont(): 缺少必需参数: editor, views, face, 或 color"
+    },
+    {
+      "en": "Engine.setFont(): size should be number type",
+      "cn": "Engine.setFont(): size 应为数字类型"
+    },
+    {
+      "en": "Engine.setFontColor(): missing required parameters: editor, views, or color",
+      "cn": "Engine.setFontColor(): 缺少必需参数: editor, views, 或 color"
+    },
+    {
+      "en": "Engine.setFontFace(): missing required parameters: editor, views, or fontFace",
+      "cn": "Engine.setFontFace(): 缺少必需参数: editor, views, 或 fontFace"
+    },
+    {
+      "en": "Engine.setFontSize(): missing required parameters: editor, or views",
+      "cn": "Engine.setFontSize(): 缺少必需参数: editor, 或 views"
+    },
+    {
+      "en": "Engine.setFontSize(): fontSize should be number type",
+      "cn": "Engine.setFontSize(): fontSize 应为数字类型"
+    },
+    {
+      "en": "Engine.setStereotypeDisplay(): missing required parameters: editor, views, or stereotypeDisplay",
+      "cn": "Engine.setStereotypeDisplay(): 缺少必需参数: editor, views, 或 stereotypeDisplay"
+    },
+    {
+      "en": "Engine.setLineStyle(): missing required parameters: editor, or views",
+      "cn": "Engine.setLineStyle(): 缺少必需参数: editor, 或 views"
+    },
+    {
+      "en": "Engine.setAutoResize(): missing required parameters: editor, or views",
+      "cn": "Engine.setAutoResize(): 缺少必需参数: editor, 或 views"
+    },
+    {
+      "en": "Engine.layoutDiagram(): missing required parameters: editor, or diagram",
+      "cn": "Engine.layoutDiagram(): 缺少必需参数: editor, 或 diagram"
+    }
+  ],
+  "src/engine/factory.js": [
+    {
+      "en": "{{.}} cannot be placed here.",
+      "cn": "{{.}} 不能放置在这里。"
+    },
+    {
+      "en": "Assertion failed",
+      "cn": "断言失败"
+    },
+    {
+      "en": "Factory.createDiagram(): No such function of options.id: ",
+      "cn": "Factory.createDiagram(): 没有这样的函数: options.id: "
+    },
+    {
+      "en": "Factory.createModel(): No such function of options.id: ",
+      "cn": "Factory.createModel(): 没有这样的函数: options.id: "
+    },
+    {
+      "en": "Factory.createModelAndView(): No such function of id: ",
+      "cn": "Factory.createModelAndView(): 没有这样的函数: id: "
+    },
+    {
+      "en": "Factory.createViewOf(): No function is registered for diagram type: ",
+      "cn": "Factory.createViewOf(): 没有注册的函数: diagram type: "
+    },
+    {
+      "en": "Factory.registerDiagramFn(): Already registered id: ",
+      "cn": "Factory.registerDiagramFn(): 已注册的 id: "
+    },
+    {
+      "en": "Factory.registerModelFn(): Already registered id: ",
+      "cn": "Factory.registerModelFn(): 已注册的 id: "
+    },
+    {
+      "en": "Factory.registerModelAndViewFn(): Already registered id: ",
+      "cn": "Factory.registerModelAndViewFn(): 已注册的 id: "
+    },
+    {
+      "en": "Factory.registerViewOfFn(): Already registered diagram type: ",
+      "cn": "Factory.registerViewOfFn(): 已注册的 diagram type: "
+    },
+    {
+      "en": "Relationship View is already existed in this Diagram.",
+      "cn": "此图表中已经存在关系视图。"
+    }
+  ],
+  "src/engine/font-manager.js": [
+    {
+      "en": "Error during font loading: ",
+      "cn": "字体加载时出错: "
+    }
+  ],
+  "src/engine/license-store.js": [
+    {
+      "en": "Activation failed",
+      "cn": "激活失败"
+    },
+    {
+      "en": "Deactivation failed",
+      "cn": "反激活失败"
+    },
+    {
+      "en": "License validation failed",
+      "cn": "许可证验证失败"
+    }
+  ],
+  "src/extensibility/extension-loader.js": [
+    {
+      "en": "[Extension] failed to load the file: ",
+      "cn": "[扩展] 无法加载文件: "
+    },
+    {
+      "en": "[Extension] Error -- error thrown during init for ",
+      "cn": "[扩展] 错误 -- 初始化时抛出错误: "
+    },
+    {
+      "en": "[Extension] failed to load ",
+      "cn": "[扩展] 无法加载 "
+    },
+    {
+      "en": "[Extension] Error -- could not read native directory: ",
+      "cn": "[扩展] 错误 -- 无法读取本地目录: "
+    }
+  ],
+  "src/extensibility/extension-manager-domain.js": [
+    {
+      "en": "Error while removing directory after failed installation",
+      "cn": "删除失败安装的目录时出错"
+    }
+  ],
+  "src/extensibility/package.js": [
+    {
+      "en": "Unknown installation error",
+      "cn": "未知安装错误"
+    }
+  ],
+  "src/main-process/api-server.js": [
+    {
+      "en": "No windows found",
+      "cn": "没有找到窗口"
+    },
+    {
+      "en": "Hello from StarUML API Server!",
+      "cn": "来自StarUML API服务器的问候!"
+    },
+    {
+      "en": "Invalid request body",
+      "cn": "无效的请求体"
+    },
+    {
+      "en": "Failed to start API server on port ${port}:",
+      "cn": "无法在端口 ${port} 上启动API服务器:"
+    },
+    {
+      "en": "API server running on port ${port}",
+      "cn": "API服务器运行在端口 ${port}"
+    }
+  ],
+  "src/main-process/cli.js": [
+    {
+      "en": "[Error] File not found: ",
+      "cn": "[错误]找不到文件:"
+    },
+    {
+      "en": "generates codes with ejs template",
+      "cn": "使用ejs模板生成代码"
+    },
+    {
+      "en": "model file (.mdj) to load",
+      "cn": "要加载的模型文件 (.mdj)"
+    },
+    {
+      "en": "template file (.ejs) to apply",
+      "cn": "要应用的模板文件 (.ejs)"
+    },
+    {
+      "en": "output file",
+      "cn": "输出文件"
+    },
+    {
+      "en": "query to select elements",
+      "cn": "选择元素的查询"
+    },
+    {
+      "en": "export diagram images",
+      "cn": "导出图表图片"
+    },
+    {
+      "en": "image file format",
+      "cn": "图片文件格式"
+    },
+    {
+      "en": "export HTML docs",
+      "cn": "导出HTML文档"
+    },
+    {
+      "en": "output path",
+      "cn": "输出路径"
+    },
+    {
+      "en": "export diagrams as PDF",
+      "cn": "导出图表为PDF"
+    },
+    {
+      "en": "page size",
+      "cn": "页面大小"
+    },
+    {
+      "en": "page layout",
+      "cn": "页面布局"
+    },
+    {
+      "en": "show diagram name",
+      "cn": "显示图表名称"
+    },
+    {
+      "en": "execute a command",
+      "cn": "执行命令"
+    },
+    {
+      "en": "command id to execute",
+      "cn": "要执行的命令id"
+    },
+    {
+      "en": "argument for the command",
+      "cn": "命令的参数"
+    }
+  ],
+  "src/main-process/window.js": [
+    {
+      "en": "Do you want to save the changes?",
+      "cn": "是否保存更改?"
+    },
+    {
+      "en": "\"Save Changes\"",
+      "cn": "\"保存更改\""
+    },
+    {
+      "en": "\"Save\"",
+      "cn": "\"保存\""
+    },
+    {
+      "en": "\"Don't Save\"",
+      "cn": "\"不保存\""
+    },
+    {
+      "en": "\"Cancel\"",
+      "cn": "\"取消\""
+    }
+  ],
+  "src/static/html-contents/about-dialog.html": [
+    {
+      "en": "data-title=\"About\"",
+      "cn": "data-title=\"关于\""
+    },
+    {
+      "en": ">Thirdparty softwares<",
+      "cn": ">第三方软件<"
+    }
+  ],
+  "src/static/html-contents/check-updates-dialog.html": [
+    {
+      "en": "Check for Updates",
+      "cn": "检查更新"
+    },
+    {
+      "en": ">Already up to date.<",
+      "cn": ">已经是最新版本。<"
+    }
+  ],
+  "src/static/html-contents/color-dialog.html": [
+    {
+      "en": "data-title=\"Color\"",
+      "cn": "data-title=\"颜色\""
+    },
+    {
+      "en": ">Transparent<",
+      "cn": ">透明<"
+    }
+  ],
+  "src/static/html-contents/command-palette.html": [
+    {
+      "en": "title=\"Commands\"",
+      "cn": "title=\"命令\""
+    }
+  ],
+  "src/static/html-contents/documentation-editor-view.html": [
+    {
+      "en": ">Documentation<",
+      "cn": ">文档<"
+    }
+  ],
+  "src/static/html-contents/editors-holder.html": [
+    {
+      "en": ">Editors<",
+      "cn": ">编辑器<"
+    }
+  ],
+  "src/static/html-contents/element-list-editor-dialog.html": [
+    {
+      "en": ">Add<",
+      "cn": ">添加<"
+    },
+    {
+      "en": ">Remove<",
+      "cn": ">移除<"
+    },
+    {
+      "en": ">Up<",
+      "cn": ">上移<"
+    },
+    {
+      "en": ">Down<",
+      "cn": ">下移<"
+    }
+  ],
+  "src/static/html-contents/element-list-picker-dialog.html": [
+    {
+      "en": ">Do not specify<",
+      "cn": ">不指定<"
+    }
+  ],
+  "src/static/html-contents/element-picker-dialog.html": [
+    {
+      "en": ">Do not specify<",
+      "cn": ">不指定<"
+    }
+  ],
+  "src/static/html-contents/extension-manager-dialog.html": [
+    {
+      "en": "title=\"Extension Manager\"",
+      "cn": "title=\"扩展管理器\""
+    },
+    {
+      "en": ">Registry<",
+      "cn": ">扩展市场<"
+    },
+    {
+      "en": ">Installed<",
+      "cn": ">已安装<"
+    },
+    {
+      "en": "placeholder=\"search\"",
+      "cn": "placeholder=\"搜索\""
+    },
+    {
+      "en": ">Install From Url...<",
+      "cn": ">从URL安装<"
+    }
+  ],
+  "src/static/html-contents/font-dialog.html": [
+    {
+      "en": "data-title=\"Font\"",
+      "cn": "data-title=\"字体\""
+    },
+    {
+      "en": ">Face:<",
+      "cn": ">字体:<"
+    },
+    {
+      "en": ">Size:<",
+      "cn": ">大小:<"
+    },
+    {
+      "en": ">Color:<",
+      "cn": ">颜色:<"
+    },
+    {
+      "en": ">Preview:<",
+      "cn": ">预览:<"
+    }
+  ],
+  "src/static/html-contents/input-dialog.html": [
+    {
+      "en": "data-title=\"Input\"",
+      "cn": "data-title=\"输入\""
+    }
+  ],
+  "src/static/html-contents/license-activation-dialog.html": [
+    {
+      "en": "data-title=\"License Activation\"",
+      "cn": "data-title=\"许可证激活\""
+    },
+    {
+      "en": "You're using in trial mode.",
+      "cn": "您正在试用模式下使用。"
+    },
+    {
+      "en": "You have <span class=\"trial-days-left\">0</span> days left in your trial period.",
+      "cn": "您在试用期内还有 <span class=\"trial-days-left\">0</span> 天。"
+    },
+    {
+      "en": "Your trial period has expired.",
+      "cn": "您的试用期已结束。"
+    },
+    {
+      "en": ">Status<",
+      "cn": ">状态<"
+    },
+    {
+      "en": ">Product<",
+      "cn": ">产品<"
+    },
+    {
+      "en": ">License Holder<",
+      "cn": ">许可证持有者<"
+    },
+    {
+      "en": ">Device ID<",
+      "cn": ">设备ID<"
+    },
+    {
+      "en": "Enter your license key",
+      "cn": "输入您的许可证密钥"
+    },
+    {
+      "en": "Activate",
+      "cn": "激活"
+    },
+    {
+      "en": ">Copy Device ID<",
+      "cn": ">复制设备ID<"
+    },
+    {
+      "en": ">License Manager<",
+      "cn": ">许可证管理器<"
+    },
+    {
+      "en": ">Buy Now<",
+      "cn": ">购买<"
+    },
+    {
+      "en": ">Continue<",
+      "cn": ">继续<"
+    },
+    {
+      "en": ">Viewer mode<",
+      "cn": ">查看模式<"
+    },
+    {
+      "en": ">Deactivate<",
+      "cn": ">注销<"
+    },
+    {
+      "en": ">Close<",
+      "cn": ">关闭<"
+    }
+  ],
+  "src/static/html-contents/model-explorer-view.html": [
+    {
+      "en": "Model Explorer",
+      "cn": "模型资源管理器"
+    },
+    {
+      "en": "title=\"Quick Search\"",
+      "cn": "title=\"快速搜索\""
+    }
+  ],
+  "src/static/html-contents/preference-dialog-restore.html": [
+    {
+      "en": ">Restore Default Settings<",
+      "cn": ">恢复默认设置<"
+    }
+  ],
+  "src/static/html-contents/preference-dialog.html": [
+    {
+      "en": "data-title=\"Preferences\"",
+      "cn": "data-title=\"偏好设置\""
+    }
+  ],
+  "src/static/html-contents/print-dialog.html": [
+    {
+      "en": "Print to PDF",
+      "cn": "打印到PDF"
+    },
+    {
+      "en": ">Print Range<",
+      "cn": ">打印范围<"
+    },
+    {
+      "en": "All Diagrams",
+      "cn": "所有图表"
+    },
+    {
+      "en": "Current Diagram",
+      "cn": "当前图表"
+    },
+    {
+      "en": ">Page Layout<",
+      "cn": ">页面布局<"
+    },
+    {
+      "en": ">Landscape<",
+      "cn": ">横屏<"
+    },
+    {
+      "en": ">Portrait<",
+      "cn": ">竖屏<"
+    },
+    {
+      "en": ">Show Diagram Name<",
+      "cn": ">显示图表名称<"
+    },
+    {
+      "en": ">Page Size<",
+      "cn": ">页面大小<"
+    },
+    {
+      "en": ">Executive<",
+      "cn": ">行政<"
+    },
+    {
+      "en": ">Folio<",
+      "cn": ">对开本<"
+    },
+    {
+      "en": ">Legal<",
+      "cn": ">法律<"
+    },
+    {
+      "en": ">Letter<",
+      "cn": ">信纸<"
+    },
+    {
+      "en": ">Tabloid<",
+      "cn": ">小报<"
+    }
+  ],
+  "src/static/html-contents/property-editor-view.html": [
+    {
+      "en": ">Properties<",
+      "cn": ">属性<"
+    }
+  ],
+  "src/static/html-contents/select-dropdown-dialog.html": [
+    {
+      "en": "data-title=\"Select One\"",
+      "cn": "data-title=\"选择\""
+    }
+  ],
+  "src/static/html-contents/select-radio-dialog.html": [
+    {
+      "en": "data-title=\"Select One\"",
+      "cn": "data-title=\"选择\""
+    }
+  ],
+  "src/static/html-contents/statusbar.html": [
+    {
+      "en": "Validation Results",
+      "cn": "验证结果"
+    }
+  ],
+  "src/static/html-contents/style-editor-view.html": [
+    {
+      "en": "<div>Inherit</div>",
+      "cn": "<div>继承</div>"
+    },
+    {
+      "en": ">Styles<",
+      "cn": ">样式<"
+    },
+    {
+      "en": ">\n                    Font\n                <",
+      "cn": ">\n                    字体\n                <"
+    },
+    {
+      "en": ">\n                    Color\n                <",
+      "cn": ">\n                    颜色\n                <"
+    },
+    {
+      "en": "title=\"Fill Color\"",
+      "cn": "title=\"填充颜色\""
+    },
+    {
+      "en": "title=\"Line Color\"",
+      "cn": "title=\"线条颜色\""
+    },
+    {
+      "en": "title=\"Text Color\"",
+      "cn": "title=\"文本颜色\""
+    },
+    {
+      "en": ">\n                    Line Style\n                <",
+      "cn": ">\n                    线条样式\n                <"
+    },
+    {
+      "en": "title=\"Rectilinear\"",
+      "cn": "title=\"直线\""
+    },
+    {
+      "en": "title=\"Oblique\"",
+      "cn": "title=\"斜线\""
+    },
+    {
+      "en": "title=\"Rounded Rectilinear\"",
+      "cn": "title=\"圆角直线\""
+    },
+    {
+      "en": "title=\"Curve\"",
+      "cn": "title=\"曲线\""
+    },
+    {
+      "en": "title=\"Solid\"",
+      "cn": "title=\"实线\""
+    },
+    {
+      "en": "title=\"Dotted\"",
+      "cn": "title=\"虚线\""
+    },
+    {
+      "en": "title=\"Dashed\"",
+      "cn": "title=\"点线\""
+    },
+    {
+      "en": ">\n                    Line End\n                <",
+      "cn": ">\n                    线条端点\n                <"
+    },
+    {
+      "en": "title=\"Flat (Tail)\"",
+      "cn": "title=\"平的（线尾）\""
+    },
+    {
+      "en": "title=\"Stick Arrow (Tail)\"",
+      "cn": "title=\"线性箭头（线尾）\""
+    },
+    {
+      "en": "title=\"Solid Arrow (Tail)\"",
+      "cn": "title=\"实心箭头（线尾）\""
+    },
+    {
+      "en": "title=\"Flat (Head)\"",
+      "cn": "title=\"平的（线头）\""
+    },
+    {
+      "en": "title=\"Stick Arrow (Head)\"",
+      "cn": "title=\"线性箭头（线头）\""
+    },
+    {
+      "en": "title=\"Solid Arrow (Head)\"",
+      "cn": "title=\"实心箭头（线头）\""
+    },
+    {
+      "en": ">\n                    Format\n                <",
+      "cn": ">\n                    格式\n                <"
+    },
+    {
+      "en": "title=\"Auto Resize\"",
+      "cn": "title=\"自动调整大小\""
+    },
+    {
+      "en": "title=\"Show Shadow\"",
+      "cn": "title=\"显示阴影\""
+    },
+    {
+      "en": "title=\"Word Wrap\"",
+      "cn": "title=\"自动换行\""
+    },
+    {
+      "en": "title=\"Stereotype Display\"",
+      "cn": "title=\"类型显示\""
+    },
+    {
+      "en": ">None<",
+      "cn": ">无<"
+    },
+    {
+      "en": ">Label<",
+      "cn": ">标签<"
+    },
+    {
+      "en": ">Decoration<",
+      "cn": ">修饰<"
+    },
+    {
+      "en": ">Decoration with Label<",
+      "cn": ">带标签的修饰<"
+    },
+    {
+      "en": ">Icon<",
+      "cn": ">图标<"
+    },
+    {
+      "en": ">Icon with Label<",
+      "cn": ">带标签的图标<"
+    },
+    {
+      "en": "title=\"Show Visibility\"",
+      "cn": "title=\"显示可见性\""
+    },
+    {
+      "en": "title=\"Show Namespace\"",
+      "cn": "title=\"显示命名空间\""
+    },
+    {
+      "en": "title=\"Show Property\"",
+      "cn": "title=\"显示属性\""
+    },
+    {
+      "en": "title=\"Show Type\"",
+      "cn": "title=\"显示类型\""
+    },
+    {
+      "en": "title=\"Suppress Attributes\"",
+      "cn": "title=\"隐藏属性\""
+    },
+    {
+      "en": "title=\"Suppress Operations\"",
+      "cn": "title=\"隐藏操作\""
+    },
+    {
+      "en": "title=\"Suppress Receptions\"",
+      "cn": "title=\"隐藏接收\""
+    },
+    {
+      "en": "title=\"Suppress Literals\"",
+      "cn": "title=\"隐藏字面量\""
+    },
+    {
+      "en": "title=\"Suppress Columns\"",
+      "cn": "title=\"隐藏列\""
+    },
+    {
+      "en": ">\n                    Text Alignment\n                <",
+      "cn": ">\n                    文本对齐\n                <"
+    },
+    {
+      "en": "title=\"Left\"",
+      "cn": "title=\"左对齐\""
+    },
+    {
+      "en": "title=\"Center\"",
+      "cn": "title=\"居中\""
+    },
+    {
+      "en": "title=\"Right\"",
+      "cn": "title=\"右对齐\""
+    },
+    {
+      "en": "title=\"Top\"",
+      "cn": "title=\"顶部对齐\""
+    },
+    {
+      "en": "title=\"Middle\"",
+      "cn": "title=\"居中对齐\""
+    },
+    {
+      "en": "title=\"Bottom\"",
+      "cn": "title=\"底部对齐\""
+    },
+    {
+      "en": ">\n                    Alignment\n                <",
+      "cn": ">\n                    对齐\n                <"
+    },
+    {
+      "en": "title=\"Send to Back\"",
+      "cn": "title=\"置于底部\""
+    },
+    {
+      "en": "title=\"Bring to Front\"",
+      "cn": "title=\"置于顶部\""
+    },
+    {
+      "en": "title=\"Align Left\"",
+      "cn": "title=\"左对齐(Align Left)\""
+    },
+    {
+      "en": "title=\"Align Center\"",
+      "cn": "title=\"居中对齐(Align Center)\""
+    },
+    {
+      "en": "title=\"Align Right\"",
+      "cn": "title=\"右对齐(Align Right)\""
+    },
+    {
+      "en": "title=\"Align Top\"",
+      "cn": "title=\"顶部对齐(Align Top)\""
+    },
+    {
+      "en": "title=\"Align Middle\"",
+      "cn": "title=\"垂直居中(Align Middle)\""
+    },
+    {
+      "en": "title=\"Align Bottom\"",
+      "cn": "title=\"底部对齐(Align Bottom)\""
+    },
+    {
+      "en": "title=\"Space Equally, Horizontally\"",
+      "cn": "title=\"水平等间距\""
+    },
+    {
+      "en": "title=\"Space Equally, Vertically\"",
+      "cn": "title=\"垂直等间距\""
+    },
+    {
+      "en": "title=\"Set Width Equally\"",
+      "cn": "title=\"设置宽度等距\""
+    },
+    {
+      "en": "title=\"Set Height Equally\"",
+      "cn": "title=\"设置高度等距\""
+    },
+    {
+      "en": "title=\"Set Size Equally\"",
+      "cn": "title=\"设置尺寸等距\""
+    }
+  ],
+  "src/static/html-contents/tag-editor-dialog.html": [
+    {
+      "en": "Tag Editor",
+      "cn": "标签编辑器"
+    },
+    {
+      "en": ">Add",
+      "cn": ">添加"
+    },
+    {
+      "en": ">Delete",
+      "cn": ">删除"
+    },
+    {
+      "en": ">Edit",
+      "cn": ">编辑"
+    }
+  ],
+  "src/static/html-contents/tag-value-editor-dialog.html": [
+    {
+      "en": "data-title=\"Tag\"",
+      "cn": "data-title=\"标签\""
+    },
+    {
+      "en": ">Name:<",
+      "cn": ">名称:<"
+    },
+    {
+      "en": ">Kind:<",
+      "cn": ">类型:<"
+    },
+    {
+      "en": ">string<",
+      "cn": ">字符串<"
+    },
+    {
+      "en": ">reference<",
+      "cn": ">引用<"
+    },
+    {
+      "en": ">boolean<",
+      "cn": ">布尔<"
+    },
+    {
+      "en": ">number<",
+      "cn": ">数值<"
+    },
+    {
+      "en": ">enum<",
+      "cn": ">枚举<"
+    },
+    {
+      "en": ">Value:<",
+      "cn": ">值:<"
+    },
+    {
+      "en": ">Hidden<",
+      "cn": ">隐藏<"
+    }
+  ],
+  "src/static/html-contents/text-dialog.html": [
+    {
+      "en": "Edit Text",
+      "cn": "编辑文本"
+    }
+  ],
+  "src/static/html-contents/toolbox-view.html": [
+    {
+      "en": ">Toolbox<",
+      "cn": ">工具箱<"
+    }
+  ],
+  "src/static/html-contents/validation-result-panel.html": [
+    {
+      "en": "Validation Errors",
+      "cn": "验证错误"
+    }
+  ],
+  "src/static/html-contents/working-diagrams-view.html": [
+    {
+      "en": ">Working Diagrams<",
+      "cn": ">工作图表<"
+    }
+  ],
+  "src/views/property-editor-view.js": [
+    {
+      "en": "Do you want to delete this image?",
+      "cn": "是否删除此图片?"
+    },
+    {
+      "en": "Select an image",
+      "cn": "选择一张图片"
+    },
+    {
+      "en": "Image is too large, so it will be resized smaller.",
+      "cn": "图片太大，因此会被缩小。"
+    },
+    {
+      "en": "Select Element",
+      "cn": "选择元素"
+    }
+  ],
+  "src/views/titlebar-view.js": [
+    {
+      "en": "TRIAL MODE",
+      "cn": "试用模式"
+    },
+    {
+      "en": "TRIAL EXPIRED - VIEWER MODE",
+      "cn": "试用已过期 - 查看模式"
+    }
+  ],
+  "extensions/default/find/main.js": [
+    {
+      "en": "'Find Results \"' + returnValue.keyword + '\" — ' + found.length + ' elements.'",
+      "cn": "'查找结果 \"' + returnValue.keyword + '\" — ' + found.length + ' 个元素。'"
+    }
+  ],
+  "extensions/default/robustness/main.js": [
+    {
+      "en": "Boundary requires UML Standard Profile. Do you want to apply?",
+      "cn": "边界需要UML标准配置。是否应用?"
+    },
+    {
+      "en": "Entity requires UML Standard Profile. Do you want to apply?",
+      "cn": "实体需要UML标准配置。是否应用?"
+    },
+    {
+      "en": "Control requires UML Standard Profile. Do you want to apply?",
+      "cn": "控件需要UML标准配置。是否应用?"
+    }
+  ],
+  "extensions/default/diagram-generator/main.js": [
+    {
+      "en": "To generate overview diagram, select a Package.",
+      "cn": "要生成概述图表，请选择一个包。"
+    },
+    {
+      "en": "To generate type hierarchy diagram, select a Package.",
+      "cn": "要生成类型层次图表，请选择一个包。"
+    },
+    {
+      "en": "To generate package structure diagram, select a Package.",
+      "cn": "要生成包结构图表，请选择一个包。"
+    }
+  ],
+  "extensions/essential/bpmn/bpmn-commands.js": [
+    {
+      "en": "Assign a participant",
+      "cn": "指定参与者"
+    },
+    {
+      "en": "Assign initiating participant",
+      "cn": "指定发起者"
+    }
+  ],
+  "extensions/essential/sysml/sysml-commands.js": [
+    {
+      "en": "Select Block",
+      "cn": "选择块"
+    },
+    {
+      "en": "Enter name of Block to create",
+      "cn": "创建块的名称"
+    },
+    {
+      "en": "Select ValueType",
+      "cn": "选择值类型"
+    },
+    {
+      "en": "Enter name of ValueType to create",
+      "cn": "创建值类型的名称"
+    },
+    {
+      "en": "Connected Parts (or Ports) should be typed",
+      "cn": "连接部件（或端口）应输入类型"
+    },
+    {
+      "en": "Select direction of ItemFlow",
+      "cn": "选择项目流方向"
+    },
+    {
+      "en": "Select ConstraintBlock",
+      "cn": "选择约束块"
+    },
+    {
+      "en": "Enter name of a ConstraintBlock to create",
+      "cn": "创建约束块的名称"
+    }
+  ],
+  "extensions/essential/sysml/sysml-factory.js": [
+    {
+      "en": "Invalid connection",
+      "cn": "无效的连接"
+    },
+    {
+      "en": "Port should be dropped on it's parent Block",
+      "cn": "端口应放在它的父块上"
+    },
+    {
+      "en": "Constraint Parameter should be dropped on a it's parent Constraint Parameter",
+      "cn": "约束参数应放在它的父约束参数上"
+    },
+    {
+      "en": "Only part in the block context can be dropped",
+      "cn": "只能放置在块上下文中的部件"
+    },
+    {
+      "en": "Port should be dropped on a part whose type is the port's parent Block",
+      "cn": "端口应放在类型为端口的父块的部件上"
+    }
+  ],
+  "extensions/essential/uml/uml-commands.js": [
+    {
+      "en": "Select an element to be represented as Frame",
+      "cn": "选择要用框架表示的元素"
+    },
+    {
+      "en": "already exists",
+      "cn": "已经存在"
+    },
+    {
+      "en": "UMLStandardProfile is successfully applied. Look at under Project.",
+      "cn": "UML标准配置已成功应用。请在项目中查看。"
+    },
+    {
+      "en": "Select one to create as an entry Activity",
+      "cn": "选择一个创建入口活动"
+    },
+    {
+      "en": "Select one to create as an do Activity",
+      "cn": "选择一个创建活动"
+    },
+    {
+      "en": "Select one to create as an exit Activity",
+      "cn": "选择一个创建退出活动"
+    },
+    {
+      "en": "Select one to create as an effect Behavior",
+      "cn": "选择一个创建效果行为"
+    },
+    {
+      "en": "Select kind of Constraint of Operation",
+      "cn": "选择操作约束的类型"
+    },
+    {
+      "en": "Select kind of Constraint of Behavior",
+      "cn": "选择行为约束的类型"
+    },
+    {
+      "en": "Select kind of Constraint of Action",
+      "cn": "选择动作约束的类型"
+    },
+    {
+      "en": "Enter a type name to create",
+      "cn": "创建类型名称"
+    },
+    {
+      "en": "Lifeline should represent a role. (connect 'represent' field to an Attribute of the container Collaboration)",
+      "cn": "生命线应表示角色。 (连接“表示”字段到容器协作的属性)"
+    },
+    {
+      "en": "Enter a type name to create",
+      "cn": "创建类型名称"
+    },
+    {
+      "en": "Lifeline should have a type.",
+      "cn": "生命线应有类型。"
+    },
+    {
+      "en": "Enter an operation name to create",
+      "cn": "创建操作名称"
+    },
+    {
+      "en": "Enter a signal name to create",
+      "cn": "创建信号名称"
+    },
+    {
+      "en": "Select one to create as a do Activity",
+      "cn": "选择一个创建活动"
+    }
+  ],
+  "extensions/essential/uml/uml-factory.js": [
+    {
+      "en": "Invalid connection",
+      "cn": "无效的连接"
+    },
+    {
+      "en": "Port should be dropped on it's parent Classifier",
+      "cn": "端口应放在它的父分类器上"
+    },
+    {
+      "en": "Part (Attribute) should be dropped on it's parent Classifier",
+      "cn": "部件（属性）应放在它的父分类器上"
+    },
+    {
+      "en": "Connector View is already existed in this Diagram.",
+      "cn": "连接器视图已经存在于此图表中。"
+    },
+    {
+      "en": "AssociationClass View is already existed in this Diagram.",
+      "cn": "关联类视图已经存在于此图表中。"
+    },
+    {
+      "en": "Relationship View is already existed in this Diagram.",
+      "cn": "关联视图已经存在于此图表中。"
+    },
+    {
+      "en": "ConnectionPointReference should be dropped on it's parent State",
+      "cn": "连接点引用应放在它的父状态上"
+    },
+    {
+      "en": "Pin should be dropped on it's parent Action",
+      "cn": "引脚应放在它的父动作上"
+    }
+  ],
+  "resources/default/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "About StarUML",
+          "cn": "关于StarUML"
+        },
+        {
+          "en": "Preferences...",
+          "cn": "偏好设置..."
+        },
+        {
+          "en": "Services",
+          "cn": "服务"
+        },
+        {
+          "en": "Hide StarUML",
+          "cn": "隐藏StarUML"
+        },
+        {
+          "en": "Hide Others",
+          "cn": "隐藏其他"
+        },
+        {
+          "en": "Show All",
+          "cn": "显示全部"
+        },
+        {
+          "en": "Quit",
+          "cn": "退出"
+        },
+        {
+          "en": "File",
+          "cn": "文件"
+        },
+        {
+          "en": "New",
+          "cn": "新建"
+        },
+        {
+          "en": "New From Template",
+          "cn": "从模版新建"
+        },
+        {
+          "en": "Open...",
+          "cn": "打开..."
+        },
+        {
+          "en": "Open Recent",
+          "cn": "最近的项目"
+        },
+        {
+          "en": "Save",
+          "cn": "保存"
+        },
+        {
+          "en": "Save As...",
+          "cn": "另存为..."
+        },
+        {
+          "en": "Close",
+          "cn": "关闭"
+        },
+        {
+          "en": "Import",
+          "cn": "导入"
+        },
+        {
+          "en": "Fragment...",
+          "cn": "片段..."
+        },
+        {
+          "en": "Export",
+          "cn": "导出"
+        },
+        {
+          "en": "Export Diagram As",
+          "cn": "导出图表为"
+        },
+        {
+          "en": "All to PNGs...",
+          "cn": "全部转为PNG..."
+        },
+        {
+          "en": "All to JPEGs...",
+          "cn": "全部转为JPEG..."
+        },
+        {
+          "en": "All to SVGs...",
+          "cn": "全部转为SVG..."
+        },
+        {
+          "en": "Print to PDF...",
+          "cn": "打印为PDF..."
+        },
+        {
+          "en": "Edit",
+          "cn": "编辑"
+        },
+        {
+          "en": "Undo",
+          "cn": "撤销"
+        },
+        {
+          "en": "Redo",
+          "cn": "重做"
+        },
+        {
+          "en": "Cut",
+          "cn": "剪切"
+        },
+        {
+          "en": "Copy",
+          "cn": "复制"
+        },
+        {
+          "en": "Copy Diagram As Image",
+          "cn": "将图标复制为图像"
+        },
+        {
+          "en": "Paste",
+          "cn": "粘贴"
+        },
+        {
+          "en": "Delete",
+          "cn": "删除"
+        },
+        {
+          "en": "Delete From Model",
+          "cn": "从模型中删除"
+        },
+        {
+          "en": "Move Up",
+          "cn": "上移"
+        },
+        {
+          "en": "Move Down",
+          "cn": "下移"
+        },
+        {
+          "en": "Select All",
+          "cn": "全选"
+        },
+        {
+          "en": "Select In Explorer",
+          "cn": "在资源管理器中选择"
+        },
+        {
+          "en": "Select In Diagram",
+          "cn": "在图表中选择"
+        },
+        {
+          "en": "Open Sub-Diagram",
+          "cn": "打开子图"
+        },
+        {
+          "en": "Format",
+          "cn": "格式"
+        },
+        {
+          "en": "Font...",
+          "cn": "字体..."
+        },
+        {
+          "en": "Fill Color...",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Line Color...",
+          "cn": "线条颜色"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "RoundRect",
+          "cn": "圆角矩形"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "Auto Resize",
+          "cn": "自动调整大小"
+        },
+        {
+          "en": "Show Shadow",
+          "cn": "显示阴影"
+        },
+        {
+          "en": "Model",
+          "cn": "模型"
+        },
+        {
+          "en": "Add Diagram",
+          "cn": "添加图表"
+        },
+        {
+          "en": "Add",
+          "cn": "添加"
+        },
+        {
+          "en": "Tag Editor...",
+          "cn": "标签编辑器..."
+        },
+        {
+          "en": "Tools",
+          "cn": "工具"
+        },
+        {
+          "en": "Extension Manager...",
+          "cn": "扩展管理器..."
+        },
+        {
+          "en": "View",
+          "cn": "视图"
+        },
+        {
+          "en": "Quick Find...",
+          "cn": "快速查找..."
+        },
+        {
+          "en": "Command Palette...",
+          "cn": "命令面板..."
+        },
+        {
+          "en": "Close Diagram",
+          "cn": "关闭当前图表"
+        },
+        {
+          "en": "Close Other Diagrams",
+          "cn": "关闭其他图表"
+        },
+        {
+          "en": "Close All Diagrams",
+          "cn": "关闭所有图表"
+        },
+        {
+          "en": "Next Diagram",
+          "cn": "下一个图表"
+        },
+        {
+          "en": "Previous Diagram",
+          "cn": "上一个图表"
+        },
+        {
+          "en": "Zoom In",
+          "cn": "放大"
+        },
+        {
+          "en": "Zoom Out",
+          "cn": "缩小"
+        },
+        {
+          "en": "Actual Size",
+          "cn": "实际大小"
+        },
+        {
+          "en": "Fit To Window",
+          "cn": "适合窗口"
+        },
+        {
+          "en": "Show Grid",
+          "cn": "显示网格"
+        },
+        {
+          "en": "Snap to Grid",
+          "cn": "对齐网格"
+        },
+        {
+          "en": "Sidebar",
+          "cn": "侧边栏"
+        },
+        {
+          "en": "Navigator",
+          "cn": "导航栏"
+        },
+        {
+          "en": "Toolbar",
+          "cn": "工具栏"
+        },
+        {
+          "en": "Statusbar",
+          "cn": "状态栏"
+        },
+        {
+          "en": "Toolbox",
+          "cn": "工具箱"
+        },
+        {
+          "en": "Editors",
+          "cn": "编辑器"
+        },
+        {
+          "en": "Window",
+          "cn": "窗口"
+        },
+        {
+          "en": "Minimize",
+          "cn": "最小化"
+        },
+        {
+          "en": "Zoom",
+          "cn": "缩放"
+        },
+        {
+          "en": "Enter Full Screen",
+          "cn": "进入全屏"
+        },
+        {
+          "en": "Full Screen",
+          "cn": "全屏"
+        },
+        {
+          "en": "Inherit Style",
+          "cn": "继承样式"
+        },
+        {
+          "en": "Bring All to Front",
+          "cn": "置顶"
+        },
+        {
+          "en": "Help",
+          "cn": "帮助"
+        },
+        {
+          "en": "Check For Updates...",
+          "cn": "检查更新..."
+        },
+        {
+          "en": "License Activation...",
+          "cn": "许可证激活..."
+        },
+        {
+          "en": "Enter License Key...",
+          "cn": "输入许可证密钥"
+        },
+        {
+          "en": "Delete License Key...",
+          "cn": "删除许可证密钥"
+        },
+        {
+          "en": "Documentation...",
+          "cn": "文档..."
+        },
+        {
+          "en": "Forum...",
+          "cn": "论坛..."
+        },
+        {
+          "en": "Request Feature...",
+          "cn": "请求新功能..."
+        },
+        {
+          "en": "Rename",
+          "cn": "重命名"
+        },
+        {
+          "en": "Sort By Added",
+          "cn": "按添加顺序排序"
+        },
+        {
+          "en": "Sort By Name",
+          "cn": "按名字排序"
+        },
+        {
+          "en": "Show Stereotype Text",
+          "cn": "显示类型标签文本"
+        },
+        {
+          "en": "Expand All",
+          "cn": "展开全部"
+        },
+        {
+          "en": "Collapse All",
+          "cn": "折叠全部"
+        },
+        {
+          "en": "Exit",
+          "cn": "退出"
+        }
+      ]
+    }
+  ],
+  "resources/default/preferences/*.json": [
+    {
+      "name": [
+        {
+          "en": "General",
+          "cn": "常规"
+        }
+      ],
+      "text": [
+        {
+          "en": "General",
+          "cn": "常规"
+        },
+        {
+          "en": "Auto load working file",
+          "cn": "自动加载工作文件"
+        },
+        {
+          "en": "Auto backup",
+          "cn": "自动备份"
+        },
+        {
+          "en": "UI Theme",
+          "cn": "界面主题"
+        },
+        {
+          "en": "Default Theme",
+          "cn": "默认主题"
+        },
+        {
+          "en": "Dark theme",
+          "cn": "深色主题"
+        },
+        {
+          "en": "Light theme",
+          "cn": "浅色主题"
+        },
+        {
+          "en": "Default View Style",
+          "cn": "默认视图样式"
+        },
+        {
+          "en": "Font Face",
+          "cn": "字体"
+        },
+        {
+          "en": "Font Size",
+          "cn": "字号"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Line Color",
+          "cn": "线条颜色"
+        },
+        {
+          "en": "Font Color",
+          "cn": "字体颜色"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "Show Shadow",
+          "cn": "显示阴影"
+        },
+        {
+          "en": "DiagramEditor",
+          "cn": "图表编辑器"
+        },
+        {
+          "en": "Show Grid",
+          "cn": "显示网格"
+        },
+        {
+          "en": "Snap to Grid",
+          "cn": "对齐网格"
+        },
+        {
+          "en": "Grid Size",
+          "cn": "网格尺寸"
+        },
+        {
+          "en": "Background Color",
+          "cn": "背景颜色"
+        },
+        {
+          "en": "Grid Color",
+          "cn": "网格颜色"
+        },
+        {
+          "en": "Validation",
+          "cn": "验证"
+        },
+        {
+          "en": "Validate Model",
+          "cn": "验证模型"
+        },
+        {
+          "en": "Check Updates",
+          "cn": "检查更新"
+        },
+        {
+          "en": "Check Updates on Start",
+          "cn": "启动时检查更新"
+        }
+      ],
+      "description": [
+        {
+          "en": "Load the latest working file automatically when app launch",
+          "cn": "启动时自动加载最新的工作文件"
+        },
+        {
+          "en": "Backup working model automatically",
+          "cn": "自动备份工作模型"
+        },
+        {
+          "en": "Default theme of UI.",
+          "cn": "界面默认主题"
+        },
+        {
+          "en": "Default font face of view elements.",
+          "cn": "视图元素的默认字体"
+        },
+        {
+          "en": "Default font size of view elements.",
+          "cn": "视图元素的默认字号"
+        },
+        {
+          "en": "Default fill color of view elements.",
+          "cn": "视图元素的默认填充颜色"
+        },
+        {
+          "en": "Default fill color of view elements.",
+          "cn": "视图元素的默认线条颜色"
+        },
+        {
+          "en": "Default line color of view elements.",
+          "cn": "视图元素的默认字体颜色"
+        },
+        {
+          "en": "Default font color of view elements.",
+          "cn": "视图元素的默认字体样式"
+        },
+        {
+          "en": "Default line style of edge-type view elements.",
+          "cn": "边类型视图元素的默认线条样式"
+        },
+        {
+          "en": "Default showing shadow of view elements.",
+          "cn": "视图元素的默认显示阴影"
+        },
+        {
+          "en": "Show grid on diagram editor.",
+          "cn": "在图表编辑器上显示网格"
+        },
+        {
+          "en": "Snap to grid on diagram editor.",
+          "cn": "在图表编辑器上对齐网格"
+        },
+        {
+          "en": "Default size (width and height) of grid.",
+          "cn": "默认网格尺寸"
+        },
+        {
+          "en": "Background color of diagram editor.",
+          "cn": "图表编辑器的背景颜色"
+        },
+        {
+          "en": "Grid color of diagram editor.",
+          "cn": "图表编辑器的网格颜色"
+        },
+        {
+          "en": "Validate model asynchronously when opening or saving files.",
+          "cn": "打开或保存文件时异步验证模型"
+        },
+        {
+          "en": "Check updates on application start.",
+          "cn": "启动应用时检查更新"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/aws/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "AWS Architecture",
+          "cn": "AWS 架构"
+        },
+        {
+          "en": "AWS Architecture Diagram",
+          "cn": "AWS 架构图"
+        },
+        {
+          "en": "AWS Model",
+          "cn": "AWS 模型"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/azure/menus/*.json": [
+    {
+      "en": "\"Azure Architecture\"",
+      "cn": "\"Azure 架构\""
+    },
+    {
+      "en": "Azure Architecture Diagram",
+      "cn": "\"Azure 架构图\""
+    },
+    {
+      "en": "\"Azure Model\"",
+      "cn": "\"Azure 模型\""
+    }
+  ],
+  "extensions/essential/bpmn/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "BPMN Business Process Modeling",
+          "cn": "BPMN 业务流程建模"
+        },
+        {
+          "en": "BPMN Diagram",
+          "cn": "BPMN 图"
+        },
+        {
+          "en": "Business Process",
+          "cn": "业务流程"
+        },
+        {
+          "en": "Collaboration",
+          "cn": "协作"
+        },
+        {
+          "en": "Choreography",
+          "cn": "协作"
+        },
+        {
+          "en": "Global Conversation",
+          "cn": "全局会话"
+        },
+        {
+          "en": "Task",
+          "cn": "任务"
+        },
+        {
+          "en": "Sub Process",
+          "cn": "子流程"
+        },
+        {
+          "en": "Gateway",
+          "cn": "网关"
+        },
+        {
+          "en": "Start Event",
+          "cn": "开始事件"
+        },
+        {
+          "en": "Intermediate Event (Throw)",
+          "cn": "中间事件 (抛出)"
+        },
+        {
+          "en": "Intermediate Event (Catch)",
+          "cn": "中间事件 (捕获)"
+        },
+        {
+          "en": "End Event",
+          "cn": "结束事件"
+        },
+        {
+          "en": "Compensate Event Definition",
+          "cn": "补偿事件定义"
+        },
+        {
+          "en": "Cancel Event Definition",
+          "cn": "取消事件定义"
+        },
+        {
+          "en": "Error Event Definition",
+          "cn": "错误事件定义"
+        },
+        {
+          "en": "Link Event Definition",
+          "cn": "链接事件定义"
+        },
+        {
+          "en": "Signal Event Definition",
+          "cn": "信号事件定义"
+        },
+        {
+          "en": "Timer Event Definition",
+          "cn": "定时器事件定义"
+        },
+        {
+          "en": "Escalation Event Definition",
+          "cn": "扩大事件定义"
+        },
+        {
+          "en": "Message Event Definition",
+          "cn": "消息事件定义"
+        },
+        {
+          "en": "Terminate Event Definition",
+          "cn": "终止事件定义"
+        },
+        {
+          "en": "Conditional Event Definition",
+          "cn": "条件事件定义"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/c4/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "C4 Model",
+          "cn": "C4 模型"
+        },
+        {
+          "en": "C4 Diagram",
+          "cn": "C4 图"
+        },
+        {
+          "en": "C4 Person",
+          "cn": "C4 角色"
+        },
+        {
+          "en": "C4 Software System",
+          "cn": "C4 软件系统"
+        },
+        {
+          "en": "C4 Container",
+          "cn": "C4 容器"
+        },
+        {
+          "en": "C4 Component",
+          "cn": "C4 组件"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/common/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Tag",
+          "cn": "标签"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/dfd/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Data Flow Diagram",
+          "cn": "数据流图"
+        },
+        {
+          "en": "Data Flow Model",
+          "cn": "数据流模型"
+        },
+        {
+          "en": "External Entity",
+          "cn": "外部实体"
+        },
+        {
+          "en": "Process",
+          "cn": "过程"
+        },
+        {
+          "en": "Data Store",
+          "cn": "数据存储"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/erd/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Data Model",
+          "cn": "数据模型"
+        },
+        {
+          "en": "Suppress Columns",
+          "cn": "隐藏列"
+        },
+        {
+          "en": "ER Diagram",
+          "cn": "ER 图"
+        },
+        {
+          "en": "Entity",
+          "cn": "实体"
+        },
+        {
+          "en": "Column",
+          "cn": "列"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/flowchart/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Flowchart Diagram",
+          "cn": "流程图"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/gcp/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "GCP Architecture",
+          "cn": "GCP 架构"
+        },
+        {
+          "en": "GCP Architecture Diagram",
+          "cn": "GCP 架构图"
+        },
+        {
+          "en": "GCP Model",
+          "cn": "GCP 模型"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/mindmap/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Mindmap Diagram",
+          "cn": "思维导图(Mindmap Diagram)"
+        },
+        {
+          "en": "Mindmap",
+          "cn": "思维导图(Mindmap)"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/sysml/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Requirement Diagram",
+          "cn": "需求图"
+        },
+        {
+          "en": "Block Definition Diagram",
+          "cn": "块定义图"
+        },
+        {
+          "en": "Internal Block Diagram",
+          "cn": "内部块图"
+        },
+        {
+          "en": "Parametric Diagram",
+          "cn": "参数图"
+        },
+        {
+          "en": "Requirement",
+          "cn": "需求"
+        },
+        {
+          "en": "Block",
+          "cn": "块"
+        },
+        {
+          "en": "Value Type",
+          "cn": "值类型"
+        },
+        {
+          "en": "Interface Block",
+          "cn": "接口块"
+        },
+        {
+          "en": "Constraint Block",
+          "cn": "约束块"
+        },
+        {
+          "en": "Part",
+          "cn": "部件"
+        },
+        {
+          "en": "Reference",
+          "cn": "参考"
+        },
+        {
+          "en": "Value",
+          "cn": "值"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "Property",
+          "cn": "属性"
+        },
+        {
+          "en": "Constraint Property",
+          "cn": "约束属性"
+        },
+        {
+          "en": "Flow Property",
+          "cn": "流属性"
+        },
+        {
+          "en": "Parameter",
+          "cn": "参数"
+        },
+        {
+          "en": "Suppress Property Values",
+          "cn": "隐藏属性值"
+        },
+        {
+          "en": "Suppress Constraints",
+          "cn": "隐藏约束"
+        },
+        {
+          "en": "Suppress Parts",
+          "cn": "隐藏部件"
+        },
+        {
+          "en": "Suppress Ports",
+          "cn": "隐藏端口"
+        },
+        {
+          "en": "Suppress References",
+          "cn": "隐藏参考"
+        },
+        {
+          "en": "Suppress Values",
+          "cn": "隐藏值"
+        },
+        {
+          "en": "Suppress Properties",
+          "cn": "隐藏属性"
+        },
+        {
+          "en": "Suppress Flow Properties",
+          "cn": "隐藏流属性"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/uml/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "UML Minimal",
+          "cn": "简单的UML"
+        },
+        {
+          "en": "UML Conventional",
+          "cn": "传统的UML"
+        },
+        {
+          "en": "4+1 View Model",
+          "cn": "4+1视图模型"
+        },
+        {
+          "en": "Rational",
+          "cn": "Rational文件"
+        },
+        {
+          "en": "Stereotype Display",
+          "cn": "类型显示"
+        },
+        {
+          "en": "None",
+          "cn": "无"
+        },
+        {
+          "en": "Label",
+          "cn": "标签"
+        },
+        {
+          "en": "Decoration",
+          "cn": "修饰"
+        },
+        {
+          "en": "Decoration with Label",
+          "cn": "带标签的修饰"
+        },
+        {
+          "en": "Icon",
+          "cn": "图标"
+        },
+        {
+          "en": "Icon with Label",
+          "cn": "带标签的图标"
+        },
+        {
+          "en": "Word Wrap",
+          "cn": "自动换行"
+        },
+        {
+          "en": "Show Visibility",
+          "cn": "显示可见性"
+        },
+        {
+          "en": "Show Namespace",
+          "cn": "显示命名空间"
+        },
+        {
+          "en": "Show Property",
+          "cn": "显示属性"
+        },
+        {
+          "en": "Show Type",
+          "cn": "显示类型"
+        },
+        {
+          "en": "Show Multiplicity",
+          "cn": "显示多重度"
+        },
+        {
+          "en": "Show Operation Signature",
+          "cn": "显示操作签名"
+        },
+        {
+          "en": "Show Diagram Name",
+          "cn": "显示图表名称"
+        },
+        {
+          "en": "Suppress Attributes",
+          "cn": "隐藏属性"
+        },
+        {
+          "en": "Suppress Operations",
+          "cn": "隐藏操作"
+        },
+        {
+          "en": "Suppress Receptions",
+          "cn": "隐藏接收"
+        },
+        {
+          "en": "Suppress Literals",
+          "cn": "隐藏字面量"
+        },
+        {
+          "en": "Class Diagram",
+          "cn": "类图"
+        },
+        {
+          "en": "Package Diagram",
+          "cn": "包图"
+        },
+        {
+          "en": "Object Diagram",
+          "cn": "对象图"
+        },
+        {
+          "en": "Composite Structure Diagram",
+          "cn": "组合结构图"
+        },
+        {
+          "en": "Component Diagram",
+          "cn": "组件图"
+        },
+        {
+          "en": "Deployment Diagram",
+          "cn": "部署图"
+        },
+        {
+          "en": "Use Case Diagram",
+          "cn": "用例图"
+        },
+        {
+          "en": "Sequence Diagram",
+          "cn": "顺序图/序列图"
+        },
+        {
+          "en": "Communication Diagram",
+          "cn": "通信图"
+        },
+        {
+          "en": "Timing Diagram",
+          "cn": "时序图"
+        },
+        {
+          "en": "Interaction Overview Diagram",
+          "cn": "交互概述图"
+        },
+        {
+          "en": "Information Flow Diagram",
+          "cn": "信息流图"
+        },
+        {
+          "en": "Statechart Diagram",
+          "cn": "状态图"
+        },
+        {
+          "en": "Activity Diagram",
+          "cn": "活动图"
+        },
+        {
+          "en": "Profile Diagram",
+          "cn": "配置图/外廓图"
+        },
+        {
+          "en": "Template Parameter",
+          "cn": "模板参数"
+        },
+        {
+          "en": "Template Parameter Substitution",
+          "cn": "模板参数替换"
+        },
+        {
+          "en": "Parameter",
+          "cn": "参数"
+        },
+        {
+          "en": "Enumeration Literal",
+          "cn": "枚举常量"
+        },
+        {
+          "en": "Attribute",
+          "cn": "属性"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "Operation",
+          "cn": "操作"
+        },
+        {
+          "en": "Reception",
+          "cn": "接收"
+        },
+        {
+          "en": "Extension Point",
+          "cn": "扩展点"
+        },
+        {
+          "en": "Slot",
+          "cn": "插槽"
+        },
+        {
+          "en": "Interaction Operand",
+          "cn": "交互操作数"
+        },
+        {
+          "en": "Model",
+          "cn": "模型"
+        },
+        {
+          "en": "Subsystem",
+          "cn": "子系统"
+        },
+        {
+          "en": "Package",
+          "cn": "包"
+        },
+        {
+          "en": "Profile",
+          "cn": "配置文件"
+        },
+        {
+          "en": "Class",
+          "cn": "类"
+        },
+        {
+          "en": "Interface",
+          "cn": "接口"
+        },
+        {
+          "en": "Signal",
+          "cn": "信号"
+        },
+        {
+          "en": "DataType",
+          "cn": "数据类型"
+        },
+        {
+          "en": "PrimitiveType",
+          "cn": "原始类型"
+        },
+        {
+          "en": "Enumeration",
+          "cn": "枚举"
+        },
+        {
+          "en": "Artifact",
+          "cn": "物件"
+        },
+        {
+          "en": "Component",
+          "cn": "组件"
+        },
+        {
+          "en": "Node",
+          "cn": "节点"
+        },
+        {
+          "en": "UseCase",
+          "cn": "用例"
+        },
+        {
+          "en": "Actor",
+          "cn": "角色"
+        },
+        {
+          "en": "Stereotype",
+          "cn": "类型"
+        },
+        {
+          "en": "Information Item",
+          "cn": "信息项"
+        },
+        {
+          "en": "Collaboration",
+          "cn": "协作"
+        },
+        {
+          "en": "Interaction",
+          "cn": "交互"
+        },
+        {
+          "en": "State Machine",
+          "cn": "状态机"
+        },
+        {
+          "en": "Activity",
+          "cn": "活动"
+        },
+        {
+          "en": "Opaque Behavior",
+          "cn": "不透明行为"
+        },
+        {
+          "en": "State",
+          "cn": "状态"
+        },
+        {
+          "en": "Region",
+          "cn": "区域"
+        },
+        {
+          "en": "Entry Activity",
+          "cn": "进入活动"
+        },
+        {
+          "en": "Do Activity",
+          "cn": "执行活动"
+        },
+        {
+          "en": "Exit Activity",
+          "cn": "退出活动"
+        },
+        {
+          "en": "Trigger",
+          "cn": "触发器"
+        },
+        {
+          "en": "Effect",
+          "cn": "效果"
+        },
+        {
+          "en": "Action",
+          "cn": "行为"
+        },
+        {
+          "en": "Constraint",
+          "cn": "约束"
+        },
+        {
+          "en": "Apply Profile",
+          "cn": "应用配置文件"
+        },
+        {
+          "en": "UML Standard Profile (v2)",
+          "cn": "UML 标准配置文件 (v2)"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/wireframe/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Wireframe Model",
+          "cn": "框图模型"
+        },
+        {
+          "en": "Wireframe Diagram",
+          "cn": "线框图"
+        },
+        {
+          "en": "Wireframe",
+          "cn": "线框"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/aws/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Arrow",
+          "cn": "箭头"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of arrow.",
+          "cn": "箭头的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/azure/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Arrow",
+          "cn": "箭头"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of arrow.",
+          "cn": "箭头的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/bpmn/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Activity",
+          "cn": "活动"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Event",
+          "cn": "事件"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Message",
+          "cn": "信息"
+        },
+        {
+          "en": "Gateway",
+          "cn": "网关"
+        },
+        {
+          "en": "Data Object",
+          "cn": "数据对象"
+        },
+        {
+          "en": "Conversation",
+          "cn": "会话"
+        },
+        {
+          "en": "Sequence Flow",
+          "cn": "顺序流"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "Message Flow",
+          "cn": "信息流"
+        },
+        {
+          "en": "Conversation Link",
+          "cn": "会话链接"
+        }
+      ],
+      "description": [
+        {
+          "en": "Fill color of Activity.",
+          "cn": "活动的填充颜色"
+        },
+        {
+          "en": "Fill color of Event.",
+          "cn": "事件的填充颜色"
+        },
+        {
+          "en": "Fill color of Message.",
+          "cn": "信息的填充颜色"
+        },
+        {
+          "en": "Fill color of Gateway.",
+          "cn": "网关的填充颜色"
+        },
+        {
+          "en": "Fill color of Data Object.",
+          "cn": "数据对象的填充颜色"
+        },
+        {
+          "en": "Fill color of Conversation.",
+          "cn": "会话的填充颜色"
+        },
+        {
+          "en": "Default line style of sequence flow.",
+          "cn": "顺序流的默认线条样式"
+        },
+        {
+          "en": "Default line style of message flow.",
+          "cn": "信息流的默认线条样式"
+        },
+        {
+          "en": "Default line style of conversation link.",
+          "cn": "会话链接的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/c4/preferences/*.json": [
+    {
+      "name": [
+        {
+          "en": "C4 Model",
+          "cn": "C4 模型"
+        }
+      ],
+      "text": [
+        {
+          "en": "Person",
+          "cn": "角色"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Software System",
+          "cn": "软件系统"
+        },
+        {
+          "en": "Container",
+          "cn": "容器"
+        },
+        {
+          "en": "Component",
+          "cn": "组件"
+        },
+        {
+          "en": "Relationship",
+          "cn": "关系"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        }
+      ],
+      "description": [
+        {
+          "en": "Fill color of Person.",
+          "cn": "角色的填充颜色"
+        },
+        {
+          "en": "Fill color of Software System.",
+          "cn": "软件系统的填充颜色"
+        },
+        {
+          "en": "Fill color of Container.",
+          "cn": "容器的填充颜色"
+        },
+        {
+          "en": "Fill color of Component.",
+          "cn": "组件的填充颜色"
+        },
+        {
+          "en": "Default line style of relationship.",
+          "cn": "关系的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/dfd/preferences/*.json": [
+    {
+      "name": [
+        {
+          "en": "Data Flow Diagram",
+          "cn": "数据流图"
+        }
+      ],
+      "text": [
+        {
+          "en": "Data Flow",
+          "cn": "数据流"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "External Entity",
+          "cn": "外部实体"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Process",
+          "cn": "过程"
+        },
+        {
+          "en": "Data Store",
+          "cn": "数据存储"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of Data Flow.",
+          "cn": "数据流的默认线条样式"
+        },
+        {
+          "en": "Fill color of External Entity.",
+          "cn": "外部实体的填充颜色"
+        },
+        {
+          "en": "Fill color of Process.",
+          "cn": "过程的填充颜色"
+        },
+        {
+          "en": "Fill color of Data Store.",
+          "cn": "数据存储的填充颜色"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/erd/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Entity",
+          "cn": "实体"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Relationship",
+          "cn": "关系"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        }
+      ],
+      "description": [
+        {
+          "en": "Fill color of Subsystem.",
+          "cn": "子系统的填充颜色"
+        },
+        {
+          "en": "Default line style of entity relationships.",
+          "cn": "实体关系的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/flowchart/preferences/*.json": [
+    {
+      "name": [
+        {
+          "en": "Flowchart",
+          "cn": "流程图"
+        }
+      ],
+      "text": [
+        {
+          "en": "Flow",
+          "cn": "流"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "Process",
+          "cn": "过程"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Terminator",
+          "cn": "终止器"
+        },
+        {
+          "en": "Decision",
+          "cn": "决策"
+        },
+        {
+          "en": "Delay",
+          "cn": "延迟"
+        },
+        {
+          "en": "Predefined Process",
+          "cn": "预定义过程"
+        },
+        {
+          "en": "Alternate Process",
+          "cn": "交替过程"
+        },
+        {
+          "en": "Data",
+          "cn": "数据"
+        },
+        {
+          "en": "Document",
+          "cn": "文档"
+        },
+        {
+          "en": "Multi-Document",
+          "cn": "多文档"
+        },
+        {
+          "en": "Preparation",
+          "cn": "准备"
+        },
+        {
+          "en": "Display",
+          "cn": "显示"
+        },
+        {
+          "en": "Manual Input",
+          "cn": "手工输入"
+        },
+        {
+          "en": "Manual Operation",
+          "cn": "手工操作"
+        },
+        {
+          "en": "Card",
+          "cn": "卡片"
+        },
+        {
+          "en": "Punched Tape",
+          "cn": "打孔带"
+        },
+        {
+          "en": "Connector",
+          "cn": "连接器"
+        },
+        {
+          "en": "Off-Page Connector",
+          "cn": "离页连接器"
+        },
+        {
+          "en": "Or",
+          "cn": "或"
+        },
+        {
+          "en": "Summing Junction",
+          "cn": "求和连接器"
+        },
+        {
+          "en": "Collate",
+          "cn": "汇总"
+        },
+        {
+          "en": "Sort",
+          "cn": "排序"
+        },
+        {
+          "en": "Merge",
+          "cn": "合并"
+        },
+        {
+          "en": "Extract",
+          "cn": "提取"
+        },
+        {
+          "en": "Stored Data",
+          "cn": "存储数据"
+        },
+        {
+          "en": "Database",
+          "cn": "数据库"
+        },
+        {
+          "en": "Direct Access Storage",
+          "cn": "直接访问存储"
+        },
+        {
+          "en": "Internal Storage",
+          "cn": "内部存储"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of flow.",
+          "cn": "流的默认线条样式"
+        },
+        {
+          "en": "Fill color of Process.",
+          "cn": "过程的填充颜色"
+        },
+        {
+          "en": "Fill color of Terminator.",
+          "cn": "终止器的填充颜色"
+        },
+        {
+          "en": "Fill color of Decision.",
+          "cn": "决策的填充颜色"
+        },
+        {
+          "en": "Fill color of Delay.",
+          "cn": "延迟的填充颜色"
+        },
+        {
+          "en": "Fill color of Predefined Process.",
+          "cn": "预定义过程的填充颜色"
+        },
+        {
+          "en": "Fill color of Alternate Process.",
+          "cn": "备选过程的填充颜色"
+        },
+        {
+          "en": "Fill color of Data.",
+          "cn": "数据的填充颜色"
+        },
+        {
+          "en": "Fill color of Document.",
+          "cn": "文档的填充颜色"
+        },
+        {
+          "en": "Fill color of Multi-Document.",
+          "cn": "多文档的填充颜色"
+        },
+        {
+          "en": "Fill color of Preparation.",
+          "cn": "准备的填充颜色"
+        },
+        {
+          "en": "Fill color of Display.",
+          "cn": "显示的填充颜色"
+        },
+        {
+          "en": "Fill color of Manual Input.",
+          "cn": "手动输入的填充颜色"
+        },
+        {
+          "en": "Fill color of Manual Operation.",
+          "cn": "手动操作的填充颜色"
+        },
+        {
+          "en": "Fill color of Card.",
+          "cn": "卡片的填充颜色"
+        },
+        {
+          "en": "Fill color of Punched Tape.",
+          "cn": "打孔带的填充颜色"
+        },
+        {
+          "en": "Fill color of Connector.",
+          "cn": "连接器的填充颜色"
+        },
+        {
+          "en": "Fill color of Off-Page Connector.",
+          "cn": "离页连接器的填充颜色"
+        },
+        {
+          "en": "Fill color of Or.",
+          "cn": "或的填充颜色"
+        },
+        {
+          "en": "Fill color of Summing Junction.",
+          "cn": "总和连接器的填充颜色"
+        },
+        {
+          "en": "Fill color of Collate.",
+          "cn": "汇总的填充颜色"
+        },
+        {
+          "en": "Fill color of Sort.",
+          "cn": "排序的填充颜色"
+        },
+        {
+          "en": "Fill color of Merge.",
+          "cn": "合并的填充颜色"
+        },
+        {
+          "en": "Fill color of Extract.",
+          "cn": "提取的填充颜色"
+        },
+        {
+          "en": "Fill color of Stored Data.",
+          "cn": "存储数据的填充颜色"
+        },
+        {
+          "en": "Fill color of Database.",
+          "cn": "数据库的填充颜色"
+        },
+        {
+          "en": "Fill color of Direct Access Storage.",
+          "cn": "直接访问存储的填充颜色"
+        },
+        {
+          "en": "Fill color of Internal Storage.",
+          "cn": "内部存储的填充颜色"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/gcp/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Path",
+          "cn": "路径"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of Path.",
+          "cn": "路径的默认线条样式"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/mindmap/preferences/*.json": [
+    {
+      "name": [
+        {
+          "en": "Mindmap",
+          "cn": "思维导图"
+        }
+      ],
+      "text": [
+        {
+          "en": "Edge",
+          "cn": "边"
+        },
+        {
+          "en": "Line Style",
+          "cn": "线条样式"
+        },
+        {
+          "en": "Rectilinear",
+          "cn": "直线"
+        },
+        {
+          "en": "Oblique",
+          "cn": "斜线"
+        },
+        {
+          "en": "Rounded Rectilinear",
+          "cn": "圆角直线"
+        },
+        {
+          "en": "Curve",
+          "cn": "曲线"
+        },
+        {
+          "en": "Node",
+          "cn": "节点"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Line Color",
+          "cn": "线条颜色"
+        }
+      ],
+      "description": [
+        {
+          "en": "Default line style of edge.",
+          "cn": "边的默认线条样式"
+        },
+        {
+          "en": "Fill color of Node.",
+          "cn": "节点的填充颜色"
+        },
+        {
+          "en": "Line color of Node.",
+          "cn": "节点的线条颜色"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/sysml/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Requirement",
+          "cn": "需求"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Block",
+          "cn": "块"
+        },
+        {
+          "en": "Suppress Constraints",
+          "cn": "隐藏约束"
+        },
+        {
+          "en": "Suppress Parts",
+          "cn": "隐藏部件"
+        },
+        {
+          "en": "Suppress Ports",
+          "cn": "隐藏端口"
+        },
+        {
+          "en": "Suppress References",
+          "cn": "隐藏参考"
+        },
+        {
+          "en": "Suppress Values",
+          "cn": "隐藏值"
+        },
+        {
+          "en": "Suppress FlowProperties",
+          "cn": "隐藏流属性"
+        },
+        {
+          "en": "InterfaceBlock",
+          "cn": "接口块"
+        },
+        {
+          "en": "ConstraintBlock",
+          "cn": "约束块"
+        },
+        {
+          "en": "ValueType",
+          "cn": "值类型"
+        },
+        {
+          "en": "Part",
+          "cn": "部件"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "ConstraintProperty",
+          "cn": "约束属性"
+        },
+        {
+          "en": "ConstraintParameter",
+          "cn": "约束参数"
+        }
+      ],
+      "description": [
+        {
+          "en": "Fill color of Requirement.",
+          "cn": "需求的填充颜色"
+        },
+        {
+          "en": "Fill color of Block.",
+          "cn": "块的填充颜色"
+        },
+        {
+          "en": "Suppress constraint compartment of Block.",
+          "cn": "隐藏块的约束部件"
+        },
+        {
+          "en": "Suppress part compartment of Block.",
+          "cn": "隐藏块的部分部件"
+        },
+        {
+          "en": "Suppress port compartment of Block.",
+          "cn": "隐藏块的端口部件"
+        },
+        {
+          "en": "Suppress reference compartment of Block.",
+          "cn": "隐藏块的参考部件"
+        },
+        {
+          "en": "Suppress value compartment of Block.",
+          "cn": "隐藏块的值部件"
+        },
+        {
+          "en": "Suppress flow property compartment of Block.",
+          "cn": "隐藏块的流属性部件"
+        },
+        {
+          "en": "Fill color of InterfaceBlock.",
+          "cn": "接口块的填充颜色"
+        },
+        {
+          "en": "Fill color of ConstraintBlock.",
+          "cn": "约束块的填充颜色"
+        },
+        {
+          "en": "Fill color of ValueType.",
+          "cn": "值类型的填充颜色"
+        },
+        {
+          "en": "Fill color of Part.",
+          "cn": "部件的填充颜色"
+        },
+        {
+          "en": "Fill color of Port.",
+          "cn": "端口的填充颜色"
+        },
+        {
+          "en": "Fill color of ConstraintProperty.",
+          "cn": "约束属性的填充颜色"
+        },
+        {
+          "en": "Fill color of ConstraintParameter.",
+          "cn": "约束参数的填充颜色"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/uml/preferences/*.json": [
+    {
+      "text": [
+        {
+          "en": "Package",
+          "cn": "包"
+        },
+        {
+          "en": "Fill Color",
+          "cn": "填充颜色"
+        },
+        {
+          "en": "Use Default",
+          "cn": "使用默认"
+        },
+        {
+          "en": "Model",
+          "cn": "模型"
+        },
+        {
+          "en": "Subsystem",
+          "cn": "子系统"
+        },
+        {
+          "en": "Class",
+          "cn": "类"
+        },
+        {
+          "en": "Stereotype Display",
+          "cn": "类型显示"
+        },
+        {
+          "en": "None",
+          "cn": "无"
+        },
+        {
+          "en": "Label",
+          "cn": "标签"
+        },
+        {
+          "en": "Decoration",
+          "cn": "修饰"
+        },
+        {
+          "en": "Decoration with Label",
+          "cn": "带标签的修饰"
+        },
+        {
+          "en": "Icon",
+          "cn": "图标"
+        },
+        {
+          "en": "Icon with Label",
+          "cn": "图标带标签"
+        },
+        {
+          "en": "Suppress Attributes",
+          "cn": "隐藏属性"
+        },
+        {
+          "en": "Suppress Attributes",
+          "cn": "隐藏属性"
+        },
+        {
+          "en": "Suppress Operations",
+          "cn": "隐藏操作"
+        },
+        {
+          "en": "Interface",
+          "cn": "接口"
+        },
+        {
+          "en": "Stereotype Display",
+          "cn": "类型显示"
+        },
+        {
+          "en": "Signal",
+          "cn": "信号"
+        },
+        {
+          "en": "DataType",
+          "cn": "数据类型"
+        },
+        {
+          "en": "Primitive Type",
+          "cn": "原始类型"
+        },
+        {
+          "en": "Enumeration",
+          "cn": "枚举"
+        },
+        {
+          "en": "Suppress Literals",
+          "cn": "隐藏字面量"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "Part",
+          "cn": "部件"
+        },
+        {
+          "en": "Collaboration",
+          "cn": "协作"
+        },
+        {
+          "en": "Collaboration Use",
+          "cn": "协作使用"
+        },
+        {
+          "en": "Artifact",
+          "cn": "工件"
+        },
+        {
+          "en": "Component",
+          "cn": "组件"
+        },
+        {
+          "en": "Node",
+          "cn": "节点"
+        },
+        {
+          "en": "Object",
+          "cn": "对象"
+        },
+        {
+          "en": "Artifact Instance",
+          "cn": "工件实例"
+        },
+        {
+          "en": "Component Instance",
+          "cn": "组件实例"
+        },
+        {
+          "en": "Node Instance",
+          "cn": "节点实例"
+        },
+        {
+          "en": "Use Case",
+          "cn": "用例"
+        },
+        {
+          "en": "Actor",
+          "cn": "角色"
+        },
+        {
+          "en": "Lifeline",
+          "cn": "生命线"
+        },
+        {
+          "en": "State",
+          "cn": "状态"
+        },
+        {
+          "en": "Action",
+          "cn": "动作"
+        },
+        {
+          "en": "Object Node",
+          "cn": "对象节点"
+        },
+        {
+          "en": "MetaClass",
+          "cn": "元类"
+        },
+        {
+          "en": "Note",
+          "cn": "注释/笔记"
+        },
+        {
+          "en": "Stereotype",
+          "cn": "类型(Stereotype)"
+        }
+      ],
+      "description": [
+        {
+          "en": "Fill color of Package.",
+          "cn": "包的填充颜色"
+        },
+        {
+          "en": "Fill color of Model.",
+          "cn": "模型的填充颜色"
+        },
+        {
+          "en": "Fill color of Subsystem.",
+          "cn": "子系统的填充颜色"
+        },
+        {
+          "en": "Fill color of Class.",
+          "cn": "类的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Class.",
+          "cn": "类的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Class.",
+          "cn": "隐藏类的属性"
+        },
+        {
+          "en": "Suppress operations of Class.",
+          "cn": "隐藏类的操作"
+        },
+        {
+          "en": "Fill color of Interface.",
+          "cn": "接口的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Interface.",
+          "cn": "接口的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Interface.",
+          "cn": "隐藏接口的属性"
+        },
+        {
+          "en": "Suppress operations of Interface.",
+          "cn": "隐藏接口的操作"
+        },
+        {
+          "en": "Fill color of Signal.",
+          "cn": "信号的填充颜色"
+        },
+        {
+          "en": "Fill color of DataType.",
+          "cn": "数据类型的填充颜色"
+        },
+        {
+          "en": "Fill color of Primitive Type.",
+          "cn": "原始类型的填充颜色"
+        },
+        {
+          "en": "Fill color of Enumeration.",
+          "cn": "枚举的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Enumeration.",
+          "cn": "枚举的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Enumeration.",
+          "cn": "隐藏枚举的属性"
+        },
+        {
+          "en": "Suppress operations of Enumeration.",
+          "cn": "隐藏枚举的操作"
+        },
+        {
+          "en": "Suppress literals of Enumeration.",
+          "cn": "隐藏枚举的文字"
+        },
+        {
+          "en": "Fill color of Port.",
+          "cn": "端口的填充颜色"
+        },
+        {
+          "en": "Fill color of Part.",
+          "cn": "部件的填充颜色"
+        },
+        {
+          "en": "Fill color of Collaboration.",
+          "cn": "协作的填充颜色"
+        },
+        {
+          "en": "Fill color of Collaboration Use.",
+          "cn": "协作使用的填充颜色"
+        },
+        {
+          "en": "Fill color of Artifact.",
+          "cn": "物件的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Artifact.",
+          "cn": "物件的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Artifact.",
+          "cn": "隐藏物件的属性"
+        },
+        {
+          "en": "Suppress operations of Artifact.",
+          "cn": "隐藏物件的操作"
+        },
+        {
+          "en": "Fill color of Component.",
+          "cn": "组件的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Component.",
+          "cn": "组件的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Component.",
+          "cn": "隐藏组件的属性"
+        },
+        {
+          "en": "Suppress operations of Component.",
+          "cn": "隐藏组件的操作"
+        },
+        {
+          "en": "Fill color of Node.",
+          "cn": "节点的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Node.",
+          "cn": "节点的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Node.",
+          "cn": "隐藏节点的属性"
+        },
+        {
+          "en": "Suppress operations of Node.",
+          "cn": "隐藏节点的操作"
+        },
+        {
+          "en": "Fill color of Object.",
+          "cn": "对象的填充颜色"
+        },
+        {
+          "en": "Fill color of Artifact Instance.",
+          "cn": "物件实例的填充颜色"
+        },
+        {
+          "en": "Fill color of Component Instance.",
+          "cn": "组件实例的填充颜色"
+        },
+        {
+          "en": "Fill color of Node Instance.",
+          "cn": "节点实例的填充颜色"
+        },
+        {
+          "en": "Fill color of Use Case.",
+          "cn": "用例的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Use Case.",
+          "cn": "用例的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Use Case.",
+          "cn": "隐藏用例的属性"
+        },
+        {
+          "en": "Suppress operations of Use Case.",
+          "cn": "隐藏用例的操作"
+        },
+        {
+          "en": "Fill color of Actor.",
+          "cn": "角色的填充颜色"
+        },
+        {
+          "en": "Default stereotype display of Actor.",
+          "cn": "角色的默认显示类型"
+        },
+        {
+          "en": "Suppress attributes of Actor.",
+          "cn": "隐藏角色的属性"
+        },
+        {
+          "en": "Suppress operations of Actor.",
+          "cn": "隐藏角色的操作"
+        },
+        {
+          "en": "Fill color of Lifeline.",
+          "cn": "生命线的填充颜色"
+        },
+        {
+          "en": "Fill color of State.",
+          "cn": "状态的填充颜色"
+        },
+        {
+          "en": "Fill color of Action.",
+          "cn": "动作的填充颜色"
+        },
+        {
+          "en": "Fill color of Object Node.",
+          "cn": "对象节点的填充颜色"
+        },
+        {
+          "en": "Fill color of MetaClass.",
+          "cn": "元类的填充颜色"
+        },
+        {
+          "en": "Fill color of Stereotype.",
+          "cn": "类型的填充颜色"
+        },
+        {
+          "en": "Fill color of Note.",
+          "cn": "注释的填充颜色"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/aws/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "AWS Group",
+          "cn": "AWS 组"
+        },
+        {
+          "en": "AWS Generic Group",
+          "cn": "AWS 通用组"
+        },
+        {
+          "en": "AWS Availability Zone",
+          "cn": "AWS 可用区"
+        },
+        {
+          "en": "AWS Security Group",
+          "cn": "AWS 安全组"
+        },
+        {
+          "en": "AWS Service",
+          "cn": "AWS 服务"
+        },
+        {
+          "en": "AWS Resource",
+          "cn": "AWS 资源"
+        },
+        {
+          "en": "AWS General Resource",
+          "cn": "AWS 通用资源"
+        },
+        {
+          "en": "AWS Callout",
+          "cn": "AWS 调用"
+        },
+        {
+          "en": "AWS Arrow",
+          "cn": "AWS 箭头"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/bpmn/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "BPMN Basic",
+          "cn": "BPMN 基础"
+        },
+        {
+          "en": "Task",
+          "cn": "任务"
+        },
+        {
+          "en": "Gateway",
+          "cn": "网关"
+        },
+        {
+          "en": "Start Event",
+          "cn": "开始事件"
+        },
+        {
+          "en": "End Event",
+          "cn": "结束事件"
+        },
+        {
+          "en": "Sequence Flow",
+          "cn": "顺序流"
+        },
+        {
+          "en": "BPMN Artifact",
+          "cn": "BPMN 部件"
+        },
+        {
+          "en": "Text Annotation",
+          "cn": "文本注解"
+        },
+        {
+          "en": "Group",
+          "cn": "分组"
+        },
+        {
+          "en": "Association",
+          "cn": "关联"
+        },
+        {
+          "en": "BPMN Swimlanes",
+          "cn": "BPMN 水平分支"
+        },
+        {
+          "en": "Pool",
+          "cn": "池"
+        },
+        {
+          "en": "Pool (Vert)",
+          "cn": "池 (垂直)"
+        },
+        {
+          "en": "Lane",
+          "cn": "道"
+        },
+        {
+          "en": "Lane (Vert)",
+          "cn": "道 (垂直)"
+        },
+        {
+          "en": "BPMN Activities",
+          "cn": "BPMN 活动"
+        },
+        {
+          "en": "Send Task",
+          "cn": "发送任务"
+        },
+        {
+          "en": "Receive Task",
+          "cn": "接收任务"
+        },
+        {
+          "en": "Service Task",
+          "cn": "服务任务"
+        },
+        {
+          "en": "User Task",
+          "cn": "用户任务"
+        },
+        {
+          "en": "Manual Task",
+          "cn": "手动任务"
+        },
+        {
+          "en": "Business Rule Task",
+          "cn": "业务规则任务"
+        },
+        {
+          "en": "Script Task",
+          "cn": "脚本任务"
+        },
+        {
+          "en": "Call Activity",
+          "cn": "调用活动"
+        },
+        {
+          "en": "Sub Process",
+          "cn": "子过程"
+        },
+        {
+          "en": "Ad-Hoc Sub Process",
+          "cn": "自定义子过程"
+        },
+        {
+          "en": "Transaction",
+          "cn": "事务"
+        },
+        {
+          "en": "BPMN Gateways",
+          "cn": "BPMN 网关"
+        },
+        {
+          "en": "Gateway (Exclusive)",
+          "cn": "互斥网关"
+        },
+        {
+          "en": "Gateway (Event-Based)",
+          "cn": "事件网关"
+        },
+        {
+          "en": "Gateway (Inclusive)",
+          "cn": "包容网关"
+        },
+        {
+          "en": "Gateway (Complex)",
+          "cn": "复杂网关"
+        },
+        {
+          "en": "Gateway (Parallel)",
+          "cn": "并行网关"
+        },
+        {
+          "en": "BPMN Events",
+          "cn": "BPMN 事件"
+        },
+        {
+          "en": "Start Event",
+          "cn": "开始事件"
+        },
+        {
+          "en": "Intermediate Event (Throw)",
+          "cn": "中间事件 (抛出)"
+        },
+        {
+          "en": "Intermediate Event (Catch)",
+          "cn": "中间事件 (捕获)"
+        },
+        {
+          "en": "Boundary Event",
+          "cn": "边界事件"
+        },
+        {
+          "en": "End Event",
+          "cn": "结束事件"
+        },
+        {
+          "en": "BPMN Data",
+          "cn": "BPMN 数据"
+        },
+        {
+          "en": "Data Object",
+          "cn": "数据对象"
+        },
+        {
+          "en": "Data Store",
+          "cn": "数据存储"
+        },
+        {
+          "en": "Data Input",
+          "cn": "数据输入"
+        },
+        {
+          "en": "Data Output",
+          "cn": "数据输出"
+        },
+        {
+          "en": "Data Association",
+          "cn": "数据关联"
+        },
+        {
+          "en": "BPMN Message",
+          "cn": "BPMN 消息"
+        },
+        {
+          "en": "Message",
+          "cn": "消息"
+        },
+        {
+          "en": "Message Flow",
+          "cn": "消息流"
+        },
+        {
+          "en": "BPMN Choreography",
+          "cn": "BPMN 通信"
+        },
+        {
+          "en": "Choreography Task",
+          "cn": "通信任务"
+        },
+        {
+          "en": "Sub Choreography",
+          "cn": "子通信"
+        },
+        {
+          "en": "Message Link",
+          "cn": "消息链接"
+        },
+        {
+          "en": "BPMN Conversation",
+          "cn": "BPMN 对话"
+        },
+        {
+          "en": "Conversation",
+          "cn": "对话"
+        },
+        {
+          "en": "Sub Conversation",
+          "cn": "子对话"
+        },
+        {
+          "en": "Call Conversation",
+          "cn": "调用对话"
+        },
+        {
+          "en": "Conversation Link",
+          "cn": "对话链接"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/c4/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "C4 Model",
+          "cn": "C4模型"
+        },
+        {
+          "en": "Person",
+          "cn": "角色"
+        },
+        {
+          "en": "Software System",
+          "cn": "软件系统"
+        },
+        {
+          "en": "Container",
+          "cn": "容器"
+        },
+        {
+          "en": "Container (Database)",
+          "cn": "容器 (数据库)"
+        },
+        {
+          "en": "Container (Web App)",
+          "cn": "容器 (Web 应用)"
+        },
+        {
+          "en": "Container (Desktop App)",
+          "cn": "容器 (桌面应用)"
+        },
+        {
+          "en": "Container (Mobile App)",
+          "cn": "容器 (移动应用)"
+        },
+        {
+          "en": "Component",
+          "cn": "组件"
+        },
+        {
+          "en": "Element",
+          "cn": "元素"
+        },
+        {
+          "en": "Relationship",
+          "cn": "关系"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/common/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Annotations",
+          "cn": "注解类"
+        },
+        {
+          "en": "Text",
+          "cn": "文本"
+        },
+        {
+          "en": "Text Box",
+          "cn": "文本框"
+        },
+        {
+          "en": "Free Line",
+          "cn": "线"
+        },
+        {
+          "en": "Note",
+          "cn": "注释"
+        },
+        {
+          "en": "Note Link",
+          "cn": "注释连接"
+        },
+        {
+          "en": "Hyperlink",
+          "cn": "超链接"
+        },
+        {
+          "en": "Rectangle",
+          "cn": "矩形"
+        },
+        {
+          "en": "Rounded Rectangle",
+          "cn": "圆角矩形"
+        },
+        {
+          "en": "Ellipse",
+          "cn": "椭圆"
+        },
+        {
+          "en": "Image",
+          "cn": "图片"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/dfd/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Data Flow",
+          "cn": "数据流"
+        },
+        {
+          "en": "External Entity",
+          "cn": "外部实体"
+        },
+        {
+          "en": "Process",
+          "cn": "过程"
+        },
+        {
+          "en": "Data Store",
+          "cn": "数据存储"
+        },
+        {
+          "en": "Data Flow",
+          "cn": "数据流"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/erd/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Entity-Relationship",
+          "cn": "实体关系"
+        },
+        {
+          "en": "Entity",
+          "cn": "实体"
+        },
+        {
+          "en": "One to One Relationship",
+          "cn": "一对一关系"
+        },
+        {
+          "en": "One to Many Relationship",
+          "cn": "一对多关系"
+        },
+        {
+          "en": "Many to Many Relationship",
+          "cn": "多对多关系"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/flowchart/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Flowchart",
+          "cn": "流程图"
+        },
+        {
+          "en": "Flow",
+          "cn": "流"
+        },
+        {
+          "en": "Process",
+          "cn": "过程"
+        },
+        {
+          "en": "Terminator",
+          "cn": "终止器"
+        },
+        {
+          "en": "Decision",
+          "cn": "决策"
+        },
+        {
+          "en": "Delay",
+          "cn": "延迟"
+        },
+        {
+          "en": "Predefined Process",
+          "cn": "预定义流程"
+        },
+        {
+          "en": "Alternate Process",
+          "cn": "备选流程"
+        },
+        {
+          "en": "Data",
+          "cn": "数据"
+        },
+        {
+          "en": "Document",
+          "cn": "文档"
+        },
+        {
+          "en": "Multi-Document",
+          "cn": "多文档"
+        },
+        {
+          "en": "Preparation",
+          "cn": "准备"
+        },
+        {
+          "en": "Display",
+          "cn": "显示"
+        },
+        {
+          "en": "Manual Input",
+          "cn": "手动输入"
+        },
+        {
+          "en": "Manual Operation",
+          "cn": "手动操作"
+        },
+        {
+          "en": "Card",
+          "cn": "卡片"
+        },
+        {
+          "en": "Punched Tape",
+          "cn": "打孔带"
+        },
+        {
+          "en": "Connector",
+          "cn": "连接器"
+        },
+        {
+          "en": "Off-Page Connector",
+          "cn": "离页连接器"
+        },
+        {
+          "en": "Or",
+          "cn": "或"
+        },
+        {
+          "en": "Summing Junction",
+          "cn": "求和连接器"
+        },
+        {
+          "en": "Collate",
+          "cn": "汇总"
+        },
+        {
+          "en": "Sort",
+          "cn": "排序"
+        },
+        {
+          "en": "Merge",
+          "cn": "合并"
+        },
+        {
+          "en": "Extract",
+          "cn": "提取"
+        },
+        {
+          "en": "Stored Data",
+          "cn": "存储数据"
+        },
+        {
+          "en": "Database",
+          "cn": "数据库"
+        },
+        {
+          "en": "Direct Access Storage",
+          "cn": "直接访问存储"
+        },
+        {
+          "en": "Internal Storage",
+          "cn": "内部存储"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/gcp/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Zone",
+          "cn": "区域"
+        },
+        {
+          "en": "User",
+          "cn": "用户"
+        },
+        {
+          "en": "Product",
+          "cn": "产品"
+        },
+        {
+          "en": "Service",
+          "cn": "服务"
+        },
+        {
+          "en": "Path",
+          "cn": "路径"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/mindmap/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Mindmap",
+          "cn": "思维导图"
+        },
+        {
+          "en": "Node",
+          "cn": "节点"
+        },
+        {
+          "en": "Edge",
+          "cn": "边"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/sysml/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Requirements",
+          "cn": "需求类"
+        },
+        {
+          "en": "Package",
+          "cn": "包"
+        },
+        {
+          "en": "Requirement",
+          "cn": "需求"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "Copy",
+          "cn": "拷贝"
+        },
+        {
+          "en": "DeriveReqt",
+          "cn": "求值"
+        },
+        {
+          "en": "Verify",
+          "cn": "验证"
+        },
+        {
+          "en": "Satisfy",
+          "cn": "满足"
+        },
+        {
+          "en": "Refine",
+          "cn": "精化"
+        },
+        {
+          "en": "Containment",
+          "cn": "包含"
+        },
+        {
+          "en": "Block",
+          "cn": "块"
+        },
+        {
+          "en": "Value Type",
+          "cn": "值类型"
+        },
+        {
+          "en": "Interface Block",
+          "cn": "接口块"
+        },
+        {
+          "en": "Constraint Block",
+          "cn": "约束块"
+        },
+        {
+          "en": "Enumeration",
+          "cn": "枚举"
+        },
+        {
+          "en": "Signal",
+          "cn": "信号"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "Object",
+          "cn": "对象"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "Association",
+          "cn": "关联"
+        },
+        {
+          "en": "Directed Association",
+          "cn": "有向关联"
+        },
+        {
+          "en": "Aggregation",
+          "cn": "聚合"
+        },
+        {
+          "en": "Composition",
+          "cn": "组合"
+        },
+        {
+          "en": "Dependency",
+          "cn": "依赖"
+        },
+        {
+          "en": "Generalization",
+          "cn": "继承"
+        },
+        {
+          "en": "Interface Realization",
+          "cn": "接口实现"
+        },
+        {
+          "en": "Connector",
+          "cn": "连接器"
+        },
+        {
+          "en": "Containment",
+          "cn": "包含"
+        },
+        {
+          "en": "Internal Block",
+          "cn": "内部块"
+        },
+        {
+          "en": "Part",
+          "cn": "部件"
+        },
+        {
+          "en": "Reference",
+          "cn": "参考"
+        },
+        {
+          "en": "Value",
+          "cn": "值"
+        },
+        {
+          "en": "Parametric",
+          "cn": "参数化"
+        },
+        {
+          "en": "Constraint Property",
+          "cn": "约束属性"
+        },
+        {
+          "en": "Constraint Parameter",
+          "cn": "约束参数"
+        },
+        {
+          "en": "Viewpoints",
+          "cn": "观点"
+        },
+        {
+          "en": "Stakeholder",
+          "cn": "参与者"
+        },
+        {
+          "en": "View",
+          "cn": "视图"
+        },
+        {
+          "en": "Viewpoint",
+          "cn": "观点"
+        },
+        {
+          "en": "Conform",
+          "cn": "符合"
+        },
+        {
+          "en": "Expose",
+          "cn": "暴露"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/uml/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Information Flows",
+          "cn": "信息流"
+        },
+        {
+          "en": "Information Item",
+          "cn": "信息项"
+        },
+        {
+          "en": "Information Flow",
+          "cn": "信息流项"
+        },
+        {
+          "en": "Use Cases",
+          "cn": "用例类"
+        },
+        {
+          "en": "Package",
+          "cn": "包"
+        },
+        {
+          "en": "Use Case Subject",
+          "cn": "用例主体"
+        },
+        {
+          "en": "Use Case",
+          "cn": "用例"
+        },
+        {
+          "en": "Actor",
+          "cn": "角色"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "Association",
+          "cn": "关联"
+        },
+        {
+          "en": "Directed Association",
+          "cn": "有向关联"
+        },
+        {
+          "en": "Generalization",
+          "cn": "继承"
+        },
+        {
+          "en": "Dependency",
+          "cn": "依赖"
+        },
+        {
+          "en": "Include",
+          "cn": "包含"
+        },
+        {
+          "en": "Extend",
+          "cn": "扩展"
+        },
+        {
+          "en": "Classes (Basic)",
+          "cn": "类(基本)"
+        },
+        {
+          "en": "Class",
+          "cn": "类"
+        },
+        {
+          "en": "Interface",
+          "cn": "接口"
+        },
+        {
+          "en": "Aggregation",
+          "cn": "聚合"
+        },
+        {
+          "en": "Composition",
+          "cn": "组合"
+        },
+        {
+          "en": "Dependency",
+          "cn": "依赖"
+        },
+        {
+          "en": "Generalization",
+          "cn": "继承"
+        },
+        {
+          "en": "Interface Realization",
+          "cn": "接口实现"
+        },
+        {
+          "en": "Classes (Advanced)",
+          "cn": "类(高级)"
+        },
+        {
+          "en": "Signal",
+          "cn": "信号"
+        },
+        {
+          "en": "DataType",
+          "cn": "数据类型"
+        },
+        {
+          "en": "PrimitiveType",
+          "cn": "原始类型"
+        },
+        {
+          "en": "Enumeration",
+          "cn": "枚举"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "N-ary Association Node",
+          "cn": "N-ary关联节点"
+        },
+        {
+          "en": "Association Class",
+          "cn": "关联类"
+        },
+        {
+          "en": "Template Binding",
+          "cn": "模板绑定"
+        },
+        {
+          "en": "Realization",
+          "cn": "实现"
+        },
+        {
+          "en": "Packages",
+          "cn": "包类"
+        },
+        {
+          "en": "Package",
+          "cn": "包"
+        },
+        {
+          "en": "Model",
+          "cn": "模型"
+        },
+        {
+          "en": "Subsystem",
+          "cn": "子系统"
+        },
+        {
+          "en": "Containment",
+          "cn": "包含"
+        },
+        {
+          "en": "Dependency",
+          "cn": "依赖"
+        },
+        {
+          "en": "Component",
+          "cn": "组件"
+        },
+        {
+          "en": "Artifact",
+          "cn": "组件实例"
+        },
+        {
+          "en": "Interface",
+          "cn": "接口"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "Dependency",
+          "cn": "依赖"
+        },
+        {
+          "en": "Component Realization",
+          "cn": "组件实现"
+        },
+        {
+          "en": "Deployment",
+          "cn": "部署"
+        },
+        {
+          "en": "Node",
+          "cn": "节点"
+        },
+        {
+          "en": "Communication Path",
+          "cn": "通信路径"
+        },
+        {
+          "en": "Composite Structure",
+          "cn": "组合结构"
+        },
+        {
+          "en": "Collaboration",
+          "cn": "协作"
+        },
+        {
+          "en": "Port",
+          "cn": "端口"
+        },
+        {
+          "en": "Part",
+          "cn": "部件"
+        },
+        {
+          "en": "Connector",
+          "cn": "连接器"
+        },
+        {
+          "en": "Collaboration Use",
+          "cn": "协作使用"
+        },
+        {
+          "en": "Role Binding",
+          "cn": "角色绑定"
+        },
+        {
+          "en": "Instances",
+          "cn": "实例类"
+        },
+        {
+          "en": "Object",
+          "cn": "对象"
+        },
+        {
+          "en": "Artifact Instance",
+          "cn": "工件实例"
+        },
+        {
+          "en": "Component Instance",
+          "cn": "组件实例"
+        },
+        {
+          "en": "Node Instance",
+          "cn": "节点实例"
+        },
+        {
+          "en": "Link",
+          "cn": "连接"
+        },
+        {
+          "en": "Directed Link",
+          "cn": "有向连接"
+        },
+        {
+          "en": "Link Object",
+          "cn": "连接对象"
+        },
+        {
+          "en": "Interactions (Basic)",
+          "cn": "交互（基本）"
+        },
+        {
+          "en": "Lifeline",
+          "cn": "生命线"
+        },
+        {
+          "en": "Message",
+          "cn": "消息"
+        },
+        {
+          "en": "Self Message",
+          "cn": "自消息"
+        },
+        {
+          "en": "Async Message",
+          "cn": "异步消息"
+        },
+        {
+          "en": "Reply Message",
+          "cn": "回复消息"
+        },
+        {
+          "en": "Create Message",
+          "cn": "创建消息"
+        },
+        {
+          "en": "Delete Message",
+          "cn": "删除消息"
+        },
+        {
+          "en": "Async Signal Message",
+          "cn": "异步信号消息"
+        },
+        {
+          "en": "Interactions (Advanced)",
+          "cn": "交互（高级）"
+        },
+        {
+          "en": "Found Message",
+          "cn": "找到消息"
+        },
+        {
+          "en": "Lost Message",
+          "cn": "丢失消息"
+        },
+        {
+          "en": "Endpoint",
+          "cn": "端点"
+        },
+        {
+          "en": "Gate",
+          "cn": "系统边界(Gate)"
+        },
+        {
+          "en": "State Invariant",
+          "cn": "状态不变量"
+        },
+        {
+          "en": "Continuation",
+          "cn": "连续"
+        },
+        {
+          "en": "Combined Fragment",
+          "cn": "组合片段"
+        },
+        {
+          "en": "Interaction Use",
+          "cn": "交互使用"
+        },
+        {
+          "en": "Time Constraint",
+          "cn": "时间约束"
+        },
+        {
+          "en": "Duration Constraint",
+          "cn": "持续时间约束"
+        },
+        {
+          "en": "Communication",
+          "cn": "通信"
+        },
+        {
+          "en": "Self Connector",
+          "cn": "自连接器"
+        },
+        {
+          "en": "Forward Message",
+          "cn": "向前消息"
+        },
+        {
+          "en": "Reverse Message",
+          "cn": "向后消息"
+        },
+        {
+          "en": "Timing",
+          "cn": "时序"
+        },
+        {
+          "en": "State/Condition",
+          "cn": "状态/条件"
+        },
+        {
+          "en": "Time Segment",
+          "cn": "时间段"
+        },
+        {
+          "en": "Time Tick",
+          "cn": "时间片"
+        },
+        {
+          "en": "Time Constraint",
+          "cn": "时间约束"
+        },
+        {
+          "en": "Duration Constraint",
+          "cn": "持续时间约束"
+        },
+        {
+          "en": "Interaction Overview",
+          "cn": "交互概述"
+        },
+        {
+          "en": "Interaction (Inline)",
+          "cn": "交互（内联）"
+        },
+        {
+          "en": "Initial",
+          "cn": "初始"
+        },
+        {
+          "en": "Final",
+          "cn": "最终"
+        },
+        {
+          "en": "Fork",
+          "cn": "分支"
+        },
+        {
+          "en": "Join",
+          "cn": "联合"
+        },
+        {
+          "en": "Merge",
+          "cn": "合并"
+        },
+        {
+          "en": "Decision",
+          "cn": "决定"
+        },
+        {
+          "en": "Control Flow",
+          "cn": "控制流"
+        },
+        {
+          "en": "Statechart (Basic)",
+          "cn": "状态图（基本）"
+        },
+        {
+          "en": "Simple State",
+          "cn": "简单状态"
+        },
+        {
+          "en": "Initial State",
+          "cn": "初始状态"
+        },
+        {
+          "en": "Choice",
+          "cn": "选择"
+        },
+        {
+          "en": "Final State",
+          "cn": "最终状态"
+        },
+        {
+          "en": "Transition",
+          "cn": "转换"
+        },
+        {
+          "en": "Self Transition",
+          "cn": "自转换"
+        },
+        {
+          "en": "Statechart (Advanced)",
+          "cn": "状态图（高级）"
+        },
+        {
+          "en": "Composite State",
+          "cn": "组合状态"
+        },
+        {
+          "en": "Submachine State",
+          "cn": "子状态机状态"
+        },
+        {
+          "en": "Orthogonal State",
+          "cn": "对称状态"
+        },
+        {
+          "en": "Junction",
+          "cn": "联合(Junction)"
+        },
+        {
+          "en": "Shallow History",
+          "cn": "浅层历史"
+        },
+        {
+          "en": "Deep History",
+          "cn": "深层历史"
+        },
+        {
+          "en": "Entry Point",
+          "cn": "入口点"
+        },
+        {
+          "en": "Exit Point",
+          "cn": "退出点"
+        },
+        {
+          "en": "Terminate",
+          "cn": "终止"
+        },
+        {
+          "en": "Connection Point Reference",
+          "cn": "连接点引用"
+        },
+        {
+          "en": "Activities (Basic)",
+          "cn": "活动（基本）"
+        },
+        {
+          "en": "Action",
+          "cn": "操作"
+        },
+        {
+          "en": "Activities (Advanced)",
+          "cn": "活动（高级）"
+        },
+        {
+          "en": "Swimlane (Vertical)",
+          "cn": "泳道（垂直）"
+        },
+        {
+          "en": "Swimlane (Horizontal)",
+          "cn": "泳道(水平)"
+        },
+        {
+          "en": "Interruptible Activity Region",
+          "cn": "可中断活动区"
+        },
+        {
+          "en": "Structured Activity",
+          "cn": "结构化活动"
+        },
+        {
+          "en": "Input Pin",
+          "cn": "输入引脚"
+        },
+        {
+          "en": "Output Pin",
+          "cn": "输出引脚"
+        },
+        {
+          "en": "Send Signal",
+          "cn": "发送信号"
+        },
+        {
+          "en": "Accept Signal",
+          "cn": "接受信号"
+        },
+        {
+          "en": "Accept Time Event",
+          "cn": "接受时间事件"
+        },
+        {
+          "en": "Flow Final",
+          "cn": "流尾"
+        },
+        {
+          "en": "Object Node",
+          "cn": "对象节点"
+        },
+        {
+          "en": "Central Buffer",
+          "cn": "中央缓冲区"
+        },
+        {
+          "en": "Datastore",
+          "cn": "数据存储"
+        },
+        {
+          "en": "Activity Parameter Node",
+          "cn": "活动参数节点"
+        },
+        {
+          "en": "Expansion Region",
+          "cn": "扩展区"
+        },
+        {
+          "en": "Input Expansion Node",
+          "cn": "输入扩展节点"
+        },
+        {
+          "en": "Output Expansion Node",
+          "cn": "输出扩展节点"
+        },
+        {
+          "en": "Object Flow",
+          "cn": "对象流"
+        },
+        {
+          "en": "Exception Handler",
+          "cn": "异常处理"
+        },
+        {
+          "en": "Activity Interrupt",
+          "cn": "活动中断"
+        },
+        {
+          "en": "Activity Edge Connector",
+          "cn": "活动边连接器"
+        },
+        {
+          "en": "Profiles",
+          "cn": "配置文件类"
+        },
+        {
+          "en": "MetaClass",
+          "cn": "元类"
+        },
+        {
+          "en": "Stereotype",
+          "cn": "类型(Stereotype)"
+        },
+        {
+          "en": "Extension",
+          "cn": "扩展"
+        }
+      ]
+    }
+  ],
+  "extensions/essential/wireframe/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Wireframe Frames",
+          "cn": "线框框架类"
+        },
+        {
+          "en": "Frame",
+          "cn": "框架"
+        },
+        {
+          "en": "Frame (Mobile)",
+          "cn": "框架（移动端）"
+        },
+        {
+          "en": "Frame (Web)",
+          "cn": "框架（Web端）"
+        },
+        {
+          "en": "Frame (Desktop)",
+          "cn": "框架（桌面端）"
+        },
+        {
+          "en": "Wireframe Components",
+          "cn": "线框组件类"
+        },
+        {
+          "en": "Button",
+          "cn": "按钮"
+        },
+        {
+          "en": "Text",
+          "cn": "文本"
+        },
+        {
+          "en": "Radio",
+          "cn": "单选按钮"
+        },
+        {
+          "en": "Checkbox",
+          "cn": "复选框"
+        },
+        {
+          "en": "Switch",
+          "cn": "开关"
+        },
+        {
+          "en": "Link",
+          "cn": "链接"
+        },
+        {
+          "en": "Tab List",
+          "cn": "选项卡列表"
+        },
+        {
+          "en": "Tab",
+          "cn": "选项卡"
+        },
+        {
+          "en": "Input",
+          "cn": "输入框"
+        },
+        {
+          "en": "Dropdown",
+          "cn": "下拉框"
+        },
+        {
+          "en": "Panel",
+          "cn": "面板"
+        },
+        {
+          "en": "Image",
+          "cn": "图像"
+        },
+        {
+          "en": "Separator",
+          "cn": "分隔符"
+        },
+        {
+          "en": "Avatar",
+          "cn": "头像"
+        },
+        {
+          "en": "Slider",
+          "cn": "滑块"
+        }
+      ]
+    }
+  ],
+  "extensions/default/alignment/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Alignment",
+          "cn": "对齐"
+        },
+        {
+          "en": "Send To Back",
+          "cn": "置于底层"
+        },
+        {
+          "en": "Bring To Front",
+          "cn": "置于顶层"
+        },
+        {
+          "en": "Align Left",
+          "cn": "左对齐"
+        },
+        {
+          "en": "Align Right",
+          "cn": "右对齐"
+        },
+        {
+          "en": "Align Center",
+          "cn": "居中"
+        },
+        {
+          "en": "Align Top",
+          "cn": "顶对齐"
+        },
+        {
+          "en": "Align Bottom",
+          "cn": "底对齐"
+        },
+        {
+          "en": "Align Middle",
+          "cn": "垂直居中"
+        },
+        {
+          "en": "Space Equally, Horizontally",
+          "cn": "水平等距分布"
+        },
+        {
+          "en": "Space Equally, Vertically",
+          "cn": "垂直等距分布"
+        },
+        {
+          "en": "Set Width Equally",
+          "cn": "设置相同宽度"
+        },
+        {
+          "en": "Set Height Equally",
+          "cn": "设置相同高度"
+        },
+        {
+          "en": "Set Size Equally",
+          "cn": "设置相同大小"
+        }
+      ]
+    }
+  ],
+  "extensions/default/debug/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Debug",
+          "cn": "调试"
+        },
+        {
+          "en": "Show DevTools",
+          "cn": "显示开发者工具"
+        },
+        {
+          "en": "Reload",
+          "cn": "重新加载"
+        }
+      ]
+    }
+  ],
+  "extensions/default/diagram-generator/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Diagram Generator",
+          "cn": "图表生成器"
+        },
+        {
+          "en": "Overview",
+          "cn": "概述"
+        },
+        {
+          "en": "Overview Expanded",
+          "cn": "扩展概述"
+        },
+        {
+          "en": "Type Hierarchy",
+          "cn": "类型层次"
+        },
+        {
+          "en": "Package Structure",
+          "cn": "包结构"
+        }
+      ]
+    }
+  ],
+  "extensions/default/diagram-layout/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Layout",
+          "cn": "布局"
+        },
+        {
+          "en": "Auto",
+          "cn": "自动"
+        },
+        {
+          "en": "Top to Bottom",
+          "cn": "自顶向下"
+        },
+        {
+          "en": "Bottom to Top",
+          "cn": "自底向上"
+        },
+        {
+          "en": "Left to Right",
+          "cn": "自左向右"
+        },
+        {
+          "en": "Right to Left",
+          "cn": "自右向左"
+        }
+      ]
+    }
+  ],
+  "extensions/default/diagram-thumbnails/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Diagram Thumbnails",
+          "cn": "图表缩略图"
+        }
+      ]
+    }
+  ],
+  "extensions/default/find/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Find",
+          "cn": "查找"
+        }
+      ]
+    }
+  ],
+  "extensions/default/html-export/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "HTML Docs...",
+          "cn": "HTML 文档..."
+        }
+      ]
+    }
+  ],
+  "extensions/default/html-export/main.js": [
+    {
+      "en": "Failed to export HTML docs. (Error=",
+      "cn": "无法导出 HTML 文档。 (错误="
+    },
+    {
+      "en": "Select a folder where HTML docs to be exported",
+      "cn": "选择要导出 HTML 文档的文件夹"
+    },
+    {
+      "en": "HTML docs exported successfully.",
+      "cn": "HTML 文档导出成功。"
+    },
+    {
+      "en": "Failed to export HTML docs:",
+      "cn": "无法导出 HTML 文档:"
+    },
+    {
+      "en": "Failed to export HTML docs.",
+      "cn": "无法导出 HTML 文档。"
+    }
+  ],
+  "extensions/default/markdown/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Markdown Documentation",
+          "cn": "Markdown文档"
+        }
+      ]
+    }
+  ],
+  "extensions/default/minimap/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Minimap",
+          "cn": "迷你图"
+        }
+      ]
+    }
+  ],
+  "extensions/default/relationship-view/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "Relationships",
+          "cn": "关系"
+        },
+        {
+          "en": "Select Related Element",
+          "cn": "选择相关元素"
+        },
+        {
+          "en": "Select Relationship",
+          "cn": "选择关系"
+        }
+      ]
+    }
+  ],
+  "extensions/default/staruml-v1/menus/*.json": [
+    {
+      "label": [
+        {
+          "en": "StarUML 1 File (.uml)...",
+          "cn": "StarUML 1 文件 (.uml)..."
+        }
+      ]
+    }
+  ],
+  "extensions/default/staruml-v1/main.js": [
+    {
+      "en": "Select a StarUML 1 file (.uml)",
+      "cn": "选择 StarUML 1 文件 (.uml)"
+    }
+  ],
+  "extensions/default/robustness/toolbox/*.json": [
+    {
+      "label": [
+        {
+          "en": "Robustness",
+          "cn": "可靠性"
+        },
+        {
+          "en": "Boundary",
+          "cn": "边界"
+        },
+        {
+          "en": "Entity",
+          "cn": "实体"
+        },
+        {
+          "en": "Control",
+          "cn": "控制"
+        }
+      ]
+    }
+  ],
+  "extensions/default/diagram-thumbnails/diagram-thumbnails-panel.html": [
+    {
+      "en": ">Diagram Thumbnails<",
+      "cn": ">图表缩略图<"
+    }
+  ],
+  "extensions/default/diagram-thumbnails/main.js": [
+    {
+      "en": "title='Diagram Thumbnails'",
+      "cn": "title='图表缩略图'"
+    },
+    {
+      "en": "Toggle Diagram Thumbnails View",
+      "cn": "切换图表缩略图视图"
+    }
+  ],
+  "extensions/default/markdown/markdown-panel.html": [
+    {
+      "en": ">Markdown Documentation <",
+      "cn": ">Markdown文档<"
+    },
+    {
+      "en": ">Edit<",
+      "cn": ">编辑<"
+    },
+    {
+      "en": ">Preview<",
+      "cn": ">预览<"
+    }
+  ],
+  "extensions/default/markdown/main.js": [
+    {
+      "en": "title='Markdown Documentation'",
+      "cn": "title='Markdown文档'"
+    },
+    {
+      "en": "Toggle Markdown Documentation View",
+      "cn": "切换Markdown文档视图"
+    }
+  ],
+  "extensions/default/minimap/main.js": [
+    {
+      "en": "title='Minimap'",
+      "cn": "title='小视图'"
+    },
+    {
+      "en": "Toggle Minimap View",
+      "cn": "切换小视图"
+    }
+  ],
+  "extensions/default/relationship-view/relationship-panel.html": [
+    {
+      "en": ">Relationships<",
+      "cn": ">关系<"
+    }
+  ],
+  "extensions/default/find/find-dialog.html": [
+    {
+      "en": "Case sensitive",
+      "cn": "区分大小写"
+    },
+    {
+      "en": "Find in documentation",
+      "cn": "在文档中查找"
+    },
+    {
+      "en": "data-button-id=\"ok\">OK<",
+      "cn": "data-button-id=\"ok\">确定<"
+    },
+    {
+      "en": "Cancel",
+      "cn": "取消"
+    },
+    {
+      "en": "data-title=\"Find\"",
+      "cn": "data-title=\"查找\""
+    }
+  ],
+  "extensions/default/relationship-view/main.js": [
+    {
+      "en": "title='Relationship View'",
+      "cn": "title='关系视图'"
+    },
+    {
+      "en": "Toggle Relationships View",
+      "cn": "切换关系视图"
+    }
+  ]
+}
