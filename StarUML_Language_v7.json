@@ -6830,5 +6830,69 @@
       "en": "Toggle Relationships View",
       "cn": "切换关系视图"
     }
+  ],
+  "extensions/default/mermaid/mermaid-dialog.html": [
+    {
+      "en": "data-title=\"Generate Diagram by Mermaid\"",
+      "cn": "data-title=\"使用 Mermaid 生成图表\"'"
+    },
+    {
+      "en": "Enter your mermaid code in the text area below.",
+      "cn": "在下面的文本区域中输入你的 Mermaid 代码。"
+    },
+    {
+      "en": "Examples",
+      "cn": "示例"
+    },
+    {
+      "en": "Enter your diagram code here...",
+      "cn": "在此输入你的图表代码..."
+    },
+    {
+      "en": "Clear",
+      "cn": "清空"
+    },
+    {
+      "en": "Generate",
+      "cn": "生成"
+    },
+    {
+      "en": "Close",
+      "cn": "关闭"
+    }
+  ],
+  "extensions/default/mermaid/menus/mermaid.json": [
+    {
+      "en": "Generate Diagram by Mermaid...",
+      "cn": "使用 Mermaid 生成图表..."
+    },
+    {
+      "en": "Class Diagram",
+      "cn": "类图"
+    },
+    {
+      "en": "Sequence Diagram",
+      "cn": "序列图"
+    },
+    {
+      "en": "State Diagram",
+      "cn": "状态图"
+    },
+    {
+      "en": "Flowchart",
+      "cn": "流程图"
+    },
+    {
+      "en": "Entity Relationship Diagram",
+      "cn": "实体关系图"
+    },
+    {
+      "en": "Requirement Diagram",
+      "cn": "需求图"
+    },
+    {
+      "en": "Mindmap",
+      "cn": "思维导图"
+    }
   ]
 }

@@ -1,6 +1,88 @@
 import platform, os, shutil, subprocess, json, re, glob, datetime, ctypes
 system = platform.system()
 staruml_version = None
+DEFAULT_USERNAME = "GitHub: X1a0He/StarUML-CrackedAndTranslate"
+AUTHOR_MENU_ITEM = {
+    "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
+    "id": "",
+    "command": "help:cracked"
+}
+HELP_CRACKED_COMMAND = 'app.commands.register("help:cracked", () => shell.openExternal("https://github.com/X1a0He/StarUML-CrackedAndTranslate"), "Help: Cracked");'
+BANNER = """ -----------------------------------------------
+|                                               |
+| ██╗  ██╗ ██╗ █████╗  ██████╗ ██╗  ██╗███████╗ |
+| ╚██╗██╔╝███║██╔══██╗██╔═████╗██║  ██║██╔════╝ |
+|  ╚███╔╝ ╚██║███████║██║██╔██║███████║█████╗   |
+|  ██╔██╗  ██║██╔══██║████╔╝██║██╔══██║██╔══╝   |
+| ██╔╝ ██╗ ██║██║  ██║╚██████╔╝██║  ██║███████╗ |
+| ╚═╝  ╚═╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ |
+|                StarUML Cracker                |
+ -----------------------------------------------"""
+
+def log(msg):
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"「{now}」 {msg}")
+
+def get_asar_paths(base):
+    return os.path.join(base, "app.asar"), os.path.join(base, "app")
+
+def get_home_dir():
+    if system == "Linux":
+        sudo_user = os.environ.get("SUDO_USER")
+        if sudo_user:
+            return os.path.expanduser(f"~{sudo_user}")
+    return os.path.expanduser("~")
+
+def get_user_data_path():
+    home_dir = get_home_dir()
+    if system == "Darwin":
+        return os.path.join(home_dir, "Library", "Application Support", "StarUML")
+    elif system == "Windows":
+        return os.path.join(home_dir, "AppData", "Roaming", "StarUML")
+    elif system == "Linux":
+        return os.path.join(home_dir, ".config", "StarUML")
+    log("不支持的操作系统")
+    exit(0)
+
+def get_base_path():
+    if system == 'Darwin':
+        return os.path.join("/Applications", "StarUML.app", "Contents", "Resources")
+    elif system == 'Windows':
+        return os.path.join("C:\\", "Program Files", "StarUML", "resources")
+    elif system == 'Linux':
+        return "/opt/StarUML/resources"
+    log("不支持的操作系统")
+    exit(0)
+
+def read_text(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        return file.read()
+
+def write_text(file_path, content):
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(content)
+
+def patch_file(file_path, transform):
+    write_text(file_path, transform(read_text(file_path)))
+
+def replace_file_text(file_path, old, new):
+    patch_file(file_path, lambda content: content.replace(old, new))
+
+def patch_if_missing(file_path, marker, old, new, log_hook=False, log_exists=False):
+    content = read_text(file_path)
+    if marker not in content:
+        if log_hook:
+            log("hook写入中...")
+        write_text(file_path, content.replace(old, new))
+        if log_hook:
+            log("hook写入完毕")
+    elif log_exists:
+        log("文本已被修改过，无需再次修改")
+
+def remove_file_if_exists(file_path, message):
+    if os.path.exists(file_path):
+        log(message)
+        os.remove(file_path)
 
 def is_admin():
     # 你他妈的，要修改文件都是要权限的，不用 sudo 或者 管理员 身份，你修改nm呢？
@@ -26,85 +108,63 @@ def is_installed():
 
 # 没安装asar的能不能滚去先看教程怎么装，没有asar跑牛魔呢？
 def detect_asar():
-    if system == "Darwin":
-        if os.system("command -v asar > /dev/null 2>&1") == 1:
-            log("未检测到asar，请先安装asar")
-            exit(0)
-    elif system == "Windows":
-        if os.system("where asar >nul 2>nul") != 0:
-            log("未检测到asar，请先安装asar")
-            exit(0)
-    elif system == "Linux":
-        pass
+    if system in ("Darwin", "Windows", "Linux") and shutil.which("asar") is None:
+        log("未检测到asar，请先安装asar")
+        exit(0)
 
 def extract(base):
     global staruml_version
-    asar_file = os.path.join(base, "app.asar")
-    asar_folder = os.path.join(base, "app")
-    os.system(f"asar extract \"{asar_file}\" \"{asar_folder}\"")
+    asar_file, asar_folder = get_asar_paths(base)
+    subprocess.run(["asar", "extract", asar_file, asar_folder], check=True)
     staruml_version = get_version_from_app_package(base)
 
 def pack(base):
-    asar_file = os.path.join(base, "app.asar")
-    asar_folder = os.path.join(base, "app")
-    os.system(f"asar pack \"{asar_folder}\" \"{asar_file}\"")
+    asar_file, asar_folder = get_asar_paths(base)
+    subprocess.run(["asar", "pack", asar_folder, asar_file], check=True)
+
+def pack_and_remove_app(base):
+    _, asar_folder = get_asar_paths(base)
+    log("打包 app.asar")
+    pack(base)
+    log("删除 app 文件夹")
+    shutil.rmtree(asar_folder)
 
 def backup(base):
-    if not os.path.exists(os.path.join(base, "app.asar.original")):
+    asar_file, _ = get_asar_paths(base)
+    original_file = os.path.join(base, "app.asar.original")
+    if not os.path.exists(original_file):
         log("备份 app.asar -> app.asar.original")
-        shutil.copyfile(os.path.join(base, "app.asar"), os.path.join(base, "app.asar.original"))
+        shutil.copyfile(asar_file, original_file)
     else:
         log("备份文件已存在，无需再次备份")
 
 def rollback(base):
-    if os.path.exists(os.path.join(base, "app.asar.original")):
+    asar_file, _ = get_asar_paths(base)
+    original_file = os.path.join(base, "app.asar.original")
+    if os.path.exists(original_file):
         log("还原 app.asar.original -> app.asar")
-        shutil.copyfile(os.path.join(base, "app.asar.original"), os.path.join(base, "app.asar"))
-        os.remove(os.path.join(base, "app.asar.original"))
+        shutil.copyfile(original_file, asar_file)
+        os.remove(original_file)
     else:
         log("还原文件不存在，无法还原")
 
 def is_first_install():
-    if system == "Darwin":
-        home_dir = os.path.expanduser("~")
-        user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
-    elif system == "Windows":
-        home_dir = os.path.expanduser("~")
-        user_path = os.path.join(home_dir, "AppData", "Roaming", "StarUML")
-    elif system == "Linux":
-        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
-        user_path = os.path.join(home_dir, ".config", "StarUML")
-    else:
-        log("不支持的操作系统")
-        exit(0)
-
     # 该文件夹不存在，则表示首次安装
-    if not os.path.exists(rf"{user_path}"):
+    if not os.path.exists(get_user_data_path()):
         log("请先打开一次 StarUML 再执行脚本")
         exit(0)
 
-def log(msg):
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"「{now}」 {msg}")
-
 def read_json(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return json.load(file)
+    return json.loads(read_text(file_path))
 
 def write_json(file_path, data):
-    with open(file_path, 'w', encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
+    write_text(file_path, json.dumps(data, ensure_ascii=False, indent=2))
 
 def get_file_list(path):
-    if '*' in path:
-        full_path = path
-        return glob.glob(full_path)
-    else:
-        return [path]
+    return glob.glob(path) if '*' in path else [path]
 
 def replace_in_file(file_path, replacements, option):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        content = file.read()
+    content = read_text(file_path)
     # log(f"正在替换文件: {file_path}")
     content = content.replace(r"\u2026", "...").replace(r"\"dev\"", "dev")
     for replacement in replacements:
@@ -122,13 +182,12 @@ def replace_in_file(file_path, replacements, option):
                 # log(f"正在替换 {en_text} -> {cn_text}")
                 if option == 1 or option == 2:  # 汉化
                     content = content.replace(en_text, cn_text)
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(content)
+    write_text(file_path, content)
 
 def is_staruml_running():
     # 这里本来要kill掉的，一想到肯定有傻逼会有未保存的图表，kill掉就丢失了，所以仁慈一下
     if system == 'Darwin':
-        if os.system("pgrep -x StarUML > /dev/null 2>&1") == 0:
+        if subprocess.run(["pgrep", "-x", "StarUML"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0:
             log("检测到 StarUML 进程正在运行，请先关闭 StarUML 进程")
             # os.system("killall -9 StarUML") # macOS
             exit(0)
@@ -141,8 +200,7 @@ def is_staruml_running():
 def get_version_from_app_package(base):
     pkg = os.path.join(base, "app", "package.json")
     if os.path.exists(pkg):
-        with open(pkg, "r", encoding="utf-8") as file:
-            data = json.load(file)
+        data = read_json(pkg)
         version = str(data.get("version", "")).strip()
         return version or None
     return None
@@ -154,27 +212,33 @@ def get_major_version(version_str):
     else:
         raise ValueError("无效的版本格式")
 
-def handler(base, user_choice):
-    language_file = None
-    if user_choice in (0, 1, 2):
+def prepare_app(base):
+    global staruml_version
+    asar_file, asar_folder = get_asar_paths(base)
+    if os.path.exists(asar_file):
         extract(base)
         backup(base)
-        major_version = get_major_version(staruml_version)
+    elif os.path.exists(asar_folder):
+        staruml_version = get_version_from_app_package(base)
+    else:
+        log("未检测到 app.asar 或 app 文件夹")
+        exit(0)
 
-        if major_version == 6:
-            language_file = "StarUML_Language_v6.json"
+def get_language_file():
+    major_version = get_major_version(staruml_version)
+    if major_version == 6:
+        return "StarUML_Language_v6.json"
+    if major_version == 7:
+        return "StarUML_Language_v7.json"
+    return None
 
-        if major_version == 7:
-            language_file = "StarUML_Language_v7.json"
-
-        if user_choice == 0:
+def handler(base, user_choice):
+    if user_choice in (0, 1, 2):
+        prepare_app(base)
+        language_file = get_language_file()
+        if user_choice in (0, 2):
             crack(base, user_choice)
-
-        if user_choice == 1:
-            translate(base, user_choice, language_file)
-
-        if user_choice == 2:
-            crack(base, user_choice)
+        if user_choice in (1, 2):
             translate(base, user_choice, language_file)
 
     # 还原所有操作 2024.11.04 增加
@@ -183,23 +247,21 @@ def handler(base, user_choice):
 
 def translate(base, user_choice, language_file):
     log("正在进行 StarUML 汉化操作...")
+    asar_file, asar_folder = get_asar_paths(base)
     # 1. 仅存在app.asar，只处理app.asar
-    if os.path.exists(os.path.join(base, "app.asar")) and not os.path.exists(os.path.join(base, "app")):
+    if os.path.exists(asar_file) and not os.path.exists(asar_folder):
         translate_asar(language_file, base, user_choice)
     # 2. app.asar和app文件夹共存，优先处理app.asar
-    elif os.path.exists(os.path.join(base, "app.asar")) and os.path.exists(os.path.join(base, "app")):
+    elif os.path.exists(asar_file) and os.path.exists(asar_folder):
         # 如果用户选择破解并汉化，就不需要解包了
         if user_choice != 2:
             log("检测到 app.asar 和 app 文件夹共存，优先处理 app.asar")
             translate_asar(language_file, base, user_choice)
         elif user_choice == 2:
             translate_app(language_file, base, user_choice)
-            log("打包 app.asar")
-            pack(base)
-            log("删除 app 文件夹")
-            shutil.rmtree(os.path.join(base, "app"))
+            pack_and_remove_app(base)
     # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
-    elif not os.path.exists(os.path.join(base, "app.asar")) and os.path.exists(os.path.join(base, "app")):
+    elif not os.path.exists(asar_file) and os.path.exists(asar_folder):
         log("检测到只存在 app 文件夹，本次操作仅对 app 文件夹进行处理")
         translate_app(language_file, base, user_choice)
 
@@ -210,10 +272,7 @@ def translate_asar(language_file, base, user_choice):
     log("解包 app.asar")
     translate_app(language_file, base, user_choice)
     # 汉化完成后，对app.asar进行打包操作，并删除app文件夹
-    log("打包 app.asar")
-    pack(base)
-    log("删除 app 文件夹")
-    shutil.rmtree(os.path.join(base, "app"))
+    pack_and_remove_app(base)
 
 def translate_app(language_file, base, user_choice):
     log("正在汉化文件...")
@@ -224,54 +283,31 @@ def translate_app(language_file, base, user_choice):
             replace_in_file(file_path, replacements, user_choice)
     log("文件汉化完成")
 
-def crack(base, user_choice):
-    log("正在进行 StarUML 破解操作...")
+def clear_license_files(base):
     # 先把原来的license.key和v7的activation.key文件删掉
-    if system == "Linux":
-        home_dir = os.path.expanduser(f"~{os.environ['SUDO_USER']}")
-    else:
-        home_dir = os.path.expanduser("~")
+    user_path = get_user_data_path()
     try:
-        if system == 'Darwin':
-            user_path = os.path.join(home_dir, "Library", "Application Support", "StarUML")
-            if os.path.exists(os.path.join(user_path, "license.key")):
-                log("移除已存在的 license.key 文件")
-                os.remove(os.path.join(user_path, "license.key"))
-                log("移除已存在的 activation.key 文件")
-                os.remove(os.path.join(user_path, "activation.key"))
-
-        elif system == 'Windows':
-            user_path = os.path.join(home_dir, "AppData", "Roaming", "StarUML")
-            if os.path.exists(os.path.join(user_path, "license.key")):
-                log("移除已存在的 license.key 文件")
-                os.remove(os.path.join(user_path, "license.key"))
-                os.remove(os.path.join(base, "app", "license.key"))
-                log("移除已存在的 activation.key 文件")
-                os.remove(os.path.join(user_path, "activation.key"))
-
-        elif system == 'Linux':
-            user_path = os.path.join(home_dir, ".config", "StarUML")
-            if os.path.exists(os.path.join(user_path, "license.key")):
-                log("移除已存在的 license.key 文件")
-                os.remove(os.path.join(user_path, "license.key"))
-                os.remove(os.path.join(user_path, "app", "license.key"))
-                log("移除已存在的 activation.key 文件")
-                os.remove(os.path.join(user_path, "activation.key"))
-
+        remove_file_if_exists(os.path.join(user_path, "license.key"), "移除已存在的 license.key 文件")
+        remove_file_if_exists(os.path.join(base, "app", "license.key"), "移除已存在的 license.key 文件")
+        remove_file_if_exists(os.path.join(user_path, "activation.key"), "移除已存在的 activation.key 文件")
     except FileNotFoundError:
         pass
     except KeyboardInterrupt:
         pass
 
+def crack(base, user_choice):
+    log("正在进行 StarUML 破解操作...")
+    clear_license_files(base)
     log("请输入StarUML关于页面要显示的用户名(回车即使用程序默认): ")
     username = input()
-    if not username: username = "GitHub: X1a0He/StarUML-CrackedAndTranslate"
+    if not username: username = DEFAULT_USERNAME
+    asar_file, asar_folder = get_asar_paths(base)
     # 1. 仅存在app.asar，只处理app.asar
     # 2. app.asar和app文件夹共存，优先处理app.asar
-    if os.path.exists(os.path.join(base, "app.asar")) or os.path.exists(os.path.join(base, "app")):
+    if os.path.exists(asar_file):
         crack_asar(base, username, user_choice)
     # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
-    elif not os.path.exists(os.path.join(base, "app.asar")) and os.path.exists(os.path.join(base, "app")):
+    elif os.path.exists(asar_folder):
         crack_app(base, username)
 
     log("StarUML 破解处理完毕，请按照下列步骤进行操作")
@@ -283,10 +319,7 @@ def crack_asar(base, username, user_choice):
     crack_app(base, username)
     # 如果用户选择破解并汉化的话，就不需要重新打包了，做完再打包
     if user_choice != 2:
-        log("打包 app.asar")
-        pack(base)
-        log("删除 app 文件夹")
-        shutil.rmtree(os.path.join(base, "app"))
+        pack_and_remove_app(base)
 
 def add_member_after_label(obj, target_label, new_member):
     if isinstance(obj, list):
@@ -298,9 +331,12 @@ def add_member_after_label(obj, target_label, new_member):
             if result:
                 return result
     elif isinstance(obj, dict):
-        for key in obj:
-            if isinstance(obj[key], (dict, list)):
-                result = add_member_after_label(obj[key], target_label, new_member)
+        if obj.get("label") == target_label and isinstance(obj.get("submenu"), list):
+            obj["submenu"].insert(0, new_member)
+            return True
+        for value in obj.values():
+            if isinstance(value, (dict, list)):
+                result = add_member_after_label(value, target_label, new_member)
                 if result:
                     return result
     return None
@@ -316,67 +352,37 @@ def write_author_info(base):
     about_dialog = os.path.join(html_contents_folder, "about-dialog.html")
 
     if major_version == 6:
-        with open(about_dialog, "r", encoding="utf-8") as file:
-            html_content = file.read()
-        new_html_content = html_content.replace("<span class=\"license\" style=\"font-weight: 600;\"></span>",
-                                                "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
-        with open(about_dialog, "w", encoding="utf-8") as file:
-            file.write(new_html_content)
+        replace_file_text(about_dialog,
+                          "<span class=\"license\" style=\"font-weight: 600;\"></span>",
+                          "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
         # 修改标题部分
         titlebar_view = os.path.join(src_folder, "views", "titlebar-view.js")
-        with open(titlebar_view, "r", encoding="utf-8") as file:
-            js_content = file.read()
-        new_js_content = js_content.replace("""title += "(EVALUATION MODE)";
+        replace_file_text(titlebar_view, """title += "(EVALUATION MODE)";
         }""",
-                                            """title += "(EVALUATION MODE)";
+                          """title += "(EVALUATION MODE)";
         } else { title += '【By GitHub: X1a0He/StarUML-CrackedAndTranslate】'}""")
-        with open(titlebar_view, "w", encoding="utf-8") as file:
-            file.write(new_js_content)
 
     if major_version == 7:
-        with open(about_dialog, "r", encoding="utf-8") as file:
-            html_content = file.read()
-        new_html_content = html_content.replace("<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a></div>",
-                                                "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a><br/><br/><a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\">GitHub: X1a0He/StarUML-CrackedAndTranslate</a></div>")
-        with open(about_dialog, "w", encoding="utf-8") as file:
-            file.write(new_html_content)
+        replace_file_text(about_dialog,
+                          "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a></div>",
+                          "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a><br/><br/><a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\">GitHub: X1a0He/StarUML-CrackedAndTranslate</a></div>")
 
     # 修改菜单栏部分
-    resources_folder = os.path.join(app_folder, "resources")
-    darwin_json = os.path.join(resources_folder, "default", "menus", "darwin.json")
-    win32_json = os.path.join(resources_folder, "default", "menus", "win32.json")
-    linux_json = os.path.join(resources_folder, "default", "menus", "linux.json")
-    darwin_data = read_json(darwin_json)
-    win32_data = read_json(win32_json)
-    linux_data = read_json(linux_json)
-    add_member_after_label(darwin_data, "About StarUML", {
-        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
-        "id": "",
-        "command": "help:cracked"
-    })
-    add_member_after_label(win32_data, "About StarUML", {
-        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
-        "id": "",
-        "command": "help:cracked"
-    })
-    add_member_after_label(linux_data, "About StarUML", {
-        "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
-        "id": "",
-        "command": "help:cracked"
-    })
-    write_json(darwin_json, darwin_data)
-    write_json(win32_json, win32_data)
-    write_json(linux_json, linux_data)
+    menus_folder = os.path.join(app_folder, "resources", "default", "menus")
+    for menu_file in ("darwin.json", "win32.json", "linux.json"):
+        menu_path = os.path.join(menus_folder, menu_file)
+        menu_data = read_json(menu_path)
+        add_member_after_label(menu_data, "About StarUML", AUTHOR_MENU_ITEM)
+        write_json(menu_path, menu_data)
+
     engine_folder = os.path.join(src_folder, "engine")
     default_commands = os.path.join(engine_folder, "default-commands.js")
-    with open(default_commands, "r", encoding="utf-8") as file:
-        js_content = file.read()
+    js_content = read_text(default_commands)
 
-    if 'app.commands.register("help:cracked", () => shell.openExternal("https://github.com/X1a0He/StarUML-CrackedAndTranslate"), "Help: Cracked");' not in js_content:
-        js_content += "\n" + 'app.commands.register("help:cracked", () => shell.openExternal("https://github.com/X1a0He/StarUML-CrackedAndTranslate"), "Help: Cracked");'
+    if HELP_CRACKED_COMMAND not in js_content:
+        js_content += "\n" + HELP_CRACKED_COMMAND
 
-    with open(default_commands, "w", encoding="utf-8") as file:
-        file.write(js_content)
+    write_text(default_commands, js_content)
 
 def crack_app(base, username):
     destination_path = os.path.join(base, "app", "src")
@@ -384,65 +390,28 @@ def crack_app(base, username):
     shutil.copy("dialog.js", destination_path)
     major_version = get_major_version(staruml_version)
     hook_file_path = os.path.join(destination_path, "hook.js")
-    with open(hook_file_path, "r", encoding="utf-8") as file:
-        js_content = file.read()
-    new_js_content = js_content.replace("GitHub: X1a0He/StarUML-CrackedAndTranslate", username)
-
-    with open(hook_file_path, "w", encoding="utf-8") as file:
-        file.write(new_js_content)
-
+    replace_file_text(hook_file_path, DEFAULT_USERNAME, username)
     app_context_file_path = os.path.join(destination_path, "app-context.js")
 
     if major_version == 6:
-        with open(app_context_file_path, "r", encoding="utf-8") as file:
-            js_content = file.read()
-            if 'require("./hook");\nrequire("./dialog");' not in js_content:
-                log("hook写入中...")
-                new_js_content = js_content.replace('this.appReady();', 'require("./hook");\nrequire("./dialog");\nthis.appReady();')
-
-                with open(app_context_file_path, "w", encoding="utf-8") as file2:
-                    file2.write(new_js_content)
-                    log("hook写入完毕")
-            else:
-                log("文本已被修改过，无需再次修改")
+        patch_if_missing(app_context_file_path, 'require("./hook");\nrequire("./dialog");',
+                         'this.appReady();', 'require("./hook");\nrequire("./dialog");\nthis.appReady();',
+                         log_hook=True, log_exists=True)
 
     if major_version == 7:
         main_process_file_path = os.path.join(destination_path, 'main-process', 'main.js')
-        with open(app_context_file_path, "r", encoding="utf-8") as file:
-            js_content = file.read()
-            if 'require("./dialog");' not in js_content:
-                new_js_content = js_content.replace('this.appReady();', 'require("./dialog");\nthis.appReady();')
-
-                with open(app_context_file_path, "w", encoding="utf-8") as file2:
-                    file2.write(new_js_content)
-
-        with open(main_process_file_path, "r", encoding="utf-8") as file:
-            js_content = file.read()
-            if 'require("./hook");' not in js_content:
-                log("hook写入中...")
-                new_js_content = js_content.replace('global.application = new Application();',
-                                                    'global.application = new Application();\nrequire("../hook");')
-
-                with open(main_process_file_path, "w", encoding="utf-8") as file2:
-                    file2.write(new_js_content)
-                    log("hook写入完毕")
-            else:
-                log("文本已被修改过，无需再次修改")
+        patch_if_missing(app_context_file_path, 'require("./dialog");',
+                         'this.appReady();', 'require("./dialog");\nthis.appReady();')
+        patch_if_missing(main_process_file_path, 'require("./hook");',
+                         'global.application = new Application();',
+                         'global.application = new Application();\nrequire("../hook");',
+                         log_hook=True, log_exists=True)
 
     write_author_info(base)
 
 def main():
     try:
-        print(" -----------------------------------------------")
-        print("|                                               |")
-        print("| ██╗  ██╗ ██╗ █████╗  ██████╗ ██╗  ██╗███████╗ |")
-        print("| ╚██╗██╔╝███║██╔══██╗██╔═████╗██║  ██║██╔════╝ |")
-        print("|  ╚███╔╝ ╚██║███████║██║██╔██║███████║█████╗   |")
-        print("|  ██╔██╗  ██║██╔══██║████╔╝██║██╔══██║██╔══╝   |")
-        print("| ██╔╝ ██╗ ██║██║  ██║╚██████╔╝██║  ██║███████╗ |")
-        print("| ╚═╝  ╚═╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ |")
-        print("|                StarUML Cracker                |")
-        print(" -----------------------------------------------")
+        print(BANNER)
         print("StarUML「Mac & Win」一键破解汉化脚本")
         print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
         print()
@@ -459,21 +428,19 @@ def main():
             exit(0)
 
         if user_choice in (0, 1, 2, 3):
+            base = get_base_path()
+            handler(base, user_choice)
             if system == 'Darwin':
-                base = os.path.join("/Applications", "StarUML.app", "Contents", "Resources")
-                handler(base, user_choice)
                 log("如遇到打开 StarUML 提示已损坏，请手动在终端执行如下命令后，在 Application 右键打开 StarUML")
                 log("sudo xattr -cr /Applications/StarUML.app")
                 log("macOS 15+ 的用户如果一直遇到提示已损坏，建议先打开一遍 StarUML 后再运行")
                 # os.system("open -a StarUML")
             elif system == 'Windows':
-                base = os.path.join("C:\\", "Program Files", "StarUML", "resources")
-                handler(base, user_choice)
                 # Windows的启动功不知道什么命令，拉倒吧
+                pass
             elif system == 'Linux':
                 # Linux 系统未经证实，请谨慎运行
-                base = "/opt/StarUML/resources"
-                handler(base, user_choice)
+                pass
     except KeyboardInterrupt:
         print("\n用户中断了程序执行")
 
