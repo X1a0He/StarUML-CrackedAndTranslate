@@ -1,6 +1,7 @@
-import platform, os, shutil, subprocess, json, re, glob, datetime, ctypes
+import platform, os, shutil, subprocess, json, datetime, ctypes
+from concurrent.futures import ThreadPoolExecutor
 system = platform.system()
-staruml_version = None
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_USERNAME = "GitHub: X1a0He/StarUML-CrackedAndTranslate"
 AUTHOR_MENU_ITEM = {
     "label": "By GitHub: X1a0He/StarUML-CrackedAndTranslate",
@@ -113,10 +114,8 @@ def detect_asar():
         exit(0)
 
 def extract(base):
-    global staruml_version
     asar_file, asar_folder = get_asar_paths(base)
     subprocess.run(["asar", "extract", asar_file, asar_folder], check=True)
-    staruml_version = get_version_from_app_package(base)
 
 def pack(base):
     asar_file, asar_folder = get_asar_paths(base)
@@ -160,29 +159,98 @@ def read_json(file_path):
 def write_json(file_path, data):
     write_text(file_path, json.dumps(data, ensure_ascii=False, indent=2))
 
-def get_file_list(path):
-    return glob.glob(path) if '*' in path else [path]
+def translate_v7_file(file_path, replacements):
+    original = read_text(file_path)
+    content, missing = original, []
+    if file_path.endswith('.json'):
+        data = json.loads(content)
+        changed = False
+        fields = { field: { item['en']: item['cn'] for item in items }
+                   for group in replacements for field, items in group.items() }
+        seen = { field: set() for field in fields }
 
-def replace_in_file(file_path, replacements, option):
-    content = read_text(file_path)
-    # log(f"正在替换文件: {file_path}")
-    content = content.replace(r"\u2026", "...").replace(r"\"dev\"", "dev")
-    for replacement in replacements:
-        for key, value in replacement.items():
-            if isinstance(value, list):  # 处理嵌套列表
-                for item in value:
-                    en_text = item['en']
-                    cn_text = item['cn']
-                    # log(f"正在替换 {en_text} -> {cn_text}")
-                    if option == 1 or option == 2:  # 汉化
-                        content = re.sub(f'"{key}": "{re.escape(en_text)}"', f'"{key}": "{re.escape(cn_text)}"'.replace('\\', ''), content)
+        def translate_values(value):
+            nonlocal changed
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    if key in fields and isinstance(child, str):
+                        seen[key].add(child)
+                        translated = fields[key].get(child, child)
+                        if translated != child:
+                            value[key] = translated
+                            changed = True
+                    elif isinstance(child, (dict, list)):
+                        translate_values(child)
+            elif isinstance(value, list):
+                for child in value:
+                    translate_values(child)
+
+        translate_values(data)
+        for field, pairs in fields.items():
+            missing.extend(field + ': ' + en for en, cn in pairs.items()
+                           if en not in seen[field] and cn not in seen[field])
+        if changed:
+            content = json.dumps(data, ensure_ascii=False, indent=2)
+            if original.endswith('\n'):
+                content += '\n'
+    else:
+        for item in replacements:
+            en, cn = item['en'], item['cn']
+            count = item.get('count', 1)
+            if cn and content.count(cn) >= count:
+                continue
+            if content.count(en) == count:
+                content = content.replace(en, cn)
             else:
-                en_text = replacement['en']
-                cn_text = replacement['cn']
-                # log(f"正在替换 {en_text} -> {cn_text}")
-                if option == 1 or option == 2:  # 汉化
-                    content = content.replace(en_text, cn_text)
-    write_text(file_path, content)
+                missing.append(en.strip()[:120])
+    return file_path, original, content, missing
+
+def translate_v7_app(app_folder, language_file=None, workers=4):
+    app_folder = os.path.realpath(app_folder)
+    require_v7(app_folder)
+    language_file = language_file or os.path.join(SCRIPT_DIR, 'StarUML_Language_v7.json')
+    tasks = { }
+    for relative, replacements in read_json(language_file).items():
+        file_path = os.path.abspath(os.path.join(app_folder, relative))
+        if (os.path.commonpath([app_folder, file_path]) != app_folder
+                or os.path.realpath(file_path) != file_path):
+            raise ValueError('汉化路径越界或含符号链接: ' + relative)
+        tasks[file_path] = replacements
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = list(pool.map(lambda item: translate_v7_file(*item), sorted(tasks.items())))
+    missing = [(os.path.relpath(path, app_folder), message)
+               for path, _, _, messages in results for message in messages]
+    if missing:
+        details = '\n'.join(path + ': ' + message for path, message in missing[:10])
+        raise RuntimeError('有 %d 条词条未命中，未写入汉化文件：\n%s' % (len(missing), details))
+    changes = [(path, original, content) for path, original, content, _ in results if original != content]
+    helper_path = os.path.join(app_folder, 'src', 'localization', 'zh-cn.js')
+    if os.path.realpath(helper_path) != helper_path:
+        raise ValueError('显示映射路径含符号链接')
+    helper = read_text(os.path.join(SCRIPT_DIR, 'zh-cn.js'))
+    existing_helper = read_text(helper_path) if os.path.exists(helper_path) else None
+    if existing_helper != helper:
+        changes.append((helper_path, existing_helper, helper))
+    if not changes:
+        log('v7 文件已汉化，无需重复写入')
+        return 0
+    for path, original, _ in changes:
+        current = read_text(path) if os.path.exists(path) else None
+        if current != original:
+            raise RuntimeError('处理期间文件发生变化，已停止: ' + path)
+    backup_folder = app_folder + '.zh-backup-' + datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')
+    for path, original, _ in changes:
+        if original is not None:
+            target = os.path.join(backup_folder, os.path.relpath(path, app_folder))
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+            shutil.copyfile(path, target)
+    if os.path.isdir(backup_folder):
+        log('汉化前文件备份: ' + backup_folder)
+    for path, _, content in changes:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        write_text(path, content)
+    log('v7 汉化完成，共更新 %d 个文件' % len(changes))
+    return len(changes)
 
 def is_staruml_running():
     # 这里本来要kill掉的，一想到肯定有傻逼会有未保存的图表，kill掉就丢失了，所以仁慈一下
@@ -197,91 +265,42 @@ def is_staruml_running():
             # os.system("taskkill /f /t /im StarUML.exe") # Windows
             exit(0)
 
-def get_version_from_app_package(base):
-    pkg = os.path.join(base, "app", "package.json")
-    if os.path.exists(pkg):
-        data = read_json(pkg)
-        version = str(data.get("version", "")).strip()
-        return version or None
-    return None
-
-def get_major_version(version_str):
-    match = re.match(r"(\d+)", version_str)
-    if match:
-        return int(match.group(1))
-    else:
-        raise ValueError("无效的版本格式")
+def require_v7(app_folder):
+    version = str(read_json(os.path.join(app_folder, "package.json")).get("version", "")).strip()
+    if not version.startswith("7."):
+        raise ValueError("仅支持 StarUML v7，检测到版本: " + (version or "未知"))
 
 def prepare_app(base):
-    global staruml_version
-    asar_file, asar_folder = get_asar_paths(base)
-    if os.path.exists(asar_file):
+    asar_file, app_folder = get_asar_paths(base)
+    needs_pack = os.path.exists(asar_file)
+    if needs_pack:
+        detect_asar()
         extract(base)
-        backup(base)
-    elif os.path.exists(asar_folder):
-        staruml_version = get_version_from_app_package(base)
-    else:
+    elif not os.path.isdir(app_folder):
         log("未检测到 app.asar 或 app 文件夹")
         exit(0)
-
-def get_language_file():
-    major_version = get_major_version(staruml_version)
-    if major_version == 6:
-        return "StarUML_Language_v6.json"
-    if major_version == 7:
-        return "StarUML_Language_v7.json"
-    return None
+    require_v7(app_folder)
+    if needs_pack:
+        backup(base)
+    return needs_pack
 
 def handler(base, user_choice):
-    if user_choice in (0, 1, 2):
-        prepare_app(base)
-        language_file = get_language_file()
-        if user_choice in (0, 2):
-            crack(base, user_choice)
-        if user_choice in (1, 2):
-            translate(base, user_choice, language_file)
-
     # 还原所有操作 2024.11.04 增加
     if user_choice == 3:
         rollback(base)
+        return
+    if user_choice not in (0, 1, 2):
+        return
 
-def translate(base, user_choice, language_file):
-    log("正在进行 StarUML 汉化操作...")
-    asar_file, asar_folder = get_asar_paths(base)
-    # 1. 仅存在app.asar，只处理app.asar
-    if os.path.exists(asar_file) and not os.path.exists(asar_folder):
-        translate_asar(language_file, base, user_choice)
-    # 2. app.asar和app文件夹共存，优先处理app.asar
-    elif os.path.exists(asar_file) and os.path.exists(asar_folder):
-        # 如果用户选择破解并汉化，就不需要解包了
-        if user_choice != 2:
-            log("检测到 app.asar 和 app 文件夹共存，优先处理 app.asar")
-            translate_asar(language_file, base, user_choice)
-        elif user_choice == 2:
-            translate_app(language_file, base, user_choice)
-            pack_and_remove_app(base)
-    # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
-    elif not os.path.exists(asar_file) and os.path.exists(asar_folder):
-        log("检测到只存在 app 文件夹，本次操作仅对 app 文件夹进行处理")
-        translate_app(language_file, base, user_choice)
-
-    log("StarUML 汉化操作完成")
-
-def translate_asar(language_file, base, user_choice):
-    # 这里他妈的app.asar都存在了，还你妈node解包出错的话，你不是傻逼谁是傻逼
-    log("解包 app.asar")
-    translate_app(language_file, base, user_choice)
-    # 汉化完成后，对app.asar进行打包操作，并删除app文件夹
-    pack_and_remove_app(base)
-
-def translate_app(language_file, base, user_choice):
-    log("正在汉化文件...")
-    data = read_json(language_file)
-    for path, replacements in data.items():
-        files = get_file_list(os.path.join(base, "app", path))
-        for file_path in files:
-            replace_in_file(file_path, replacements, user_choice)
-    log("文件汉化完成")
+    needs_pack = prepare_app(base)
+    if user_choice in (0, 2):
+        crack(base)
+    if user_choice in (1, 2):
+        log("正在进行 StarUML 汉化操作...")
+        translate_v7_app(os.path.join(base, "app"))
+        log("StarUML 汉化操作完成")
+    if needs_pack:
+        pack_and_remove_app(base)
 
 def clear_license_files(base):
     # 先把原来的license.key和v7的activation.key文件删掉
@@ -295,31 +314,16 @@ def clear_license_files(base):
     except KeyboardInterrupt:
         pass
 
-def crack(base, user_choice):
+def crack(base):
     log("正在进行 StarUML 破解操作...")
     clear_license_files(base)
     log("请输入StarUML关于页面要显示的用户名(回车即使用程序默认): ")
-    username = input()
-    if not username: username = DEFAULT_USERNAME
-    asar_file, asar_folder = get_asar_paths(base)
-    # 1. 仅存在app.asar，只处理app.asar
-    # 2. app.asar和app文件夹共存，优先处理app.asar
-    if os.path.exists(asar_file):
-        crack_asar(base, username, user_choice)
-    # 3. 不存在app.asar，只存在app文件夹，则只处理app文件夹
-    elif os.path.exists(asar_folder):
-        crack_app(base, username)
+    username = input() or DEFAULT_USERNAME
+    crack_app(base, username)
 
     log("StarUML 破解处理完毕，请按照下列步骤进行操作")
     log("1. 运行StarUML，选择菜单栏的Help - Enter License Key")
     log("2. 弹出窗口后，直接点击OK即可")
-
-def crack_asar(base, username, user_choice):
-    log("解包 app.asar")
-    crack_app(base, username)
-    # 如果用户选择破解并汉化的话，就不需要重新打包了，做完再打包
-    if user_choice != 2:
-        pack_and_remove_app(base)
 
 def add_member_after_label(obj, target_label, new_member):
     if isinstance(obj, list):
@@ -342,7 +346,6 @@ def add_member_after_label(obj, target_label, new_member):
     return None
 
 def write_author_info(base):
-    major_version = get_major_version(staruml_version)
     app_folder = os.path.join(base, "app")
     src_folder = os.path.join(app_folder, "src")
 
@@ -351,21 +354,9 @@ def write_author_info(base):
     html_contents_folder = os.path.join(static_folder, "html-contents")
     about_dialog = os.path.join(html_contents_folder, "about-dialog.html")
 
-    if major_version == 6:
-        replace_file_text(about_dialog,
-                          "<span class=\"license\" style=\"font-weight: 600;\"></span>",
-                          "<a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\"><span class=\"license\" style=\"font-weight: 600;\"></span></a>")
-        # 修改标题部分
-        titlebar_view = os.path.join(src_folder, "views", "titlebar-view.js")
-        replace_file_text(titlebar_view, """title += "(EVALUATION MODE)";
-        }""",
-                          """title += "(EVALUATION MODE)";
-        } else { title += '【By GitHub: X1a0He/StarUML-CrackedAndTranslate】'}""")
-
-    if major_version == 7:
-        replace_file_text(about_dialog,
-                          "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a></div>",
-                          "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a><br/><br/><a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\">GitHub: X1a0He/StarUML-CrackedAndTranslate</a></div>")
+    replace_file_text(about_dialog,
+                      "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a></div>",
+                      "<div><a href=\"#\" class=\"thirdparty\">Thirdparty softwares</a><br/><br/><a href=\"https://github.com/X1a0He/StarUML-CrackedAndTranslate\">GitHub: X1a0He/StarUML-CrackedAndTranslate</a></div>")
 
     # 修改菜单栏部分
     menus_folder = os.path.join(app_folder, "resources", "default", "menus")
@@ -386,38 +377,52 @@ def write_author_info(base):
 
 def crack_app(base, username):
     destination_path = os.path.join(base, "app", "src")
-    shutil.copy("hook.js", destination_path)
-    shutil.copy("dialog.js", destination_path)
-    major_version = get_major_version(staruml_version)
+    main_process_file_path = os.path.join(destination_path, 'main-process', 'main.js')
+    main_original = read_text(main_process_file_path)
+    main_content = main_original
+    ready = '  app.on("ready", () => {\n'
+    ready_with_hook = (
+        '  app.on("ready", async () => {\n'
+        '    try {\n'
+        '      await require("../hook");\n'
+        '    } catch (error) {\n'
+        '      console.error("[X1a0He StarUML Cracker] 初始化失败:", error);\n'
+        '    }\n'
+    )
+    activate = '    if (!hasVisibleWindows) {'
+    if ready_with_hook not in main_content:
+        if main_content.count(ready) != 1 or main_content.count(activate) != 1:
+            raise RuntimeError("无法识别 v7 主进程启动结构，未写入 hook")
+        main_content = ''.join(line for line in main_content.splitlines(keepends=True)
+                               if line.strip() != 'require("../hook");')
+        main_content = main_content.replace(ready, ready_with_hook, 1)
+        main_content = main_content.replace(
+            activate, '    if (!hasVisibleWindows && global.application) {', 1)
+
+    shutil.copy(os.path.join(SCRIPT_DIR, "hook.js"), destination_path)
+    shutil.copy(os.path.join(SCRIPT_DIR, "dialog.js"), destination_path)
     hook_file_path = os.path.join(destination_path, "hook.js")
     replace_file_text(hook_file_path, DEFAULT_USERNAME, username)
     app_context_file_path = os.path.join(destination_path, "app-context.js")
 
-    if major_version == 6:
-        patch_if_missing(app_context_file_path, 'require("./hook");\nrequire("./dialog");',
-                         'this.appReady();', 'require("./hook");\nrequire("./dialog");\nthis.appReady();',
-                         log_hook=True, log_exists=True)
-
-    if major_version == 7:
-        main_process_file_path = os.path.join(destination_path, 'main-process', 'main.js')
-        patch_if_missing(app_context_file_path, 'require("./dialog");',
-                         'this.appReady();', 'require("./dialog");\nthis.appReady();')
-        patch_if_missing(main_process_file_path, 'require("./hook");',
-                         'global.application = new Application();',
-                         'global.application = new Application();\nrequire("../hook");',
-                         log_hook=True, log_exists=True)
+    patch_if_missing(app_context_file_path, 'require("./dialog");',
+                     'this.appReady();', 'require("./dialog");\nthis.appReady();')
+    if read_text(main_process_file_path) != main_original:
+        raise RuntimeError("处理期间主进程文件发生变化，已停止")
+    if main_content != main_original:
+        write_text(main_process_file_path, main_content)
+        log("hook 启动等待已写入")
 
     write_author_info(base)
 
 def main():
     try:
         print(BANNER)
-        print("StarUML「Mac & Win」一键破解汉化脚本")
+        print("StarUML v7「Mac & Win」一键破解汉化脚本")
         print("Github: https://github.com/X1a0He/StarUML-CrackedAndTranslate")
         print()
 
         is_admin()
-        detect_asar()
         is_installed()
         is_first_install()
         is_staruml_running()

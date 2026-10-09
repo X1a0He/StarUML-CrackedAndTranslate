@@ -1,5 +1,3 @@
-# 不要给我提Pr，本仓库不接受任何Pr
-
 # 免责声明
 
 **本仓库仅用于学习交流使用，请勿用于非法用途，造成一切后果与作者无关**
@@ -27,10 +25,6 @@
 
 另外，一些无知的人请别拿网上的垃圾教程来对标本仓库，改改标识就标识破解成功的教程和人收收味，别来沾边
 
-# 文档选择
-
-[**中文文档**](cn/readme-cn.md) | [**Document for English**](en/readme-en.md)
-
 # v7 汉化与破解效果
 
 ![display.png](images/display.png)
@@ -49,49 +43,15 @@
 
 # 最新更新日志
 
-- [历史更新日志](Update-log.md)
+- [历史更新日志](change-log.md)
 
-- 2025-09-17 08:35 更新日志
+## 2026-10-09 更新日志
 
 ```markdown
-1. 支持 StarUML v7 完整汉化与破解
+1. 完善 v7 汉化并移除 v6 支持
+2. 修正 v7 初始化与许可证兼容问题
+3. 清理旧版脚本与英文文档入口
 ```
-
-----
-
-# Surge 脚本激活(暂不支持 v7)
-
-![script-activation.png](images/script-activation.png)
-
-> 注意，此方法不在脚本处理范围内，请有动手能力的朋友自行动手添加\
-> 该方法无汉化功能，仅方便激活\
-> 该方法优缺点如下
->
-> **优点**
-> - 无侵入式，不修改原app
-> - 支持直接从官网进行更新，无需再次激活
->
-> **缺点**
-> - 必须才用支持脚本运行的App，如: Surge, Stash 等
-> - 打开StarUML的同时，必须开启脚本，否则可能会出现激活失败或被还原的情况
-
-## 添加方式
-
-需要打开HTTPS解密，并且添加MitM主机名: `staruml.io`
-
-**自己写配置**
-
-```config
-[Script]
-StarUML = type=http-request,pattern=^https://staruml.io/api/license/validate,requires-body=1,max-size=0,debug=1,script-path=staruml.js
-```
-
-**手动添加脚本**
-把 `staruml.js` 放在 `/Users/$HOME/Library/Application Support/Surge/Profiles` 目录下
-
-脚本名: 自定义 \
-脚本类型: HTTP Request \
-URL正则表达式: `^https://staruml.io/api/license/validate`
 
 ----
 
@@ -118,13 +78,14 @@ URL正则表达式: `^https://staruml.io/api/license/validate`
 
 <!-- TOC -->
 
-* [文档选择](#文档选择)
-* [汉化效果](#汉化效果)
+* [免责声明](#免责声明)
+* [关于英文文档](#关于英文文档)
+* [致搬运者与无知的人](#致搬运者与无知的人)
+* [v7 汉化与破解效果](#v7-汉化与破解效果)
 * [StarUML源代码仓库](#staruml源代码仓库)
     * [使用方法](#使用方法)
 * [最新更新日志](#最新更新日志)
-* [Surge 脚本激活](#surge-脚本激活)
-    * [添加方式](#添加方式)
+    * [2026-10-09 更新日志](#2026-10-09-更新日志)
 * [支持状态](#支持状态)
 * [联系方式](#联系方式)
 * [目录](#目录)
@@ -135,10 +96,9 @@ URL正则表达式: `^https://staruml.io/api/license/validate`
 
 # 支持状态
 
-|   App   | 版本 | 汉化程度 | Cracked | Mac | Windows | Linux |                    下载地址                    |
-|:-------:|:--:|:----:|:-------:|:---:|:-------:|:-----:|:------------------------------------------:|
-| StarUML | v6 | 99%  |    ✅    |  ✅  |    ✅    |   ✅   | [https://staruml.io/](https://staruml.io/) |
-| StarUML | v7 | 99%  |    ✅    |  ✅  |    ✅    |   ✅   | [https://staruml.io/](https://staruml.io/) |
+|   App   | 版本 | 汉化程度 | Cracked | Mac | Windows | Linux |                  下载地址                  |
+|:-------:|:----:|:--------:|:-------:|:---:|:-------:|:-----:|:------------------------------------------:|
+| StarUML |  v7  |   99%    |   ✅    | ✅  |   ✅    |  ✅   | [https://staruml.io/](https://staruml.io/) |
 
 # 本项目优点
 
